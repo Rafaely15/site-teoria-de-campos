@@ -65,9 +65,17 @@
                 <span class="tl-date">{{ e.date }}</span>
                 <span class="tag tag-outline">{{ e.kind }}</span>
               </div>
+              <sc-if value="{{ e.image }}">
+                <a class="tl-media" href="{{ e.url }}" target="_blank" rel="noopener" aria-label="{{ e.linkLabel }}">
+                  <img src="{{ e.image }}" alt="{{ e.imageAlt }}" />
+                </a>
+              </sc-if>
               <h3 class="tl-title">{{ e.title }}</h3>
               <p class="card-body">{{ e.body }}</p>
               <p class="tl-where">{{ e.where }}</p>
+              <sc-if value="{{ e.url }}">
+                <a class="sec-link tl-link" href="{{ e.url }}" target="_blank" rel="noopener">{{ e.linkLabel }}</a>
+              </sc-if>
             </article>
           </sc-for>
         </div>
@@ -147,25 +155,41 @@ class Component extends DCLogic {
           date: '00 DE MÊS DE 2026', kind: 'Seminário',
           title: '[SUBSTITUIR: título do seminário]',
           body: '[SUBSTITUIR: uma breve descrição da atividade, com o nome do palestrante e sua instituição.]',
-          where: 'Departamento de Física · UFPB'
+          where: 'Departamento de Física · UFPB',
+          url: 'https://www.instagram.com/tqcg.ufpb/',
+          linkLabel: 'Ver no Instagram ↗',
+          image: '',
+          imageAlt: 'Card de divulgação do seminário'
         },
         {
-          date: '00 DE MÊS DE 2026', kind: 'Defesa',
-          title: '[SUBSTITUIR: título da tese ou dissertação]',
-          body: '[SUBSTITUIR: nome do(a) candidato(a), orientação e composição da banca.]',
-          where: 'Auditório do CCEN · UFPB'
+          date: '17 de junho 2026', kind: 'Seminário',
+          title: 'Não Localizade na QED com violação de Lorentz',
+          body: 'Ramires Nascimento',
+          where: 'Sala 201, Departamento de Física · UFPB',
+          url: 'https://www.instagram.com/p/DZqBgDgh6Ec/',
+          linkLabel: 'Ver detalhes ↗',
+          image: 'image.png',
+          imageAlt: 'Imagem de divulgação do seminário'
         },
         {
           date: '00 DE MÊS DE 2025', kind: 'Publicação',
           title: '[SUBSTITUIR: anúncio de artigo aceito]',
           body: '[SUBSTITUIR: periódico, autores do grupo e uma frase sobre o resultado.]',
-          where: 'Online'
+          where: 'Online',
+          url: '',
+          linkLabel: 'Acessar publicação ↗',
+          image: '',
+          imageAlt: 'Imagem relacionada à publicação'
         },
         {
           date: '00 DE MÊS DE 2025', kind: 'Visita',
           title: '[SUBSTITUIR: visita de pesquisador colaborador]',
           body: '[SUBSTITUIR: nome, instituição de origem e objetivo da visita.]',
-          where: 'Departamento de Física · UFPB'
+          where: 'Departamento de Física · UFPB',
+          url: '',
+          linkLabel: 'Ver evento externo ↗',
+          image: '',
+          imageAlt: 'Imagem de divulgação do evento'
         }
       ]
     },
@@ -179,25 +203,41 @@ class Component extends DCLogic {
           date: 'MONTH 00, 2026', kind: 'Seminar',
           title: '[REPLACE: seminar title]',
           body: '[REPLACE: a short description of the activity, with the speaker’s name and institution.]',
-          where: 'Department of Physics · UFPB'
+          where: 'Department of Physics · UFPB',
+          url: 'https://www.instagram.com/tqcg.ufpb/',
+          linkLabel: 'View on Instagram ↗',
+          image: '',
+          imageAlt: 'Seminar announcement card'
         },
         {
           date: 'MONTH 00, 2026', kind: 'Defence',
           title: '[REPLACE: thesis or dissertation title]',
           body: '[REPLACE: candidate’s name, supervisor and examining committee.]',
-          where: 'CCEN Auditorium · UFPB'
+          where: 'CCEN Auditorium · UFPB',
+          url: '',
+          linkLabel: 'View details ↗',
+          image: '',
+          imageAlt: 'Defence announcement image'
         },
         {
           date: 'MONTH 00, 2025', kind: 'Publication',
           title: '[REPLACE: announcement of an accepted paper]',
           body: '[REPLACE: journal, group authors and one sentence about the result.]',
-          where: 'Online'
+          where: 'Online',
+          url: '',
+          linkLabel: 'Open publication ↗',
+          image: '',
+          imageAlt: 'Publication-related image'
         },
         {
           date: 'MONTH 00, 2025', kind: 'Visit',
           title: '[REPLACE: visit by a collaborating researcher]',
           body: '[REPLACE: name, home institution and purpose of the visit.]',
-          where: 'Department of Physics · UFPB'
+          where: 'Department of Physics · UFPB',
+          url: '',
+          linkLabel: 'View external event ↗',
+          image: '',
+          imageAlt: 'Event announcement image'
         }
       ]
     }
