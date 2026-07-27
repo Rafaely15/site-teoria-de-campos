@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Publicações — QCAMPO · UFPB</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
+  <script src="site-i18n.js"></script>
+  <script src="publicacoes-inspire.js"></script>
+  <script src="site.js"></script>
+</helmet>
+
+<div class="qc-bg" aria-hidden="true"></div>
+
+<div class="qc-page">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./Home.dc.html">
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">QCAMPO</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./Home.dc.html">{{ t.navHome }}</a>
+        <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+        <a href="./Publicacoes.dc.html" aria-current="page">{{ t.navPubs }}</a>
+        <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+        <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+        <a href="./Contato.dc.html">{{ t.navContact }}</a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}">
+          <button type="button" aria-pressed="{{ isPt }}" onClick="{{ setPt }}">PT</button>
+          <button type="button" aria-pressed="{{ isEn }}" onClick="{{ setEn }}">EN</button>
+        </div>
+        <button type="button" class="menu-btn" data-menu-btn="1" aria-expanded="false" aria-label="{{ t.menuLabel }}"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="qc-main">
+
+    <section class="hero hero-page">
+      <div class="wrap">
+        <p class="eyebrow reveal">{{ t.pageEyebrow }}</p>
+        <h1 class="gold reveal" data-reveal-delay="80">{{ t.pageTitle }}<span class="psi">|Ψ⟩</span></h1>
+        <p class="hero-lede reveal" data-reveal-delay="140">{{ t.pageLede }}</p>
+      </div>
+    </section>
+
+    <section class="sec-tight">
+      <div class="wrap">
+        <div class="search-row reveal">
+          <input class="input" type="search" onInput="{{ onSearch }}" placeholder="{{ t.searchPlaceholder }}" aria-label="{{ t.searchPlaceholder }}" />
+          <span class="search-count">{{ resultCount }} / {{ totalCount }}</span>
+        </div>
+
+        <p class="source-note reveal">{{ sourceNote }}</p>
+
+        <sc-if value="{{ isLoading }}">
+          <p class="empty-note">{{ t.loadingNote }}</p>
+        </sc-if>
+
+        <sc-if value="{{ isEmpty }}">
+          <p class="empty-note">{{ t.emptyNote }}</p>
+        </sc-if>
+
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div class="year-group">
+            <div class="year-head">
+              <span class="y gold">{{ g.year }}</span>
+              <span class="rule"></span>
+              <span class="count-badge">{{ g.count }}</span>
+            </div>
+            <sc-for list="{{ g.items }}" as="pub" hint-placeholder-count="3">
+              <article class="pub">
+                <div class="pub-main">
+                  <h3 class="pub-title">{{ pub.title }}</h3>
+                  <p class="pub-authors">{{ pub.authors }}</p>
+                </div>
+                <div class="pub-side">
+                  <span class="tag tag-outline">{{ pub.venue }}</span>
+                  <a class="doi" href="{{ pub.doiUrl }}" target="_blank" rel="noopener">{{ pub.doi }} ↗</a>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="reveal">
+          <h6>{{ t.ctaEyebrow }}</h6>
+          <h2>{{ t.ctaTitle }}</h2>
+          <p class="text-muted" style="max-width:46ch;margin:var(--space-4) 0 0;">{{ t.ctaLede }}</p>
+        </div>
+        <div class="reveal" data-reveal-delay="120" style="display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start;">
+          <a href="./Contato.dc.html" class="btn btn-primary">{{ t.ctaBtn }}</a>
+          <a href="mailto:{{ email }}" class="sec-link">{{ email }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">QCAMPO</span>
+          </div>
+          <p class="footer-desc">{{ t.descriptor }}</p>
+          <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
+          <p class="footer-affil">{{ t.affiliation }}</p>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftNav }}</h6>
+          <div class="footer-links">
+            <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+            <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+            <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+            <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+            <a href="./Contato.dc.html">{{ t.navContact }}</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftContact }}</h6>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+/* Conteúdo da página PUBLICAÇÕES.
+   A lista pode vir de dois lugares:
+     • do INSPIRE-HEP, buscada ao vivo — configure em publicacoes-inspire.js;
+     • da lista `pubs` abaixo, escrita à mão (usada enquanto o INSPIRE estiver
+       desligado, e como reserva se a busca falhar).
+   Em ambos os casos o agrupamento por ano é automático.
+   As publicações abaixo são PLACEHOLDER — não são trabalhos reais. */
+class Component extends DCLogic {
+  state = {
+    lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt',
+    query: '',
+    remote: null,        // lista vinda do INSPIRE (null = ainda não chegou)
+    loading: false,
+    remoteError: false
+  };
+
+  componentDidMount() {
+    const cfg = window.QCAMPO_INSPIRE;
+    if (!cfg || !cfg.enabled) return;
+    this.setState({ loading: true });
+    cfg.buscar()
+      .then(lista => {
+        // uma resposta vazia provavelmente significa query errada — melhor
+        // cair na lista manual do que mostrar a página em branco
+        if (!lista.length) throw new Error('nenhum resultado');
+        this.setState({ remote: lista, loading: false, remoteError: false });
+      })
+      .catch(err => {
+        console.warn('[QCAMPO] falha ao buscar no INSPIRE-HEP:', err.message);
+        this.setState({ loading: false, remoteError: true });
+      });
+  }
+
+  dict = {
+    pt: {
+      pageEyebrow: 'PRODUÇÃO CIENTÍFICA',
+      pageTitle: 'Publicações',
+      pageLede: 'Artigos publicados e preprints produzidos por integrantes do QCAMPO.',
+      searchPlaceholder: 'Filtrar por título, autor, periódico ou DOI...',
+      emptyNote: 'Nenhuma publicação corresponde ao filtro.',
+      loadingNote: 'Buscando publicações no INSPIRE-HEP...',
+      sourceInspire: 'Atualizado automaticamente a partir do INSPIRE-HEP',
+      sourceManual: 'Lista mantida manualmente',
+      sourceFallback: 'Não foi possível consultar o INSPIRE-HEP agora — exibindo a lista local',
+      pubs: [
+        { year: '2026', title: 'Sombras de buracos negros em gravidade bumblebee', authors: 'Autor A, Autor B, Autor C', venue: 'arXiv · gr-qc', doi: 'arXiv:0000.00000', doiUrl: '#' },
+        { year: '2025', title: 'Efeito Casimir em espaços-tempos com monopolo global', authors: 'Autor D, Autor E', venue: 'Phys. Rev. D', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { year: '2025', title: 'Ray tracing de buracos negros rotativos: métodos numéricos', authors: 'Autor F, Autor G, Autor H', venue: 'arXiv · hep-th', doi: 'arXiv:0000.00001', doiUrl: '#' },
+        { year: '2024', title: 'Soluções rotativas em gravidade com violação de simetria de Lorentz', authors: 'Autor A, Autor I', venue: 'Eur. Phys. J. C', doi: '10.0000/yyyyy', doiUrl: '#' }
+      ]
+    },
+
+    en: {
+      pageEyebrow: 'SCIENTIFIC OUTPUT',
+      pageTitle: 'Publications',
+      pageLede: 'Published papers and preprints produced by QCAMPO members.',
+      searchPlaceholder: 'Filter by title, author, journal or DOI...',
+      emptyNote: 'No publication matches the filter.',
+      loadingNote: 'Fetching publications from INSPIRE-HEP...',
+      sourceInspire: 'Updated automatically from INSPIRE-HEP',
+      sourceManual: 'Manually maintained list',
+      sourceFallback: 'Could not reach INSPIRE-HEP right now — showing the local list',
+      pubs: [
+        { year: '2026', title: 'Black hole shadows in bumblebee gravity', authors: 'Author A, Author B, Author C', venue: 'arXiv · gr-qc', doi: 'arXiv:0000.00000', doiUrl: '#' },
+        { year: '2025', title: 'Casimir effect in global monopole spacetimes', authors: 'Author D, Author E', venue: 'Phys. Rev. D', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { year: '2025', title: 'Ray tracing of rotating black holes: numerical methods', authors: 'Author F, Author G, Author H', venue: 'arXiv · hep-th', doi: 'arXiv:0000.00001', doiUrl: '#' },
+        { year: '2024', title: 'Rotating solutions in gravity with Lorentz symmetry violation', authors: 'Author A, Author I', venue: 'Eur. Phys. J. C', doi: '10.0000/yyyyy', doiUrl: '#' }
+      ]
+    }
+  };
+
+  setLang(lang) {
+    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    this.setState({ lang: lang });
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = window.QCAMPO_T(lang, this.dict);
+
+    // o INSPIRE tem prioridade; sem ele, vale a lista escrita à mão
+    const all = this.state.remote || t.pubs || [];
+    const q = (this.state.query || '').trim().toLowerCase();
+    const matches = q
+      ? all.filter(p => (p.title + ' ' + p.authors + ' ' + p.venue + ' ' + p.doi).toLowerCase().indexOf(q) !== -1)
+      : all;
+
+    // agrupa por ano, do mais recente para o mais antigo
+    const years = [];
+    matches.forEach(p => { if (years.indexOf(p.year) === -1) years.push(p.year); });
+    years.sort((a, b) => Number(b) - Number(a));
+    const groups = years.map(y => {
+      const items = matches.filter(p => p.year === y);
+      return { year: y, items: items, count: items.length };
+    });
+
+    return Object.assign({}, t, {
+      t: t,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en'),
+      onSearch: (ev) => this.setState({ query: ev.target.value }),
+      groups: groups,
+      resultCount: matches.length,
+      totalCount: all.length,
+      isLoading: this.state.loading,
+      isEmpty: !this.state.loading && matches.length === 0,
+      sourceNote: this.state.remote ? t.sourceInspire
+                : this.state.remoteError ? t.sourceFallback
+                : t.sourceManual
+    });
+  }
+}
+</script>
+</body>
+</html>

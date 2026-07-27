@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Colaboradores — QCAMPO · UFPB</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
+  <script src="site-i18n.js"></script>
+  <script src="site.js"></script>
+</helmet>
+
+<div class="qc-bg" aria-hidden="true"></div>
+
+<div class="qc-page">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./Home.dc.html">
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">QCAMPO</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./Home.dc.html">{{ t.navHome }}</a>
+        <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+        <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+        <a href="./Colaboradores.dc.html" aria-current="page">{{ t.navPeople }}</a>
+        <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+        <a href="./Contato.dc.html">{{ t.navContact }}</a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}">
+          <button type="button" aria-pressed="{{ isPt }}" onClick="{{ setPt }}">PT</button>
+          <button type="button" aria-pressed="{{ isEn }}" onClick="{{ setEn }}">EN</button>
+        </div>
+        <button type="button" class="menu-btn" data-menu-btn="1" aria-expanded="false" aria-label="{{ t.menuLabel }}"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="qc-main">
+
+    <section class="hero hero-page">
+      <div class="wrap">
+        <p class="eyebrow reveal">{{ t.pageEyebrow }}</p>
+        <h1 class="gold reveal" data-reveal-delay="80">{{ t.pageTitle }}<span class="psi">|Ψ⟩</span></h1>
+        <p class="hero-lede reveal" data-reveal-delay="140">{{ t.pageLede }}</p>
+      </div>
+    </section>
+
+    <section class="sec-tight">
+      <div class="wrap">
+        <!-- Mostra só os níveis que hoje têm gente cadastrada. Ao acrescentar
+             pós-doutorandos, mestrandos ou graduandos, copie um bloco destes
+             usando countPostdocs / countMasters / countUndergrad. -->
+        <div class="stat-strip reveal">
+          <div>
+            <p class="stat-num gold">{{ countResearchers }}</p>
+            <p class="stat-label">{{ t.lvlAll }}</p>
+          </div>
+          <div>
+            <p class="stat-num gold">{{ countProfessors }}</p>
+            <p class="stat-label">{{ t.lvlProfessors }}</p>
+          </div>
+          <div>
+            <p class="stat-num gold">{{ countPostdocs }}</p>
+            <p class="stat-label">{{ t.lvlPostdocs }}</p>
+          </div>
+          <div>
+            <p class="stat-num gold">{{ countPhd }}</p>
+            <p class="stat-label">{{ t.lvlPhd }}</p>
+          </div>
+          <div>
+            <p class="stat-num gold">{{ countMasters }}</p>
+            <p class="stat-label">{{ t.lvlMasters }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="5">
+          <div class="people-group reveal">
+            <div class="people-head">
+              <h3>{{ g.label }}</h3>
+              <span class="count-badge">{{ g.count }}</span>
+            </div>
+            <div class="grid grid-2">
+              <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="2">
+                <div class="card person">
+                  <div class="av av-lg">{{ p.initials }}</div>
+                  <div class="person-body">
+                    <p class="person-name">{{ p.name }}</p>
+                    <p class="person-role">{{ p.role }}</p>
+                    <p class="person-bio">{{ p.bio }}</p>
+                    <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+                      <a class="btn btn-secondary btn-sm" href="{{ p.lattes }}" target="_blank" rel="noopener">Lattes ↗</a>
+                      <sc-if value="{{ p.inspire }}">
+                        <a class="btn btn-secondary btn-sm" href="{{ p.inspire }}" target="_blank" rel="noopener">INSPIRE ↗</a>
+                      </sc-if>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="reveal">
+          <h6>{{ t.ctaEyebrow }}</h6>
+          <h2>{{ t.ctaTitle }}</h2>
+          <p class="text-muted" style="max-width:46ch;margin:var(--space-4) 0 0;">{{ t.ctaLede }}</p>
+        </div>
+        <div class="reveal" data-reveal-delay="120" style="display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start;">
+          <a href="./Contato.dc.html" class="btn btn-primary">{{ t.ctaBtn }}</a>
+          <a href="mailto:{{ email }}" class="sec-link">{{ email }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">QCAMPO</span>
+          </div>
+          <p class="footer-desc">{{ t.descriptor }}</p>
+          <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
+          <p class="footer-affil">{{ t.affiliation }}</p>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftNav }}</h6>
+          <div class="footer-links">
+            <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+            <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+            <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+            <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+            <a href="./Contato.dc.html">{{ t.navContact }}</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftContact }}</h6>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+/* Conteúdo da página COLABORADORES — tudo é PLACEHOLDER.
+   Para cada pessoa: `initials` são as iniciais mostradas no avatar circular,
+   e `lattes` recebe a URL do currículo Lattes. Os contadores por nível ficam
+   em site-i18n.js — mantenha-os em acordo com as listas abaixo. */
+class Component extends DCLogic {
+  state = { lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt' };
+
+  dict = {
+    pt: {
+      pageEyebrow: 'EQUIPE',
+      pageTitle: 'Colaboradores',
+      pageLede: 'Pesquisadores, pós-graduandos e estudantes de graduação que integram o QCAMPO.',
+
+      lvlAll: 'Pesquisadores',
+      lvlProfessors: 'Professores',
+      lvlPostdocs: 'Pós-doutorandos',
+      lvlPhd: 'Doutorandos',
+      lvlMasters: 'Mestrandos',
+      lvlUndergrad: 'Graduandos',
+
+      groups: [
+        {
+          label: 'Professores', count: '4 membros',
+          people: [
+            {
+              initials: 'PP', name: 'Paulo José Ferreira Porfirio da Silva',
+              role: 'Professor · Departamento de Física',
+              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/1812042'
+            },
+            {
+              initials: 'AP', name: 'Albert Petrov',
+              role: 'Professor · Departamento de Física',
+              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/993565'
+            },
+            {
+              initials: 'JN', name: 'José Roberto Soares do Nascimento',
+              role: 'Professor Titular · Departamento de Física',
+              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/996040'
+            },
+            {
+              initials: 'MP', name: 'Matheus Paganelly',
+              role: 'Prof. Dr. · IFRN',
+              bio: 'Perfil INSPIRE: Matheus Paganelly; ORCID 0000-0002-0342-2079; BAI M.M.A.Paganelly.1. Atua em teoria de campos, com publicações recentes sobre termos gauge-gravidade, soluções escalares e cenários com violação de Lorentz.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/1809020'
+            }
+          ]
+        },
+        {
+          label: 'Pós-doutorandos', count: '1 membro',
+          people: [
+            {
+              initials: 'FB', name: 'Fernando de Menezes Belchior',
+              role: 'Pós-doutorando · QCAMPO',
+              bio: 'Perfil INSPIRE: Belchior, F.M.; BAI F.M.Belchior.1. A base registra produção recente em teoria de campos com violação de Lorentz, incluindo QED escalar com acoplamento não minimal e aspectos de teorias de campos com violação da simetria de Lorentz.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2625411'
+            }
+          ]
+        },
+        {
+          label: 'Doutorandos', count: '3 membros',
+          people: [
+            {
+              initials: 'AO', name: 'Ana Rafaely Medeiros de Oliveira',
+              role: 'Doutoranda · PPGF-UFPB',
+              bio: '[SUBSTITUIR: tema da tese e orientação.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2530839'
+            },
+            {
+              initials: 'AM', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
+              role: 'Doutorando · PPGF-UFPB',
+              bio: 'Doutorando vinculado ao QCAMPO. Informações de linha de pesquisa, orientação e produção bibliográfica a completar.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'GS', name: 'GABRIEL MACEDO DE SANTANA',
+              role: 'Doutorando · PPGF-UFPB',
+              bio: 'Doutorando vinculado ao QCAMPO. O link INSPIRE informado retorna um perfil stub com BAI P.G.Macedo.2; recomenda-se conferir a titularidade do registro.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2481483'
+            }
+          ]
+        },
+        {
+          label: 'Mestrandos', count: '3 membros',
+          people: [
+            {
+              initials: 'AN', name: 'Allisson Marques da Costa Nogueira',
+              role: 'Mestrando · PPGF-UFPB',
+              bio: 'Mestrando vinculado ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'JS', name: 'José Emanuel Silva',
+              role: 'Mestrando · PPGF-UFPB',
+              bio: 'Mestrando vinculado ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'TN', name: 'Tarcila Ferreira Domingues do Nascimento',
+              role: 'Mestranda · PPGF-UFPB',
+              bio: 'Mestranda vinculada ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
+              lattes: '#', inspire: ''
+            }
+          ]
+        }
+        /* Para acrescentar uma categoria (Pós-doutorados, Mestrandos,
+           Graduandos...), copie um bloco acima nos DOIS idiomas e atualize os
+           contadores em site-i18n.js. Modelo de pessoa:
+        {
+          label: 'Mestrandos', count: '2 membros',
+          people: [
+            { initials: 'NC', name: '[Nome Completo]', role: 'Mestrando(a) · PPGF-UFPB',
+              bio: '[SUBSTITUIR: tema da dissertação e orientação.]',
+              lattes: 'http://lattes.cnpq.br/...', inspire: '' }
+          ]
+        }
+        */
+      ]
+    },
+
+    en: {
+      pageEyebrow: 'TEAM',
+      pageTitle: 'People',
+      pageLede: 'Researchers, graduate and undergraduate students who make up QCAMPO.',
+
+      lvlAll: 'Researchers',
+      lvlProfessors: 'Faculty',
+      lvlPostdocs: 'Postdocs',
+      lvlPhd: 'PhD Students',
+      lvlMasters: 'MSc Students',
+      lvlUndergrad: 'Undergraduates',
+
+      groups: [
+        {
+          label: 'Faculty', count: '4 members',
+          people: [
+            {
+              initials: 'PP', name: 'Paulo José Ferreira Porfirio da Silva',
+              role: 'Professor · Department of Physics',
+              bio: '[REPLACE: one or two sentences on background and research interests.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/1812042'
+            },
+            {
+              initials: 'AP', name: 'Albert Petrov',
+              role: 'Professor · Department of Physics',
+              bio: '[REPLACE: one or two sentences on background and research interests.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/993565'
+            },
+            {
+              initials: 'JN', name: 'José Roberto Soares do Nascimento',
+              role: 'Full Professor · Department of Physics',
+              bio: '[REPLACE: one or two sentences on background and research interests.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/996040'
+            },
+            {
+              initials: 'MP', name: 'Matheus Paganelly',
+              role: 'Prof. Dr. · IFRN',
+              bio: 'INSPIRE profile: Matheus Paganelly; ORCID 0000-0002-0342-2079; BAI M.M.A.Paganelly.1. His recent indexed work includes gauge-gravity terms, scalar-field solutions and Lorentz-violating scenarios in field theory.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/1809020'
+            }
+          ]
+        },
+        {
+          label: 'Postdocs', count: '1 member',
+          people: [
+            {
+              initials: 'FB', name: 'Fernando de Menezes Belchior',
+              role: 'Postdoctoral Researcher · QCAMPO',
+              bio: 'INSPIRE profile: Belchior, F.M.; BAI F.M.Belchior.1. INSPIRE indexes recent work on Lorentz-violating field theory, including scalar QED with nonminimal coupling and broader aspects of Lorentz-symmetry violation.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2625411'
+            }
+          ]
+        },
+        {
+          label: 'PhD Students', count: '3 members',
+          people: [
+            {
+              initials: 'AO', name: 'Ana Rafaely Medeiros de Oliveira',
+              role: 'PhD Student · PPGF-UFPB',
+              bio: '[REPLACE: thesis topic and supervisor.]',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2530839'
+            },
+            {
+              initials: 'AM', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
+              role: 'PhD Student · PPGF-UFPB',
+              bio: 'PhD student affiliated with QCAMPO. Research topic, supervisor and bibliographic information to be completed.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'GS', name: 'GABRIEL MACEDO DE SANTANA',
+              role: 'PhD Student · PPGF-UFPB',
+              bio: 'PhD student affiliated with QCAMPO. The provided INSPIRE link returns a stub profile with BAI P.G.Macedo.2; the record ownership should be checked.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2481483'
+            }
+          ]
+        },
+        {
+          label: 'MSc Students', count: '3 members',
+          people: [
+            {
+              initials: 'AN', name: 'Allisson Marques da Costa Nogueira',
+              role: 'MSc Student · PPGF-UFPB',
+              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'JS', name: 'José Emanuel Silva',
+              role: 'MSc Student · PPGF-UFPB',
+              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              lattes: '#', inspire: ''
+            },
+            {
+              initials: 'TN', name: 'Tarcila Ferreira Domingues do Nascimento',
+              role: 'MSc Student · PPGF-UFPB',
+              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              lattes: '#', inspire: ''
+            }
+          ]
+        }
+        /* Mantenha esta lista na MESMA ordem da versão em português. */
+      ]
+    }
+  };
+
+  setLang(lang) {
+    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    this.setState({ lang: lang });
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = window.QCAMPO_T(lang, this.dict);
+    return Object.assign({}, t, {
+      t: t,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en')
+    });
+  }
+}
+</script>
+</body>
+</html>

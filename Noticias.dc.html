@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Notícias e Eventos — QCAMPO · UFPB</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
+  <script src="site-i18n.js"></script>
+  <script src="site.js"></script>
+</helmet>
+
+<div class="qc-bg" aria-hidden="true"></div>
+
+<div class="qc-page">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./Home.dc.html">
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">QCAMPO</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./Home.dc.html">{{ t.navHome }}</a>
+        <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+        <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+        <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+        <a href="./Noticias.dc.html" aria-current="page">{{ t.navNews }}</a>
+        <a href="./Contato.dc.html">{{ t.navContact }}</a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}">
+          <button type="button" aria-pressed="{{ isPt }}" onClick="{{ setPt }}">PT</button>
+          <button type="button" aria-pressed="{{ isEn }}" onClick="{{ setEn }}">EN</button>
+        </div>
+        <button type="button" class="menu-btn" data-menu-btn="1" aria-expanded="false" aria-label="{{ t.menuLabel }}"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="qc-main">
+
+    <section class="hero hero-page">
+      <div class="wrap">
+        <p class="eyebrow reveal">{{ t.pageEyebrow }}</p>
+        <h1 class="gold reveal" data-reveal-delay="80">{{ t.pageTitle }}<span class="psi">|Ψ⟩</span></h1>
+        <p class="hero-lede reveal" data-reveal-delay="140">{{ t.pageLede }}</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap-narrow" style="margin-left:0;">
+        <div class="timeline">
+          <sc-for list="{{ t.events }}" as="e" hint-placeholder-count="4">
+            <article class="tl-item reveal">
+              <div class="tl-head">
+                <span class="tl-date">{{ e.date }}</span>
+                <span class="tag tag-outline">{{ e.kind }}</span>
+              </div>
+              <h3 class="tl-title">{{ e.title }}</h3>
+              <p class="card-body">{{ e.body }}</p>
+              <p class="tl-where">{{ e.where }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="reveal">
+          <h6>{{ t.ctaEyebrow }}</h6>
+          <h2>{{ t.ctaTitle }}</h2>
+          <p class="text-muted" style="max-width:46ch;margin:var(--space-4) 0 0;">{{ t.ctaLede }}</p>
+        </div>
+        <div class="reveal" data-reveal-delay="120" style="display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start;">
+          <a href="./Contato.dc.html" class="btn btn-primary">{{ t.ctaBtn }}</a>
+          <a href="mailto:{{ email }}" class="sec-link">{{ email }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">QCAMPO</span>
+          </div>
+          <p class="footer-desc">{{ t.descriptor }}</p>
+          <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
+          <p class="footer-affil">{{ t.affiliation }}</p>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftNav }}</h6>
+          <div class="footer-links">
+            <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+            <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+            <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+            <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+            <a href="./Contato.dc.html">{{ t.navContact }}</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftContact }}</h6>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+/* Conteúdo da página NOTÍCIAS E EVENTOS — tudo é PLACEHOLDER.
+   A linha do tempo segue a ordem da lista `events`: coloque o item mais
+   recente primeiro. `kind` é o selo (Seminário, Defesa, Publicação...). */
+class Component extends DCLogic {
+  state = { lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt' };
+
+  dict = {
+    pt: {
+      pageEyebrow: 'AGENDA',
+      pageTitle: 'Notícias e Eventos',
+      pageLede: 'Seminários, defesas, visitas e demais atividades do núcleo.',
+      events: [
+        {
+          date: '00 DE MÊS DE 2026', kind: 'Seminário',
+          title: '[SUBSTITUIR: título do seminário]',
+          body: '[SUBSTITUIR: uma breve descrição da atividade, com o nome do palestrante e sua instituição.]',
+          where: 'Departamento de Física · UFPB'
+        },
+        {
+          date: '00 DE MÊS DE 2026', kind: 'Defesa',
+          title: '[SUBSTITUIR: título da tese ou dissertação]',
+          body: '[SUBSTITUIR: nome do(a) candidato(a), orientação e composição da banca.]',
+          where: 'Auditório do CCEN · UFPB'
+        },
+        {
+          date: '00 DE MÊS DE 2025', kind: 'Publicação',
+          title: '[SUBSTITUIR: anúncio de artigo aceito]',
+          body: '[SUBSTITUIR: periódico, autores do grupo e uma frase sobre o resultado.]',
+          where: 'Online'
+        },
+        {
+          date: '00 DE MÊS DE 2025', kind: 'Visita',
+          title: '[SUBSTITUIR: visita de pesquisador colaborador]',
+          body: '[SUBSTITUIR: nome, instituição de origem e objetivo da visita.]',
+          where: 'Departamento de Física · UFPB'
+        }
+      ]
+    },
+
+    en: {
+      pageEyebrow: 'AGENDA',
+      pageTitle: 'News and Events',
+      pageLede: 'Seminars, thesis defences, visits and other activities of the centre.',
+      events: [
+        {
+          date: 'MONTH 00, 2026', kind: 'Seminar',
+          title: '[REPLACE: seminar title]',
+          body: '[REPLACE: a short description of the activity, with the speaker’s name and institution.]',
+          where: 'Department of Physics · UFPB'
+        },
+        {
+          date: 'MONTH 00, 2026', kind: 'Defence',
+          title: '[REPLACE: thesis or dissertation title]',
+          body: '[REPLACE: candidate’s name, supervisor and examining committee.]',
+          where: 'CCEN Auditorium · UFPB'
+        },
+        {
+          date: 'MONTH 00, 2025', kind: 'Publication',
+          title: '[REPLACE: announcement of an accepted paper]',
+          body: '[REPLACE: journal, group authors and one sentence about the result.]',
+          where: 'Online'
+        },
+        {
+          date: 'MONTH 00, 2025', kind: 'Visit',
+          title: '[REPLACE: visit by a collaborating researcher]',
+          body: '[REPLACE: name, home institution and purpose of the visit.]',
+          where: 'Department of Physics · UFPB'
+        }
+      ]
+    }
+  };
+
+  setLang(lang) {
+    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    this.setState({ lang: lang });
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = window.QCAMPO_T(lang, this.dict);
+    return Object.assign({}, t, {
+      t: t,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en')
+    });
+  }
+}
+</script>
+</body>
+</html>

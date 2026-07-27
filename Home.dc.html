@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>QCAMPO — Teoria de Campos e Gravitação · UFPB</title>
+  <meta name="description" content="QCAMPO — Núcleo de Teoria Quântica de Campos e Gravitação, Departamento de Física, Universidade Federal da Paraíba.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
+  <script src="site-i18n.js"></script>
+  <script src="publicacoes-inspire.js"></script>
+  <script src="site.js"></script>
+</helmet>
+
+<div class="qc-bg" aria-hidden="true"></div>
+
+<div class="qc-page">
+
+  <!-- ══════════ CABEÇALHO ══════════ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./Home.dc.html">
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">QCAMPO</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./Home.dc.html" aria-current="page">{{ t.navHome }}</a>
+        <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+        <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+        <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+        <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+        <a href="./Contato.dc.html">{{ t.navContact }}</a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}">
+          <button type="button" aria-pressed="{{ isPt }}" onClick="{{ setPt }}">PT</button>
+          <button type="button" aria-pressed="{{ isEn }}" onClick="{{ setEn }}">EN</button>
+        </div>
+        <button type="button" class="menu-btn" data-menu-btn="1" aria-expanded="false" aria-label="{{ t.menuLabel }}"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="qc-main">
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero hero-home">
+      <div class="wrap-narrow">
+        <p class="eyebrow reveal">{{ t.heroEyebrow }}</p>
+
+        <div class="hero-logo reveal" data-reveal-delay="60">
+          <iframe
+            class="hero-black-hole"
+            src="animacao-black-hole/black-hole.html?v=20260727"
+            title="Animação de buraco negro"
+            loading="eager"
+            scrolling="no"
+            aria-label="Animação de buraco negro do QCAMPO"></iframe>
+        </div>
+
+        <h1 class="hero-title gold reveal" data-reveal-delay="120">{{ t.tagline }}</h1>
+
+        <p class="hero-lede reveal" data-reveal-delay="180">{{ t.heroLede }}</p>
+
+        <div class="pill-row reveal" data-reveal-delay="240">
+          <sc-for list="{{ t.heroTopics }}" as="topic" hint-placeholder-count="4">
+            <span class="tag tag-outline">{{ topic }}</span>
+          </sc-for>
+        </div>
+
+        <div class="btn-row reveal" data-reveal-delay="300">
+          <a href="./Sobre.dc.html" class="btn btn-primary">{{ t.heroCta1 }}</a>
+          <a href="./Publicacoes.dc.html" class="btn btn-secondary">{{ t.navPubs }}</a>
+        </div>
+
+        <p class="hero-note reveal" data-reveal-delay="360">{{ t.heroNote }}</p>
+      </div>
+    </section>
+
+    <!-- ══════════ ESTATÍSTICAS ══════════ -->
+    <section class="stat-band" aria-label="{{ t.statsLabel }}">
+      <div class="wrap">
+        <div class="stat-grid">
+          <div class="reveal">
+            <p class="stat-num gold">{{ pubCountLabel }}</p>
+            <p class="stat-label">{{ t.statPubs }}</p>
+          </div>
+          <div class="reveal" data-reveal-delay="80">
+            <p class="stat-num gold">{{ countResearchers }}</p>
+            <p class="stat-label">{{ t.statPeople }}</p>
+          </div>
+          <div class="reveal" data-reveal-delay="160">
+            <p class="stat-num gold">{{ countProjects }}</p>
+            <p class="stat-label">{{ t.statProjects }}</p>
+          </div>
+          <div class="reveal" data-reveal-delay="240">
+            <p class="stat-num gold">{{ foundedYear }}</p>
+            <p class="stat-label">{{ t.statFounded }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ O QUE FAZEMOS ══════════ -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h6>{{ t.doEyebrow }}</h6>
+          <h2>{{ t.doTitle }}<span class="psi">|Ψ⟩</span></h2>
+        </div>
+        <div class="grid grid-3">
+          <sc-for list="{{ t.doCards }}" as="c" hint-placeholder-count="3">
+            <article class="card reveal">
+              <span class="num">{{ c.n }}</span>
+              <h3 class="card-title">{{ c.title }}</h3>
+              <p class="card-body">{{ c.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ LINHAS DE PESQUISA ══════════ -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h6>{{ t.linesEyebrow }}</h6>
+          <h2>{{ t.linesTitle }}</h2>
+        </div>
+        <div class="numbered reveal">
+          <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
+            <div class="numbered-item">
+              <span class="n">{{ line.n }}</span>
+              <span class="t">{{ line.title }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PUBLICAÇÕES RECENTES ══════════ -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head-row reveal">
+          <div>
+            <h6>{{ t.pubsEyebrow }}</h6>
+            <h2>{{ t.pubsTitle }}</h2>
+          </div>
+          <a class="sec-link" href="./Publicacoes.dc.html">{{ t.pubsAll }} ({{ countPublications }}) ↗</a>
+        </div>
+        <div class="grid grid-3">
+          <sc-for list="{{ recentPubs }}" as="pub" hint-placeholder-count="3">
+            <article class="card reveal">
+              <span class="tag tag-neutral" style="align-self:flex-start;">{{ pub.venue }}</span>
+              <h3 class="card-title">{{ pub.title }}</h3>
+              <p class="card-body">{{ pub.authors }}</p>
+              <p class="card-meta">{{ pub.year }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ EQUIPE ══════════ -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head-row reveal">
+          <div>
+            <h6>{{ t.teamEyebrow }}</h6>
+            <h2>{{ t.teamTitle }}</h2>
+          </div>
+          <a class="sec-link" href="./Colaboradores.dc.html">{{ t.teamAll }} ↗</a>
+        </div>
+        <div class="reveal" style="display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap;">
+          <div class="avatar-stack">
+            <sc-for list="{{ t.avatarInitials }}" as="p" hint-placeholder-count="6">
+              <div class="av">{{ p }}</div>
+            </sc-for>
+          </div>
+          <div>
+            <p style="margin:0;font-family:var(--font-display);font-size:24px;">{{ countResearchers }} {{ t.teamCountWord }}</p>
+            <p class="text-muted" style="margin:var(--space-1) 0 0;font-size:14px;">{{ t.teamBreakdown }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="reveal">
+          <h6>{{ t.ctaEyebrow }}</h6>
+          <h2>{{ t.ctaTitle }}</h2>
+          <p class="text-muted" style="max-width:46ch;margin:var(--space-4) 0 0;">{{ t.ctaLede }}</p>
+        </div>
+        <div class="reveal" data-reveal-delay="120" style="display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start;">
+          <a href="./Contato.dc.html" class="btn btn-primary">{{ t.ctaBtn }}</a>
+          <a href="mailto:{{ email }}" class="sec-link">{{ email }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ RODAPÉ ══════════ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">QCAMPO</span>
+          </div>
+          <p class="footer-desc">{{ t.descriptor }}</p>
+          <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
+          <p class="footer-affil">{{ t.affiliation }}</p>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftNav }}</h6>
+          <div class="footer-links">
+            <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+            <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+            <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+            <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+            <a href="./Contato.dc.html">{{ t.navContact }}</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftContact }}</h6>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+/* ═══════════════════════════════════════════════════════════════════════
+   Conteúdo da página INÍCIO.
+   Tudo abaixo é PLACEHOLDER — edite à vontade. Os textos de navegação e
+   rodapé, o e-mail e os contadores ficam em site-i18n.js.
+   ═══════════════════════════════════════════════════════════════════════ */
+class Component extends DCLogic {
+  state = {
+    lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt',
+    pubTotal: null,     // total de publicações vindo do INSPIRE
+    pubRecent: null     // as 3 mais recentes, também do INSPIRE
+  };
+
+  /* Pede ao INSPIRE só o total e os 3 artigos mais recentes. Se falhar, a
+     página segue com o número e os cards escritos à mão — nada quebra. */
+  componentDidMount() {
+    const cfg = window.QCAMPO_INSPIRE;
+    if (!cfg || !cfg.enabled) return;
+    cfg.buscarResumo(3)
+      .then(r => {
+        if (!r.recentes.length) return;
+        this.setState({ pubTotal: r.total, pubRecent: r.recentes });
+      })
+      .catch(err => console.warn('[QCAMPO] resumo do INSPIRE indisponível:', err.message));
+  }
+
+  dict = {
+    pt: {
+      heroEyebrow: 'NÚCLEO DE PESQUISA · DEPARTAMENTO DE FÍSICA · UFPB',
+      heroLede: 'Somos um grupo de pesquisa em física teórica dedicado ao estudo de buracos negros, gravidade modificada e teoria quântica de campos em espaços curvos, com atuação em métodos analíticos e computacionais.',
+      heroTopics: ['Buracos Negros', 'Gravidade Modificada', 'QFT em Espaços Curvos', 'Efeito Casimir'],
+      heroCta1: 'Conheça a pesquisa →',
+      heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2015',
+
+      statsLabel: 'QCAMPO em números',
+      statPubs: 'Publicações',
+      statPeople: 'Pesquisadores',
+      statProjects: 'Projetos em Andamento',
+      statFounded: 'Ano de Fundação',
+
+      doEyebrow: 'O QUE FAZEMOS',
+      doTitle: 'Três frentes de atuação',
+      doCards: [
+        { n: '01', title: 'Pesquisa de Fronteira', body: 'Investigação analítica e computacional de buracos negros, gravidade modificada e efeitos quânticos em espaços-tempos curvos.' },
+        { n: '02', title: 'Colaboração Científica', body: 'Parcerias com grupos nacionais e internacionais em teoria de campos, gravitação e métodos numéricos.' },
+        { n: '03', title: 'Formação Acadêmica', body: 'Orientação de iniciação científica, mestrado e doutorado no Programa de Pós-Graduação em Física da UFPB.' }
+      ],
+
+      linesEyebrow: 'SOBRE O GRUPO',
+      linesTitle: 'Linhas de pesquisa',
+      researchLines: [
+        { n: '01', title: 'Buracos negros e sombras de buracos negros' },
+        { n: '02', title: 'Soluções de buracos negros rotativos' },
+        { n: '03', title: 'Gravidade modificada e violação de simetria de Lorentz (gravidade bumblebee)' },
+        { n: '04', title: 'Teoria quântica de campos em espaços curvos' },
+        { n: '05', title: 'Efeito Casimir' },
+        { n: '06', title: 'Monopolo global e defeitos topológicos' },
+        { n: '07', title: 'Métodos computacionais e ray tracing' }
+      ],
+
+      pubsEyebrow: 'PRODUÇÃO',
+      pubsTitle: 'Publicações recentes',
+      pubsAll: 'VER TODAS',
+      recentPubs: [
+        { venue: 'ARXIV · GR-QC', title: 'Sombras de buracos negros em gravidade bumblebee', authors: 'Autor A, Autor B, Autor C', year: '2026' },
+        { venue: 'PHYS. REV. D', title: 'Efeito Casimir em espaços-tempos com monopolo global', authors: 'Autor D, Autor E', year: '2025' },
+        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing de buracos negros rotativos: métodos numéricos', authors: 'Autor F, Autor G, Autor H', year: '2025' }
+      ],
+
+      teamEyebrow: 'EQUIPE',
+      teamTitle: 'Quem faz o QCAMPO',
+      teamAll: 'VER COLABORADORES',
+      teamCountWord: 'pesquisadores',
+      teamBreakdown: '4 professores · 1 pós-doc · 3 doutorandos · 3 mestrandos',
+      avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
+    },
+
+    en: {
+      heroEyebrow: 'RESEARCH GROUP · DEPARTMENT OF PHYSICS · UFPB',
+      heroLede: 'We are a theoretical physics research group devoted to black holes, modified gravity and quantum field theory in curved spacetimes, working with both analytical and computational methods.',
+      heroTopics: ['Black Holes', 'Modified Gravity', 'QFT in Curved Spaces', 'Casimir Effect'],
+      heroCta1: 'Explore the research →',
+      heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2015',
+
+      statsLabel: 'QCAMPO in numbers',
+      statPubs: 'Publications',
+      statPeople: 'Researchers',
+      statProjects: 'Ongoing Projects',
+      statFounded: 'Founded',
+
+      doEyebrow: 'WHAT WE DO',
+      doTitle: 'Three lines of action',
+      doCards: [
+        { n: '01', title: 'Frontier Research', body: 'Analytical and computational investigation of black holes, modified gravity and quantum effects in curved spacetimes.' },
+        { n: '02', title: 'Scientific Collaboration', body: 'Partnerships with national and international groups in field theory, gravitation and numerical methods.' },
+        { n: '03', title: 'Graduate Training', body: 'Supervision of undergraduate research, MSc and PhD students in the UFPB Graduate Programme in Physics.' }
+      ],
+
+      linesEyebrow: 'ABOUT THE GROUP',
+      linesTitle: 'Research lines',
+      researchLines: [
+        { n: '01', title: 'Black holes and black hole shadows' },
+        { n: '02', title: 'Rotating black hole solutions' },
+        { n: '03', title: 'Modified gravity and Lorentz symmetry violation (bumblebee gravity)' },
+        { n: '04', title: 'Quantum field theory in curved spacetimes' },
+        { n: '05', title: 'Casimir effect' },
+        { n: '06', title: 'Global monopole and topological defects' },
+        { n: '07', title: 'Computational methods and ray tracing' }
+      ],
+
+      pubsEyebrow: 'OUTPUT',
+      pubsTitle: 'Recent publications',
+      pubsAll: 'VIEW ALL',
+      recentPubs: [
+        { venue: 'ARXIV · GR-QC', title: 'Black hole shadows in bumblebee gravity', authors: 'Author A, Author B, Author C', year: '2026' },
+        { venue: 'PHYS. REV. D', title: 'Casimir effect in global monopole spacetimes', authors: 'Author D, Author E', year: '2025' },
+        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing of rotating black holes: numerical methods', authors: 'Author F, Author G, Author H', year: '2025' }
+      ],
+
+      teamEyebrow: 'TEAM',
+      teamTitle: 'The people behind QCAMPO',
+      teamAll: 'VIEW ALL PEOPLE',
+      teamCountWord: 'researchers',
+      teamBreakdown: '4 faculty · 1 postdoc · 3 PhD students · 3 MSc students',
+      avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
+    }
+  };
+
+  setLang(lang) {
+    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    this.setState({ lang: lang });
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = window.QCAMPO_T(lang, this.dict);
+    return Object.assign({}, t, {
+      t: t,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en'),
+      // o INSPIRE tem prioridade; sem ele valem os valores de site-i18n.js
+      countPublications: this.state.pubTotal != null ? this.state.pubTotal : t.countPublications,
+      // o "+" só faz sentido no número aproximado escrito à mão; vindo do
+      // INSPIRE o total é exato
+      pubCountLabel: this.state.pubTotal != null ? String(this.state.pubTotal) : t.countPublications + '+',
+      recentPubs: this.state.pubRecent || t.recentPubs
+    });
+  }
+}
+</script>
+</body>
+</html>

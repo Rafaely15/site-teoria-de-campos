@@ -1,0 +1,393 @@
+/* QCAMPO — tokens e classes de componente do design system.
+   Este arquivo é a fonte da verdade do visual: retune aqui.
+
+   Identidade: preto-carvão quente + âmbar/laranja incandescente, derivada da
+   logo (buraco negro com disco de acreção). Títulos em serifa de display,
+   rótulos em monoespaçada maiúscula (combina com o motivo de circuito
+   quântico), texto corrido em sans.
+
+   ESCALA FLUIDA: o tamanho-base da fonte cresce com a largura da janela
+   (ver `html` abaixo) e TODOS os tamanhos de texto são em `rem`. Assim o site
+   acompanha o dispositivo — num monitor grande o texto cresce junto em vez de
+   ficar minúsculo no meio da tela. Não volte a usar `px` para texto.
+
+   Divergência consciente do Nocturne original: aqui o botão primário é
+   PREENCHIDO (pílula âmbar sólida com texto escuro), não contornado — é o que
+   dá o ponto focal quente que a identidade pede. O secundário mantém o
+   contorno. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&display=swap');
+
+:root {
+  --color-bg: #0C0A09;
+  --color-bg-2: #12100E;
+  --color-surface: #16120F;
+  --color-panel: rgba(30, 23, 17, 0.55); /* painel translúcido dos cards */
+  --color-text: #F2EAE0;
+  --color-accent: #F59E0B;   /* âmbar — a cor de linha e brilho do sistema */
+  --color-accent-2: #FB923C; /* laranja — segundo tom do disco de acreção */
+  --color-gold: #FBBF24;     /* realce metálico do wordmark e títulos grandes */
+  --color-ember: #B45309;    /* brasa profunda — sombras e profundidade */
+  --color-divider: color-mix(in srgb, #F59E0B 18%, transparent);
+
+  /* Rampas tonais — mesma escala de luminosidade entre papéis, para que o
+     mesmo degrau de qualquer rampa tenha o mesmo peso visual. */
+  --color-neutral-100: #F7F3EF;
+  --color-neutral-200: #E8E1D9;
+  --color-neutral-300: #D2C8BD;
+  --color-neutral-400: #B0A497;
+  --color-neutral-500: #8C8074;
+  --color-neutral-600: #6E6358;
+  --color-neutral-700: #524940;
+  --color-neutral-800: #38312B;
+  --color-neutral-900: #211C18;
+
+  --color-accent-100: #FEF6E7;
+  --color-accent-200: #FDE9C4;
+  --color-accent-300: #FBD79B; /* âmbar claro — texto de parágrafo em destaque */
+  --color-accent-400: #F9BC63;
+  --color-accent-500: #F59E0B;
+  --color-accent-600: #D97F06;
+  --color-accent-700: #B45309;
+  --color-accent-800: #7C3A08;
+  --color-accent-900: #4A2306;
+
+  --color-accent-2-100: #FFF3E9;
+  --color-accent-2-200: #FEE1CA;
+  --color-accent-2-300: #FDC79E;
+  --color-accent-2-400: #FCA968;
+  --color-accent-2-500: #FB923C;
+  --color-accent-2-600: #E4701C;
+  --color-accent-2-700: #B85512;
+  --color-accent-2-800: #7E3A0D;
+  --color-accent-2-900: #4B2208;
+
+  /* Faixa de destaque (banda de estatísticas) — brasa, não âmbar puro:
+     presença por saturação sem inundar a página com o acento. */
+  --color-section: #1C0E05;
+  --color-section-glow: #5A2A0A;
+  --color-section-ghost: #8A4410;
+
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-heading: var(--font-display);
+  --font-heading-weight: 400;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Elevação — no escuro é aresta + escuridão ambiente, com um fio de âmbar. */
+  --shadow-sm: 0 0 0 1px color-mix(in srgb, var(--color-accent) 14%, transparent);
+  --shadow-md: 0 0 0 1px color-mix(in srgb, var(--color-accent) 22%, transparent),
+               0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 0 0 1px color-mix(in srgb, var(--color-accent) 32%, transparent),
+               0 18px 48px rgba(0, 0, 0, 0.72);
+  --glow-amber: 0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent),
+                0 8px 34px color-mix(in srgb, var(--color-ember) 34%, transparent);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Tamanho-base fluido: 16px no celular, ~18px num notebook, ~19px num monitor
+   grande. Como todo o texto é em rem, o site inteiro acompanha. */
+html { font-size: clamp(1rem, 0.895rem + 0.28vw, 1.18rem); }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: var(--font-heading-weight);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-3);
+}
+h1 { font-size: clamp(2.35rem, 1.2rem + 3.4vw, 4.4rem); }
+h2 { font-size: clamp(1.75rem, 1rem + 2.1vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 0.95rem + 0.85vw, 1.8rem); }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.0625rem; }
+
+/* h6 é o "olho" de seção (eyebrow): monoespaçado, maiúsculo, bem espaçado. */
+h6 {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin: 0 0 var(--space-2);
+  color: var(--color-accent);
+}
+
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-300); }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.text-muted { color: color-mix(in srgb, var(--color-text) 58%, transparent); }
+
+/* Rótulos monoespaçados — a voz "de instrumento" do sistema. */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Acabamento "metal escovado" dos títulos grandes e do wordmark. */
+.gold {
+  background: linear-gradient(103deg, #FDE9C4 4%, var(--color-gold) 32%, #E08A0C 58%, #FDE9C4 82%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 32%, transparent); }
+
+/* — réguas — assinatura Nocturne: esmaecem nas duas pontas em 48px. */
+.hr {
+  height: 1px; border: 0; margin: var(--space-6) 0;
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent);
+}
+
+/* — botões — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.875rem; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1px solid transparent;
+  padding: 0.7em 1.4em;
+  border-radius: var(--radius-pill);
+  transition: background-color .18s ease, color .18s ease,
+              border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #1A0E02;
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 22px color-mix(in srgb, var(--color-ember) 40%, transparent);
+}
+.btn-primary:hover {
+  background: var(--color-accent-400);
+  border-color: var(--color-accent-400);
+  color: #1A0E02;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--color-ember) 55%, transparent);
+}
+.btn-primary:active { background: var(--color-accent-600); transform: translateY(0); }
+
+.btn-secondary {
+  border-color: color-mix(in srgb, var(--color-accent) 46%, transparent);
+  color: var(--color-accent-300);
+}
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: var(--color-accent-200);
+}
+.btn-secondary:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-2); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 2.5em; height: 2.5em; padding: 0; }
+.btn-block { width: 100%; }
+.btn-sm { padding: 0.5em 1em; font-size: 0.8125rem; }
+
+/* — formulários — */
+.field { margin-bottom: var(--space-4); }
+.field > label {
+  display: block;
+  font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  color: color-mix(in srgb, var(--color-text) 68%, transparent);
+}
+.input {
+  width: 100%; min-height: 2.9em; padding: 0.7em 1em; font: inherit;
+  font-size: 0.9375rem; color: var(--color-text); caret-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-neutral-900) 70%, transparent);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.input::placeholder { color: color-mix(in srgb, var(--color-text) 38%, transparent); }
+.input:hover { border-color: color-mix(in srgb, var(--color-accent) 38%, transparent); }
+.input:focus-visible {
+  border-color: var(--color-accent); outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+textarea.input { min-height: 8.5em; resize: vertical; }
+
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.875rem; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-pill);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0.5em 1em; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.6875rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { color: #1A0E02; background: var(--color-accent); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — painéis escuros translúcidos com fio âmbar e realce no hover. */
+.card {
+  position: relative;
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-panel);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 16%, transparent);
+  backdrop-filter: blur(6px);
+  transition: border-color .22s ease, box-shadow .22s ease,
+              transform .22s ease, background-color .22s ease;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-panel));
+  box-shadow: 0 10px 34px color-mix(in srgb, var(--color-ember) 26%, transparent);
+  transform: translateY(-2px);
+}
+.card-kicker {
+  font-family: var(--font-mono); font-size: 0.625rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent);
+}
+.card-title {
+  font-family: var(--font-display); font-weight: var(--font-heading-weight);
+  font-size: 1.3125rem; line-height: 1.2; margin: 0;
+}
+.card-body {
+  margin: 0; font-size: 0.9rem; line-height: 1.65; flex: 1;
+  color: color-mix(in srgb, var(--color-text) 74%, transparent);
+}
+.card-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags / pílulas de tópico — */
+.tag {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 0.656rem; font-weight: 500;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  padding: 0.42em 1.05em;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+}
+.tag-accent { background: color-mix(in srgb, var(--color-accent-800) 55%, transparent); color: var(--color-accent-200); border-color: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+.tag-accent-2 { background: color-mix(in srgb, var(--color-accent-2-800) 55%, transparent); color: var(--color-accent-2-200); border-color: color-mix(in srgb, var(--color-accent-2) 30%, transparent); }
+.tag-neutral { background: color-mix(in srgb, var(--color-neutral-900) 80%, transparent); color: var(--color-neutral-300); border-color: color-mix(in srgb, var(--color-neutral-500) 30%, transparent); }
+.tag-outline { border-color: color-mix(in srgb, var(--color-accent) 40%, transparent); color: var(--color-accent-300); }
+.tag-outline:hover { border-color: var(--color-accent); color: var(--color-accent-200); }
+
+/* — navegação — */
+.nav { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) var(--space-4); }
+.nav-brand { font-family: var(--font-display); font-size: 1.1875rem; letter-spacing: 0.02em; }
+.nav a { color: inherit; text-decoration: none; font-size: 0.875rem; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tabelas — */
+.table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.table th {
+  text-align: left; font-family: var(--font-mono); font-size: 0.656rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-3) var(--space-2); border-bottom: 1px solid transparent;
+}
+.table td { padding: var(--space-3) var(--space-2); border-bottom: 1px solid transparent; }
+.table thead tr {
+  background: linear-gradient(to right,
+    transparent, var(--color-divider) 48px,
+    var(--color-divider) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr {
+  background: linear-gradient(to right,
+    transparent, color-mix(in srgb, var(--color-accent) 12%, transparent) 48px,
+    color-mix(in srgb, var(--color-accent) 12%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+.table tbody tr:hover {
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-accent) 5%, transparent),
+                    color-mix(in srgb, var(--color-accent) 5%, transparent)) no-repeat 0 0 / 100% 100%,
+    linear-gradient(to right,
+      transparent, color-mix(in srgb, var(--color-accent) 12%, transparent) 48px,
+      color-mix(in srgb, var(--color-accent) 12%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+}
+
+/* — diálogo — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, #000 68%, transparent);
+}
+.dialog {
+  width: min(460px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-6); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title { font-family: var(--font-display); font-size: 1.375rem; }
+.dialog-body { font-size: 0.875rem; color: color-mix(in srgb, var(--color-text) 78%, transparent); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+/* Mistura de imagem herdada do Nocturne: o que for mais escuro que o fundo
+   desaparece — útil para arte sobre preto. */
+.lighten { mix-blend-mode: lighten; background-color: transparent; }

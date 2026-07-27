@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Contato — QCAMPO · UFPB</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
+  <script src="site-i18n.js"></script>
+  <script src="site.js"></script>
+</helmet>
+
+<div class="qc-bg" aria-hidden="true"></div>
+
+<div class="qc-page">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./Home.dc.html">
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">QCAMPO</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./Home.dc.html">{{ t.navHome }}</a>
+        <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+        <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+        <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+        <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+        <a href="./Contato.dc.html" aria-current="page">{{ t.navContact }}</a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}">
+          <button type="button" aria-pressed="{{ isPt }}" onClick="{{ setPt }}">PT</button>
+          <button type="button" aria-pressed="{{ isEn }}" onClick="{{ setEn }}">EN</button>
+        </div>
+        <button type="button" class="menu-btn" data-menu-btn="1" aria-expanded="false" aria-label="{{ t.menuLabel }}"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="qc-main">
+
+    <section class="hero hero-page">
+      <div class="wrap">
+        <p class="eyebrow reveal">{{ t.pageEyebrow }}</p>
+        <h1 class="gold reveal" data-reveal-delay="80">{{ t.pageTitle }}<span class="psi">|Ψ⟩</span></h1>
+        <p class="hero-lede reveal" data-reveal-delay="140">{{ t.pageLede }}</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="grid grid-2" style="gap:var(--space-8);align-items:start;">
+
+          <!-- Coordenadas -->
+          <div class="reveal">
+            <div class="block" style="border-top:0;padding-top:0;">
+              <div class="block-label">
+                <span class="num">01</span>
+                <h6>{{ t.blockEmail }}</h6>
+              </div>
+              <div class="block-body">
+                <p style="font-size:18px;margin:0;">
+                  <a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">
+                <span class="num">02</span>
+                <h6>{{ t.blockAddress }}</h6>
+              </div>
+              <div class="block-body">
+                <p style="margin:0;">
+                  {{ addressLine1 }}<br/>
+                  {{ addressLine2 }}<br/>
+                  {{ t.university }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulário -->
+          <div class="card reveal" data-reveal-delay="120" style="padding:var(--space-8);">
+            <h3 class="card-title" style="margin-bottom:var(--space-2);">{{ t.formTitle }}</h3>
+            <p class="card-body" style="flex:none;margin-bottom:var(--space-6);">{{ t.formNote }}</p>
+
+            <form onSubmit="{{ onSubmit }}">
+              <div class="field">
+                <label htmlFor="qc-name">{{ t.fieldName }}</label>
+                <input class="input" id="qc-name" name="name" type="text" required placeholder="{{ t.fieldNamePh }}" />
+              </div>
+              <div class="field">
+                <label htmlFor="qc-email">{{ t.fieldEmail }}</label>
+                <input class="input" id="qc-email" name="email" type="email" required placeholder="{{ t.fieldEmailPh }}" />
+              </div>
+              <div class="field">
+                <label htmlFor="qc-msg">{{ t.fieldMessage }}</label>
+                <textarea class="input" id="qc-msg" name="message" required placeholder="{{ t.fieldMessagePh }}"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">{{ t.formSubmit }}</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">QCAMPO</span>
+          </div>
+          <p class="footer-desc">{{ t.descriptor }}</p>
+          <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
+          <p class="footer-affil">{{ t.affiliation }}</p>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftNav }}</h6>
+          <div class="footer-links">
+            <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
+            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
+            <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
+            <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
+            <a href="./Noticias.dc.html">{{ t.navNews }}</a>
+            <a href="./Contato.dc.html">{{ t.navContact }}</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h6>{{ t.ftContact }}</h6>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script>
+/* Conteúdo da página CONTATO.
+   O site é estático (não há servidor), então o formulário monta uma mensagem
+   e abre o programa de e-mail do visitante já preenchido. Se um dia houver
+   backend, troque `onSubmit` por um fetch() para o endpoint. */
+class Component extends DCLogic {
+  state = { lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt' };
+
+  dict = {
+    pt: {
+      pageEyebrow: 'FALE CONOSCO',
+      pageTitle: 'Contato',
+      pageLede: 'Dúvidas sobre a pesquisa, interesse em colaborar ou em ingressar no grupo? Escreva para nós.',
+
+      blockEmail: 'E-mail institucional',
+      blockAddress: 'Endereço',
+
+      formTitle: 'Envie uma mensagem',
+      formNote: 'Ao enviar, abriremos seu programa de e-mail com a mensagem já preenchida.',
+      fieldName: 'Nome',
+      fieldNamePh: 'Seu nome completo',
+      fieldEmail: 'E-mail',
+      fieldEmailPh: 'seu.email@exemplo.com',
+      fieldMessage: 'Mensagem',
+      fieldMessagePh: 'Como podemos ajudar?',
+      formSubmit: 'Enviar mensagem →',
+      mailSubject: 'Contato pelo site do QCAMPO'
+    },
+
+    en: {
+      pageEyebrow: 'GET IN TOUCH',
+      pageTitle: 'Contact',
+      pageLede: 'Questions about our research, interest in collaborating or in joining the group? Write to us.',
+
+      blockEmail: 'Institutional e-mail',
+      blockAddress: 'Address',
+
+      formTitle: 'Send a message',
+      formNote: 'On submit, your e-mail client will open with the message already filled in.',
+      fieldName: 'Name',
+      fieldNamePh: 'Your full name',
+      fieldEmail: 'E-mail',
+      fieldEmailPh: 'your.email@example.com',
+      fieldMessage: 'Message',
+      fieldMessagePh: 'How can we help?',
+      formSubmit: 'Send message →',
+      mailSubject: 'Enquiry from the QCAMPO website'
+    }
+  };
+
+  setLang(lang) {
+    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    this.setState({ lang: lang });
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = window.QCAMPO_T(lang, this.dict);
+
+    return Object.assign({}, t, {
+      t: t,
+      isPt: lang === 'pt',
+      isEn: lang === 'en',
+      setPt: () => this.setLang('pt'),
+      setEn: () => this.setLang('en'),
+      onSubmit: (ev) => {
+        ev.preventDefault();
+        const f = ev.target;
+        const name = (f.elements.name && f.elements.name.value) || '';
+        const from = (f.elements.email && f.elements.email.value) || '';
+        const msg = (f.elements.message && f.elements.message.value) || '';
+        const body = msg + '\n\n—\n' + name + '\n' + from;
+        window.location.href = 'mailto:' + t.email
+          + '?subject=' + encodeURIComponent(t.mailSubject)
+          + '&body=' + encodeURIComponent(body);
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>

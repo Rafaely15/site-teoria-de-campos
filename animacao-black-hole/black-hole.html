@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Hole — WebGL Hero Animation</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+  #bh-container { position: relative; width: 100%; height: 100%; min-height: 100vh; background: transparent; }
+  #bh-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<div id="bh-container">
+  <canvas id="bh-canvas"></canvas>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+
+const container = document.getElementById('bh-container');
+const canvas = document.getElementById('bh-canvas');
+
+// ---- quality tiering ----
+const isSmall = () => (container.clientWidth || window.innerWidth) < 720;
+const dprCap = () => Math.min(window.devicePixelRatio || 1, isSmall() ? 1.5 : 2);
+
+function buildFragmentShader(steps){
+return `
+precision highp float;
+
+uniform vec2  iResolution;
+uniform float iTime;
+uniform float uAspect;
+
+#define STEPS ${steps}
+#define LOOP_DUR 24.0
+#define PI 3.14159265359
+
+// ---------- hash / noise ----------
+float hash21(vec2 p){
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
+float noise2(vec2 p){
+  vec2 i = floor(p);
+  vec2 f = fract(p);
+  float a = hash21(i);
+  float b = hash21(i + vec2(1.0, 0.0));
+  float c = hash21(i + vec2(0.0, 1.0));
+  float d = hash21(i + vec2(1.0, 1.0));
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+float fbm(vec2 p){
+  float v = 0.0;
+  float amp = 0.5;
+  for (int i = 0; i < 5; i++){
+    v += amp * noise2(p);
+    p = p * 2.02 + vec2(3.1, 1.7);
+    amp *= 0.55;
+  }
+  return v;
+}
+
+// ---------- scene constants ----------
+const float RS          = 1.0;        // event horizon radius
+const float PHOTON_R    = 1.55;       // photon sphere radius (ring)
+const float DISC_INNER  = 2.4;
+const float DISC_OUTER  = 9.2;
+
+vec3 palette(float t){
+  vec3 gold   = vec3(1.0, 0.812, 0.42);   // #ffcf6b
+  vec3 orange = vec3(1.0, 0.549, 0.102);  // #ff8c1a
+  vec3 deep   = vec3(0.702, 0.278, 0.0);  // #b34700
+  vec3 c;
+  if (t < 0.5) c = mix(gold, orange, t * 2.0);
+  else c = mix(orange, deep, (t - 0.5) * 2.0);
+  return c;
+}
+
+// sample the accretion disc color at a polar coordinate (radius r, angle a)
+// phase drives rotation, guaranteed to loop perfectly over LOOP_DUR seconds
+vec4 discShade(float r, float a, float phase){
+  float tNorm = clamp((r - DISC_INNER) / (DISC_OUTER - DISC_INNER), 0.0, 1.0);
+  float innerGlow = smoothstep(0.0, 0.1, tNorm);
+  float outerFade = 1.0 - smoothstep(0.65, 1.0, tNorm);
+
+  // rotating turbulence: angle offset by phase, radial banding
+  float ang = a + phase * 1.3;
+  vec2 flowUv = vec2(ang * 2.6, r * 1.35 - phase * 0.6);
+  float turb = fbm(flowUv * 1.2);
+  float fineTurb = fbm(flowUv * 3.5 + 11.0);
+  float grain = mix(turb, fineTurb, 0.3) * 0.55 + 0.45;
+
+  // subtle looping flicker (integer-frequency so it loops exactly)
+  float flick = 0.5 + 0.5 * sin(ang * 9.0 + phase * 6.0) * sin(r * 3.0 - phase * 2.0);
+
+  float density = innerGlow * outerFade;
+  density *= (0.85 + 0.25 * grain) * (0.92 + 0.1 * flick);
+  density = clamp(density, 0.0, 1.0);
+
+  vec3 col = palette(tNorm) * (0.85 + 0.2 * grain);
+  // hot inner rim near ISCO, gentle
+  col += vec3(1.0, 0.75, 0.42) * smoothstep(0.08, 0.0, tNorm) * 0.28;
+  col = min(col, vec3(1.05));
+
+  return vec4(col, density);
+}
+
+vec3 background(vec3 dir){
+  float s = hash21(floor(dir.xy * 400.0 + dir.z * 77.0));
+  float star = smoothstep(0.9975, 1.0, s);
+  float tw = 0.6 + 0.4 * sin(iTime * 2.0 + s * 40.0);
+  return vec3(1.0) * star * tw * 0.9;
+}
+
+void main(){
+  vec2 fragCoord = gl_FragCoord.xy;
+  vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
+
+  float phase = mod(iTime, LOOP_DUR) / LOOP_DUR * 2.0 * PI;
+
+  // ---- camera setup: static, slight tilt to reveal disc ----
+  float tilt = radians(15.0);
+  vec3 camPos = vec3(0.0, sin(tilt) * 13.5, cos(tilt) * 13.5);
+  vec3 camTarget = vec3(0.0);
+  vec3 fwd = normalize(camTarget - camPos);
+  vec3 right = normalize(cross(fwd, vec3(0.0, 1.0, 0.0)));
+  vec3 up = cross(right, fwd);
+  float fov = 0.95;
+  vec3 rayDir = normalize(fwd + uv.x * fov * right + uv.y * fov * up);
+
+  vec3 pos = camPos;
+  vec3 vel = rayDir;
+
+  float h2 = dot(cross(pos, vel), cross(pos, vel));
+
+  vec3 accumColor = vec3(0.0);
+  float accumAlpha = 0.0;
+  float minR = 1e6;
+  bool captured = false;
+
+  float prevY = pos.y;
+
+  for (int i = 0; i < STEPS; i++){
+    float r = length(pos);
+    minR = min(minR, r);
+
+    if (r < RS * 0.98){
+      captured = true;
+      break;
+    }
+    if (r > 40.0){
+      break;
+    }
+
+    float angVel = sqrt(h2) / max(r * r, 0.08);
+    float farDt = clamp(r * 0.05, 0.02, 0.5);
+    float dt = clamp(farDt / (1.0 + angVel * 4.5), 0.0012, 0.5);
+
+    float r5 = pow(max(r, 0.05), 5.0);
+    vec3 accel = -1.5 * h2 * pos / r5;
+    vel += accel * dt;
+    vec3 newPos = pos + vel * dt;
+
+    // detect crossing of the disc plane (y = 0) between pos and newPos
+    if ((prevY > 0.0) != (newPos.y > 0.0) && accumAlpha < 0.98 && minR > PHOTON_R * 1.32){
+      float t = prevY / (prevY - newPos.y);
+      vec3 hitP = mix(pos, newPos, clamp(t, 0.0, 1.0));
+      float rr = length(hitP.xz);
+      if (rr > DISC_INNER * 0.85 && rr < DISC_OUTER){
+        float ang = atan(hitP.z, hitP.x);
+        vec4 shade = discShade(rr, ang, phase);
+
+        // Doppler beaming: tangential velocity direction (disc rotates CCW)
+        vec2 tangent = normalize(vec2(-hitP.z, hitP.x));
+        vec2 velDirXZ = normalize(vel.xz + 1e-5);
+        float dopp = dot(tangent, velDirXZ);
+        float beam = 1.0 + dopp * 0.85; // brighter one side, dimmer other
+        beam = clamp(beam, 0.18, 2.3);
+
+        shade.rgb *= beam;
+        shade.a *= clamp(1.0 - accumAlpha, 0.0, 1.0);
+
+        accumColor += shade.rgb * shade.a;
+        accumAlpha += shade.a;
+      }
+    }
+
+    prevY = newPos.y;
+    pos = newPos;
+
+    if (accumAlpha > 0.995) break;
+  }
+
+  if (captured){
+    gl_FragColor = vec4(accumColor, 1.0);
+    return;
+  }
+
+  vec3 col = vec3(0.0);
+  float alpha = 0.0;
+
+  col += background(normalize(pos));
+  alpha += length(col) * 0.6;
+
+  col += accumColor;
+  alpha = clamp(alpha + accumAlpha, 0.0, 1.0);
+
+  // photon ring — thin brilliant rim where light grazes the photon sphere
+  float ringProx = 1.0 - clamp(abs(minR - PHOTON_R) / 0.09, 0.0, 1.0);
+  float ring = pow(ringProx, 3.5);
+  vec3 ringColor = vec3(1.0, 0.88, 0.7) * ring * 1.1;
+  col += ringColor;
+  alpha = clamp(alpha + ring * 0.85, 0.0, 1.0);
+
+  // soft ambient glow around the whole structure for hero blending
+  float glow = exp(-minR * 0.7) * 0.015;
+  col += palette(0.3) * glow;
+  alpha = clamp(alpha + glow, 0.0, 1.0);
+
+  // smooth fallback fill for the thin near-horizon annulus where the raymarched
+  // secondary disc image aliases into noise — analytic, no fbm, so no artifacts
+  float haloBand = 1.0 - clamp(abs(minR - PHOTON_R * 1.3) / 1.05, 0.0, 1.0);
+  haloBand = pow(max(haloBand, 0.0), 2.2);
+  if (alpha < 0.35){
+    col += palette(0.22) * haloBand * 0.7;
+    alpha = max(alpha, haloBand * 0.6);
+  }
+
+  gl_FragColor = vec4(col, alpha);
+}
+`;
+}
+
+const vertexShader = `
+void main(){
+  gl_Position = vec4(position, 1.0);
+}
+`;
+
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+renderer.setClearColor(0x000000, 0);
+
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([
+  -1, -1, 0,  3, -1, 0,  -1, 3, 0
+]), 3));
+
+let material, mesh;
+
+function buildMaterial(steps){
+  return new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader: buildFragmentShader(steps),
+    uniforms: {
+      iResolution: { value: new THREE.Vector2(1, 1) },
+      iTime: { value: 0 },
+      uAspect: { value: 1 }
+    },
+    transparent: true,
+    depthTest: false,
+    depthWrite: false
+  });
+}
+
+let currentTier = null;
+
+function ensureMaterial(){
+  const tier = isSmall() ? 'low' : 'high';
+  if (tier === currentTier) return;
+  currentTier = tier;
+  if (mesh) scene.remove(mesh);
+  material = buildMaterial(tier === 'low' ? 220 : 460);
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+}
+
+function resize(){
+  const w = Math.max(container.clientWidth || window.innerWidth, 1);
+  const h = Math.max(container.clientHeight || window.innerHeight, 1);
+  const dpr = dprCap();
+  renderer.setPixelRatio(dpr);
+  renderer.setSize(w, h, false);
+  ensureMaterial();
+  material.uniforms.iResolution.value.set(w * dpr, h * dpr);
+  material.uniforms.uAspect.value = w / h;
+}
+
+ensureMaterial();
+resize();
+window.addEventListener('resize', resize);
+if (window.ResizeObserver){
+  new ResizeObserver(resize).observe(container);
+}
+
+const clock = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  material.uniforms.iTime.value = clock.getElapsedTime();
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>
