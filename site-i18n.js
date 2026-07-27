@@ -11,7 +11,7 @@ window.QCAMPO_INFO = {
   email: 'contato@qcampo.ufpb.br',          // ← TROCAR pelo e-mail institucional
   addressLine1: 'Departamento de Física, CCEN — UFPB',
   addressLine2: 'Cidade Universitária, João Pessoa — PB, 58051-900',
-  foundedYear: '2015',                       // ← TROCAR pelo ano de fundação
+  foundedYear: '2022',                       // ← TROCAR pelo ano de fundação
   copyrightYear: '2026',
 
   // Contadores exibidos nas estatísticas. Mantenha em acordo com as listas.
@@ -45,7 +45,7 @@ window.QCAMPO_COMMON = {
     menuLabel: 'Abrir menu',
     langLabel: 'Idioma',
 
-    descriptor: 'Núcleo de Teoria Quântica de Campos e Gravitação',
+    descriptor: 'Núcleo de Teoria de Campos e Gravitação',
     affiliation: 'Departamento de Física · UFPB',
     university: 'Universidade Federal da Paraíba',
     tagline: 'Teoria de Campos e Gravitação',
