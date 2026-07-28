@@ -307,12 +307,73 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 360px), 1fr)); }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(clamp(320px, 26vw, 440px), 1fr)); }
 
-.home-card-grid {
-  grid-template-columns: 1.15fr 0.92fr 1fr;
-  align-items: stretch;
+/* "Três frentes": os itens ficam ao longo de uma trajetória curva (como luz
+   defletida por uma massa), com o número como marca d'água atrás do título —
+   de propósito, não usa o componente .card genérico (evita repetir a mesma
+   grade de cartões que já aparece em publicações e equipe nesta seção de
+   abertura). */
+.frentes-orbit {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: clamp(20px, 3vw, 48px);
 }
-.home-card-grid .card:nth-child(2) { margin-top: clamp(24px, 3vw, 56px); }
-.home-card-grid .card:nth-child(3) { margin-top: clamp(10px, 1.6vw, 32px); }
+.frentes-orbit-path {
+  position: absolute;
+  inset: -8px 0 auto 0;
+  width: 100%;
+  height: calc(100% + 16px);
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+.frentes-orbit-path path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--color-accent) 38%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+}
+.frentes-orbit-mass {
+  fill: var(--color-accent);
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px var(--color-accent));
+}
+
+.frente-node { position: relative; z-index: 1; }
+.frente-node:nth-of-type(2) { margin-top: clamp(28px, 3.6vw, 64px); }
+.frente-node:nth-of-type(3) { margin-top: clamp(6px, 0.9vw, 16px); }
+
+.frente-node::before {
+  content: '';
+  display: block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 16%, transparent),
+              0 0 10px color-mix(in srgb, var(--color-accent) 55%, transparent);
+  margin-bottom: clamp(16px, 2vw, 26px);
+}
+
+.frente-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  margin: 0 0 -0.32em 0;
+  user-select: none;
+}
+.frente-title {
+  position: relative;
+  font-family: var(--font-display); font-weight: var(--font-heading-weight);
+  font-size: 1.3125rem; line-height: 1.25; margin: 0 0 var(--space-3);
+}
+.frente-body {
+  margin: 0; font-size: 0.9rem; line-height: 1.65;
+  color: color-mix(in srgb, var(--color-text) 74%, transparent);
+  max-width: 34ch;
+}
 
 .home-pub-grid {
   grid-template-columns: 1.35fr repeat(2, minmax(260px, 0.8fr));
@@ -680,12 +741,16 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
    Responsivo
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
-  .home-card-grid,
   .home-pub-grid {
     grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 34vw, 380px), 1fr));
   }
-  .home-card-grid .card:nth-child(2),
-  .home-card-grid .card:nth-child(3) {
+  .frentes-orbit {
+    grid-template-columns: 1fr;
+    row-gap: clamp(28px, 6vw, 44px);
+  }
+  .frentes-orbit-path { display: none; }
+  .frente-node:nth-of-type(2),
+  .frente-node:nth-of-type(3) {
     margin-top: 0;
   }
   .numbered-home {

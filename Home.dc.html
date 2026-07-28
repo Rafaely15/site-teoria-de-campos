@@ -126,12 +126,16 @@
           <h6>{{ t.doEyebrow }}</h6>
           <h2>{{ t.doTitle }}<span class="psi">|Ψ⟩</span></h2>
         </div>
-        <div class="grid grid-3 home-card-grid">
+        <div class="frentes-orbit">
+          <svg class="frentes-orbit-path" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M60,70 Q600,240 1140,90" />
+            <circle class="frentes-orbit-mass" cx="600" cy="168" r="5" />
+          </svg>
           <sc-for list="{{ t.doCards }}" as="c" hint-placeholder-count="3">
-            <article class="card reveal">
-              <span class="num">{{ c.n }}</span>
-              <h3 class="card-title">{{ c.title }}</h3>
-              <p class="card-body">{{ c.body }}</p>
+            <article class="frente-node reveal">
+              <span class="frente-num" aria-hidden="true">{{ c.n }}</span>
+              <h3 class="frente-title">{{ c.title }}</h3>
+              <p class="frente-body">{{ c.body }}</p>
             </article>
           </sc-for>
         </div>
