@@ -30,7 +30,6 @@
       <nav class="site-nav">
         <a href="./Home.dc.html">{{ t.navHome }}</a>
         <a href="./Sobre.dc.html" aria-current="page">{{ t.navAbout }}</a>
-        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
         <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
         <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
         <a href="./Noticias.dc.html">{{ t.navNews }}</a>
@@ -111,10 +110,13 @@
             <p style="margin-bottom:var(--space-4);">{{ t.b2Lede }}</p>
             <div class="numbered" style="grid-template-columns:1fr;">
               <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
-                <div class="numbered-item">
-                  <span class="n">{{ line.n }}</span>
-                  <span class="t">{{ line.title }}</span>
-                </div>
+                <details class="numbered-item">
+                  <summary class="numbered-summary">
+                    <span class="n">{{ line.n }}</span>
+                    <span class="t">{{ line.title }}</span>
+                  </summary>
+                  <p class="numbered-desc">{{ line.desc }}</p>
+                </details>
               </sc-for>
             </div>
           </div>
@@ -131,6 +133,38 @@
             <sc-for list="{{ t.b3Paras }}" as="para" hint-placeholder-count="2">
               <p>{{ para }}</p>
             </sc-for>
+          </div>
+        </div>
+
+        <!-- 04 PROJETOS -->
+        <div class="block reveal">
+          <div class="block-label">
+            <span class="num">04</span>
+            <h6>{{ t.b4Eyebrow }}</h6>
+          </div>
+          <div class="block-body">
+            <h3>{{ t.b4Title }}</h3>
+            <p style="margin-bottom:var(--space-4);">{{ t.b4Lede }}</p>
+            <div class="grid grid-2">
+              <sc-for list="{{ t.projects }}" as="p" hint-placeholder-count="3">
+                <article class="card reveal">
+                  <span class="num">{{ p.n }}</span>
+                  <span class="badge-live">{{ p.status }}</span>
+                  <h4 class="card-title" style="margin-top:var(--space-3);">{{ p.title }}</h4>
+                  <p class="card-body">{{ p.body }}</p>
+                  <dl class="proj-foot">
+                    <div>
+                      <dt>{{ t.labelPeriod }}</dt>
+                      <dd>{{ p.period }}</dd>
+                    </div>
+                    <div>
+                      <dt>{{ t.labelFunding }}</dt>
+                      <dd>{{ p.funding }}</dd>
+                    </div>
+                  </dl>
+                </article>
+              </sc-for>
+            </div>
           </div>
         </div>
 
@@ -171,7 +205,6 @@
           <h6>{{ t.ftNav }}</h6>
           <div class="footer-links">
             <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
-            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
             <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
             <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
             <a href="./Noticias.dc.html">{{ t.navNews }}</a>
@@ -226,13 +259,13 @@ class Component extends DCLogic {
       b2Title: 'Linhas de Pesquisa',
       b2Lede: 'Nossa produ\u00e7\u00e3o se organiza em torno das seguintes frentes, que se cruzam com frequ\u00eancia em projetos e orienta\u00e7\u00f5es.',
       researchLines: [
-        { n: '01', title: 'Buracos negros e sombras de buracos negros' },
-        { n: '02', title: 'Solu\u00e7\u00f5es de buracos negros rotativos' },
-        { n: '03', title: 'Gravidade modificada e viola\u00e7\u00e3o de simetria de Lorentz' },
-        { n: '04', title: 'Teoria qu\u00e2ntica de campos em espa\u00e7os curvos' },
-        { n: '05', title: 'Efeito Casimir' },
-        { n: '06', title: 'Monopolo global e defeitos topol\u00f3gicos' },
-        { n: '07', title: 'M\u00e9todos computacionais e ray tracing' }
+        { n: '01', title: 'Buracos negros e sombras de buracos negros', desc: 'Como a luz se curva ao redor de um buraco negro e forma a "sombra" escura observada por telesc\u00f3pios como o Event Horizon Telescope.' },
+        { n: '02', title: 'Solu\u00e7\u00f5es de buracos negros rotativos', desc: 'Modelos matem\u00e1ticos para buracos negros em rota\u00e7\u00e3o, mais realistas que os est\u00e1ticos e usados para prever seus efeitos observ\u00e1veis.' },
+        { n: '03', title: 'Gravidade modificada e viola\u00e7\u00e3o de simetria de Lorentz', desc: 'Extens\u00f5es da Relatividade Geral que testam pequenos desvios das leis da f\u00edsica em escalas extremas, incluindo a chamada "gravidade bumblebee".' },
+        { n: '04', title: 'Teoria qu\u00e2ntica de campos em espa\u00e7os curvos', desc: 'Como part\u00edculas e campos qu\u00e2nticos se comportam sob gravidade intensa, unindo mec\u00e2nica qu\u00e2ntica e relatividade geral.' },
+        { n: '05', title: 'Efeito Casimir', desc: 'Uma for\u00e7a mensur\u00e1vel entre duas placas no v\u00e1cuo, causada por flutua\u00e7\u00f5es qu\u00e2nticas do pr\u00f3prio espa\u00e7o vazio.' },
+        { n: '06', title: 'Monopolo global e defeitos topol\u00f3gicos', desc: 'Estruturas hipot\u00e9ticas formadas no universo primordial, como "cicatrizes" deixadas por transi\u00e7\u00f5es de fase logo ap\u00f3s o Big Bang.' },
+        { n: '07', title: 'M\u00e9todos computacionais e ray tracing', desc: 'Simula\u00e7\u00f5es num\u00e9ricas que tra\u00e7am trajet\u00f3rias de luz em espa\u00e7os-tempos curvos para gerar imagens realistas de buracos negros.' }
       ],
 
       b3Eyebrow: 'MISS\u00c3O',
@@ -240,6 +273,32 @@ class Component extends DCLogic {
       b3Paras: [
         'Produzir conhecimento original em teoria de campos e gravita\u00e7\u00e3o, formar pesquisadores em n\u00edvel de gradua\u00e7\u00e3o e p\u00f3s-gradua\u00e7\u00e3o e ampliar colabora\u00e7\u00f5es com institui\u00e7\u00f5es nacionais e internacionais.',
         'Fortalecer a circula\u00e7\u00e3o de ideias por meio de semin\u00e1rios, minicursos, projetos colaborativos, encontros cient\u00edficos e atividades de forma\u00e7\u00e3o.'
+      ],
+
+      b4Eyebrow: 'PESQUISA',
+      b4Title: 'Projetos em Andamento',
+      b4Lede: 'Projetos de pesquisa em andamento no n\u00facleo, com seus per\u00edodos de vig\u00eancia e fontes de financiamento.',
+      labelPeriod: 'Per\u00edodo',
+      labelFunding: 'Financiamento',
+      projects: [
+        {
+          n: '01', status: 'Em andamento',
+          title: 'Sombras de buracos negros em gravidade modificada',
+          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodol\u00f3gica e os resultados esperados. Duas ou tr\u00eas frases costumam bastar.]',
+          period: '2024 \u2014 2027', funding: '[AG\u00caNCIA / EDITAL]'
+        },
+        {
+          n: '02', status: 'Em andamento',
+          title: 'Efeito Casimir em espa\u00e7os-tempos com defeitos topol\u00f3gicos',
+          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodol\u00f3gica e os resultados esperados.]',
+          period: '2025 \u2014 2028', funding: '[AG\u00caNCIA / EDITAL]'
+        },
+        {
+          n: '03', status: 'Em andamento',
+          title: 'M\u00e9todos computacionais e ray tracing relativ\u00edstico',
+          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodol\u00f3gica e os resultados esperados.]',
+          period: '2023 \u2014 2026', funding: '[AG\u00caNCIA / EDITAL]'
+        }
       ]
     },
 
@@ -267,13 +326,13 @@ class Component extends DCLogic {
       b2Title: 'Research Lines',
       b2Lede: 'Our output is organised around the following fronts, which frequently intersect in projects and student supervision.',
       researchLines: [
-        { n: '01', title: 'Black holes and black hole shadows' },
-        { n: '02', title: 'Rotating black hole solutions' },
-        { n: '03', title: 'Modified gravity and Lorentz symmetry violation' },
-        { n: '04', title: 'Quantum field theory in curved spacetimes' },
-        { n: '05', title: 'Casimir effect' },
-        { n: '06', title: 'Global monopole and topological defects' },
-        { n: '07', title: 'Computational methods and ray tracing' }
+        { n: '01', title: 'Black holes and black hole shadows', desc: 'How light bends around a black hole and forms the dark "shadow" observed by telescopes like the Event Horizon Telescope.' },
+        { n: '02', title: 'Rotating black hole solutions', desc: 'Mathematical models for spinning black holes — more realistic than static ones, used to predict their observable effects.' },
+        { n: '03', title: 'Modified gravity and Lorentz symmetry violation', desc: 'Extensions of General Relativity that test small deviations from known physical laws at extreme scales, including so-called "bumblebee gravity".' },
+        { n: '04', title: 'Quantum field theory in curved spacetimes', desc: 'How quantum particles and fields behave under strong gravity, bridging quantum mechanics and general relativity.' },
+        { n: '05', title: 'Casimir effect', desc: 'A measurable force between two plates in vacuum, caused by quantum fluctuations of empty space itself.' },
+        { n: '06', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
+        { n: '07', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
       ],
 
       b3Eyebrow: 'MISSION',
@@ -281,6 +340,32 @@ class Component extends DCLogic {
       b3Paras: [
         'To produce original research in field theory and gravitation, train students and researchers, and expand collaborations with national and international institutions.',
         'To strengthen scientific exchange through seminars, short courses, collaborative projects, scientific meetings and training activities.'
+      ],
+
+      b4Eyebrow: 'RESEARCH',
+      b4Title: 'Ongoing Projects',
+      b4Lede: 'Ongoing research projects at the centre, with their funding periods and sources.',
+      labelPeriod: 'Period',
+      labelFunding: 'Funding',
+      projects: [
+        {
+          n: '01', status: 'Ongoing',
+          title: 'Black hole shadows in modified gravity',
+          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results. Two or three sentences is usually enough.]',
+          period: '2024 — 2027', funding: '[AGENCY / GRANT]'
+        },
+        {
+          n: '02', status: 'Ongoing',
+          title: 'Casimir effect in spacetimes with topological defects',
+          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results.]',
+          period: '2025 — 2028', funding: '[AGENCY / GRANT]'
+        },
+        {
+          n: '03', status: 'Ongoing',
+          title: 'Computational methods and relativistic ray tracing',
+          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results.]',
+          period: '2023 — 2026', funding: '[AGENCY / GRANT]'
+        }
       ]
     }
   };

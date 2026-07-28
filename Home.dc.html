@@ -33,7 +33,6 @@
       <nav class="site-nav">
         <a href="./Home.dc.html" aria-current="page">{{ t.navHome }}</a>
         <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
-        <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
         <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
         <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
         <a href="./Noticias.dc.html">{{ t.navNews }}</a>
@@ -108,10 +107,6 @@
             <p class="stat-label">{{ t.statPeople }}</p>
           </div>
           <div class="reveal" data-reveal-delay="160">
-            <p class="stat-num gold">{{ countProjects }}</p>
-            <p class="stat-label">{{ t.statProjects }}</p>
-          </div>
-          <div class="reveal" data-reveal-delay="240">
             <p class="stat-num gold">{{ foundedYear }}</p>
             <p class="stat-label">{{ t.statFounded }}</p>
           </div>
@@ -151,10 +146,13 @@
         </div>
         <div class="numbered numbered-home reveal">
           <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
-            <div class="numbered-item">
-              <span class="n">{{ line.n }}</span>
-              <span class="t">{{ line.title }}</span>
-            </div>
+            <details class="numbered-item">
+              <summary class="numbered-summary">
+                <span class="n">{{ line.n }}</span>
+                <span class="t">{{ line.title }}</span>
+              </summary>
+              <p class="numbered-desc">{{ line.desc }}</p>
+            </details>
           </sc-for>
         </div>
       </div>
@@ -170,14 +168,16 @@
           </div>
           <a class="sec-link" href="./Publicacoes.dc.html">{{ t.pubsAll }} ({{ countPublications }}) ↗</a>
         </div>
-        <div class="grid grid-3 home-pub-grid">
+        <div class="pub-preview-list reveal">
           <sc-for list="{{ recentPubs }}" as="pub" hint-placeholder-count="3">
-            <article class="card reveal">
-              <span class="tag tag-neutral" style="align-self:flex-start;">{{ pub.venue }}</span>
-              <h3 class="card-title">{{ pub.title }}</h3>
-              <p class="card-body">{{ pub.authors }}</p>
-              <p class="card-meta">{{ pub.year }}</p>
-            </article>
+            <a class="pub-preview-row" href="{{ pub.doiUrl }}" target="_blank" rel="noopener">
+              <span class="pub-preview-year">{{ pub.year }}</span>
+              <span class="pub-preview-main">
+                <h3 class="pub-title">{{ pub.title }}</h3>
+                <p class="pub-authors">{{ pub.authors }}</p>
+              </span>
+              <span class="tag tag-outline pub-preview-tag">{{ pub.venue }}</span>
+            </a>
           </sc-for>
         </div>
       </div>
@@ -201,7 +201,11 @@
           </div>
           <div class="team-preview-text">
             <p>{{ countResearchers }} {{ t.teamCountWord }}</p>
-            <span>{{ t.teamBreakdown }}</span>
+            <p class="team-breakdown">
+              <sc-for list="{{ t.teamStats }}" as="s" hint-placeholder-count="5">
+                <span class="team-breakdown-item"><b>{{ s.n }}</b> {{ s.label }}</span>
+              </sc-for>
+            </p>
           </div>
         </div>
       </div>
@@ -243,7 +247,6 @@
           <h6>{{ t.ftNav }}</h6>
           <div class="footer-links">
             <a href="./Sobre.dc.html">{{ t.navAbout }}</a>
-            <a href="./Projetos.dc.html">{{ t.navProjects }}</a>
             <a href="./Publicacoes.dc.html">{{ t.navPubs }}</a>
             <a href="./Colaboradores.dc.html">{{ t.navPeople }}</a>
             <a href="./Noticias.dc.html">{{ t.navNews }}</a>
@@ -302,7 +305,6 @@ class Component extends DCLogic {
       statsLabel: 'CamposGrav em números',
       statPubs: 'Publicações',
       statPeople: 'Pesquisadores',
-      statProjects: 'Projetos em Andamento',
       statFounded: 'Ano de Fundação',
 
       doEyebrow: 'O QUE FAZEMOS',
@@ -316,29 +318,35 @@ class Component extends DCLogic {
       linesEyebrow: 'SOBRE O GRUPO',
       linesTitle: 'Linhas de pesquisa',
       researchLines: [
-        { n: '01', title: 'Buracos negros e sombras de buracos negros' },
-        { n: '02', title: 'Soluções de buracos negros rotativos' },
-        { n: '03', title: 'Gravidade modificada e violação de simetria de Lorentz (gravidade bumblebee)' },
-        { n: '04', title: 'Teoria quântica de campos em espaços curvos' },
-        { n: '05', title: 'Efeito Casimir' },
-        { n: '06', title: 'Monopolo global e defeitos topológicos' },
-        { n: '07', title: 'Métodos computacionais e ray tracing' }
+        { n: '01', title: 'Buracos negros e sombras de buracos negros', desc: 'Como a luz se curva ao redor de um buraco negro e forma a "sombra" escura observada por telescópios como o Event Horizon Telescope.' },
+        { n: '02', title: 'Soluções de buracos negros rotativos', desc: 'Modelos matemáticos para buracos negros em rotação, mais realistas que os estáticos e usados para prever seus efeitos observáveis.' },
+        { n: '03', title: 'Gravidade modificada e violação de simetria de Lorentz (gravidade bumblebee)', desc: 'Extensões da Relatividade Geral que testam pequenos desvios das leis da física em escalas extremas.' },
+        { n: '04', title: 'Teoria quântica de campos em espaços curvos', desc: 'Como partículas e campos quânticos se comportam sob gravidade intensa, unindo mecânica quântica e relatividade geral.' },
+        { n: '05', title: 'Efeito Casimir', desc: 'Uma força mensurável entre duas placas no vácuo, causada por flutuações quânticas do próprio espaço vazio.' },
+        { n: '06', title: 'Monopolo global e defeitos topológicos', desc: 'Estruturas hipotéticas formadas no universo primordial, como "cicatrizes" deixadas por transições de fase logo após o Big Bang.' },
+        { n: '07', title: 'Métodos computacionais e ray tracing', desc: 'Simulações numéricas que traçam trajetórias de luz em espaços-tempos curvos para gerar imagens realistas de buracos negros.' }
       ],
 
       pubsEyebrow: 'PRODUÇÃO',
       pubsTitle: 'Publicações recentes',
       pubsAll: 'VER TODAS',
       recentPubs: [
-        { venue: 'ARXIV · GR-QC', title: 'Sombras de buracos negros em gravidade bumblebee', authors: 'Autor A, Autor B, Autor C', year: '2026' },
-        { venue: 'PHYS. REV. D', title: 'Efeito Casimir em espaços-tempos com monopolo global', authors: 'Autor D, Autor E', year: '2025' },
-        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing de buracos negros rotativos: métodos numéricos', authors: 'Autor F, Autor G, Autor H', year: '2025' }
+        { venue: 'ARXIV · GR-QC', title: 'Sombras de buracos negros em gravidade bumblebee', authors: 'Autor A, Autor B, Autor C', year: '2026', doi: 'arXiv:0000.00000', doiUrl: '#' },
+        { venue: 'PHYS. REV. D', title: 'Efeito Casimir em espaços-tempos com monopolo global', authors: 'Autor D, Autor E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing de buracos negros rotativos: métodos numéricos', authors: 'Autor F, Autor G, Autor H', year: '2025', doi: 'arXiv:0000.00001', doiUrl: '#' }
       ],
 
       teamEyebrow: 'EQUIPE',
       teamTitle: 'Quem faz o CamposGrav',
       teamAll: 'VER COLABORADORES',
       teamCountWord: 'pesquisadores',
-      teamBreakdown: '3 professores · 3 colaboradores externos · 2 pós-docs · 4 doutorandos · 3 mestrandos',
+      teamStats: [
+        { n: '3', label: 'professores' },
+        { n: '3', label: 'colaboradores externos' },
+        { n: '2', label: 'pós-docs' },
+        { n: '4', label: 'doutorandos' },
+        { n: '3', label: 'mestrandos' }
+      ],
       avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
     },
 
@@ -352,7 +360,6 @@ class Component extends DCLogic {
       statsLabel: 'CamposGrav in numbers',
       statPubs: 'Publications',
       statPeople: 'Researchers',
-      statProjects: 'Ongoing Projects',
       statFounded: 'Founded',
 
       doEyebrow: 'WHAT WE DO',
@@ -366,29 +373,35 @@ class Component extends DCLogic {
       linesEyebrow: 'ABOUT THE GROUP',
       linesTitle: 'Research lines',
       researchLines: [
-        { n: '01', title: 'Black holes and black hole shadows' },
-        { n: '02', title: 'Rotating black hole solutions' },
-        { n: '03', title: 'Modified gravity and Lorentz symmetry violation (bumblebee gravity)' },
-        { n: '04', title: 'Quantum field theory in curved spacetimes' },
-        { n: '05', title: 'Casimir effect' },
-        { n: '06', title: 'Global monopole and topological defects' },
-        { n: '07', title: 'Computational methods and ray tracing' }
+        { n: '01', title: 'Black holes and black hole shadows', desc: 'How light bends around a black hole and forms the dark "shadow" observed by telescopes like the Event Horizon Telescope.' },
+        { n: '02', title: 'Rotating black hole solutions', desc: 'Mathematical models for spinning black holes — more realistic than static ones, used to predict their observable effects.' },
+        { n: '03', title: 'Modified gravity and Lorentz symmetry violation (bumblebee gravity)', desc: 'Extensions of General Relativity that test small deviations from known physical laws at extreme scales.' },
+        { n: '04', title: 'Quantum field theory in curved spacetimes', desc: 'How quantum particles and fields behave under strong gravity, bridging quantum mechanics and general relativity.' },
+        { n: '05', title: 'Casimir effect', desc: 'A measurable force between two plates in vacuum, caused by quantum fluctuations of empty space itself.' },
+        { n: '06', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
+        { n: '07', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
       ],
 
       pubsEyebrow: 'OUTPUT',
       pubsTitle: 'Recent publications',
       pubsAll: 'VIEW ALL',
       recentPubs: [
-        { venue: 'ARXIV · GR-QC', title: 'Black hole shadows in bumblebee gravity', authors: 'Author A, Author B, Author C', year: '2026' },
-        { venue: 'PHYS. REV. D', title: 'Casimir effect in global monopole spacetimes', authors: 'Author D, Author E', year: '2025' },
-        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing of rotating black holes: numerical methods', authors: 'Author F, Author G, Author H', year: '2025' }
+        { venue: 'ARXIV · GR-QC', title: 'Black hole shadows in bumblebee gravity', authors: 'Author A, Author B, Author C', year: '2026', doi: 'arXiv:0000.00000', doiUrl: '#' },
+        { venue: 'PHYS. REV. D', title: 'Casimir effect in global monopole spacetimes', authors: 'Author D, Author E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { venue: 'ARXIV · HEP-TH', title: 'Ray tracing of rotating black holes: numerical methods', authors: 'Author F, Author G, Author H', year: '2025', doi: 'arXiv:0000.00001', doiUrl: '#' }
       ],
 
       teamEyebrow: 'TEAM',
       teamTitle: 'The people behind CamposGrav',
       teamAll: 'VIEW ALL PEOPLE',
       teamCountWord: 'researchers',
-      teamBreakdown: '3 faculty · 3 external collaborators · 2 postdocs · 4 PhD students · 3 MSc students',
+      teamStats: [
+        { n: '3', label: 'faculty' },
+        { n: '3', label: 'external collaborators' },
+        { n: '2', label: 'postdocs' },
+        { n: '4', label: 'PhD students' },
+        { n: '3', label: 'MSc students' }
+      ],
       avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
     }
   };

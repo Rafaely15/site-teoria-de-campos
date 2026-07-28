@@ -375,13 +375,6 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   max-width: 34ch;
 }
 
-.home-pub-grid {
-  grid-template-columns: 1.35fr repeat(2, minmax(260px, 0.8fr));
-}
-.home-pub-grid .card:first-child {
-  min-height: clamp(260px, 24vw, 360px);
-}
-
 /* Número pequeno em âmbar monoespaçado ao lado do título em serifa. */
 .num {
   font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500;
@@ -403,7 +396,7 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 }
 .stat-grid {
   display: grid;
-  grid-template-columns: 1.35fr repeat(3, minmax(120px, 1fr));
+  grid-template-columns: 1.35fr repeat(2, minmax(120px, 1fr));
   gap: var(--space-6);
   align-items: end;
 }
@@ -438,18 +431,43 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
    Lista numerada (linhas de pesquisa)
    ══════════════════════════════════════════════════════════════════ */
 .numbered { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(340px, 28vw, 480px), 1fr)); gap: 0 clamp(32px, 4vw, 72px); }
+
+/* Item vira <details>: clicar revela uma frase explicando o termo — glossário
+   embutido, útil porque vários títulos (gravidade bumblebee, efeito Casimir,
+   monopolo global...) não são autoexplicativos para quem não é da área. */
 .numbered-item {
-  display: flex; gap: var(--space-4); align-items: baseline;
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--color-divider);
   transition: border-color .2s ease;
 }
 .numbered-item:hover { border-bottom-color: color-mix(in srgb, var(--color-accent) 45%, transparent); }
+.numbered-summary {
+  display: flex; gap: var(--space-4); align-items: baseline;
+  cursor: pointer;
+  list-style: none;
+}
+.numbered-summary::-webkit-details-marker { display: none; }
+.numbered-summary::after {
+  content: '+';
+  margin-left: auto;
+  flex: none;
+  font-family: var(--font-mono); font-size: 0.85rem;
+  color: var(--color-accent); opacity: 0.55;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.numbered-item[open] .numbered-summary::after { transform: rotate(45deg); opacity: 0.9; }
 .numbered-item .n {
   font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em;
   color: var(--color-accent); flex: none;
 }
 .numbered-item .t { font-size: 0.969rem; line-height: 1.55; }
+.numbered-desc {
+  margin: var(--space-2) 0 0;
+  padding-left: clamp(28px, 3vw, 40px);
+  max-width: 52ch;
+  font-size: 0.86rem; line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text) 66%, transparent);
+}
 
 .numbered-home {
   grid-template-columns: 0.9fr 1.1fr;
@@ -557,6 +575,36 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 }
 .doi:hover { color: var(--color-accent-200); }
 
+/* Prévia de publicações na Home: linha do tempo tipográfica (ano grande em
+   serifa) em vez do grid de cards genérico — o ano reforça o mesmo motivo
+   de numeral grande usado em "Três frentes", em vez de repetir o cartão
+   escuro já usado em outras seções. */
+.pub-preview-list { display: flex; flex-direction: column; }
+.pub-preview-row {
+  display: flex; align-items: center; gap: clamp(20px, 3vw, 40px);
+  padding: clamp(18px, 2vw, 26px) 0;
+  border-bottom: 1px solid var(--color-divider);
+  text-decoration: none; color: inherit;
+  transition: background-color .2s ease, padding-left .2s ease;
+}
+.pub-preview-row:first-child { padding-top: 0; }
+.pub-preview-row:hover {
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  padding-left: var(--space-4);
+}
+.pub-preview-year {
+  flex: none;
+  width: clamp(60px, 6vw, 88px);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 1.3rem + 1.4vw, 2.75rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+.pub-preview-main { flex: 1; min-width: 0; }
+.pub-preview-main .pub-title { margin: 0 0 var(--space-2); }
+.pub-preview-main .pub-authors { margin: 0; }
+.pub-preview-tag { flex: none; }
+
 /* ══════════════════════════════════════════════════════════════════
    Equipe
    ══════════════════════════════════════════════════════════════════ */
@@ -587,11 +635,24 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 1.1rem + 1vw, 2.25rem);
 }
-.team-preview-text span {
-  display: block;
-  margin-top: var(--space-1);
-  font-size: 0.875rem;
+/* Linha de texto corrida (como antes), só com os números em destaque —
+   mantém compacto e não força os avatares a se realinharem verticalmente. */
+.team-preview-text .team-breakdown {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 0.62rem + 0.3vw, 0.8125rem);
+  font-weight: 500;
+  line-height: 1.9;
+  margin: var(--space-3) 0 0;
   color: color-mix(in srgb, var(--color-text) 58%, transparent);
+  max-width: 48ch;
+}
+.team-breakdown-item b {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+.team-breakdown-item:not(:first-child)::before {
+  content: ' · ';
+  color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 .person { display: flex; gap: var(--space-4); align-items: flex-start; }
@@ -741,9 +802,6 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
    Responsivo
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
-  .home-pub-grid {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 34vw, 380px), 1fr));
-  }
   .frentes-orbit {
     grid-template-columns: 1fr;
     row-gap: clamp(28px, 6vw, 44px);
@@ -797,6 +855,9 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   .block { grid-template-columns: 1fr; gap: var(--space-4); }
   .footer-grid { grid-template-columns: 1fr; }
   .pub-side { flex: 1 1 100%; }
+  .pub-preview-row { flex-wrap: wrap; }
+  .pub-preview-year { width: auto; font-size: 1.5rem; }
+  .pub-preview-tag { flex: 1 1 100%; }
 }
 
 @media (max-width: 560px) {
