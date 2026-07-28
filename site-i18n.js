@@ -18,15 +18,16 @@ window.CAMPOSGRAV_INFO = {
   // countPublications é só RESERVA: a home e a página de Publicações usam o
   // total real vindo do INSPIRE-HEP quando a busca funciona.
   countPublications: '293',
-  countResearchers: '11',     // ← total de pessoas listadas em Colaboradores
+  countResearchers: '15',     // ← total de pessoas listadas em Colaboradores
   countProjects: '3',         // ← número de projetos listados em Projetos.dc.html
   countLines: '7',
 
   // Distribuição da equipe por nível — atualize junto com Colaboradores.dc.html.
   // Atualize junto com as listas de Colaboradores.dc.html.
-  countProfessors: '4',
-  countPostdocs: '1',
-  countPhd: '3',
+  countProfessors: '3',
+  countPostdocs: '2',
+  countExternal: '3',
+  countPhd: '4',
   countMasters: '3',
   countUndergrad: '0'
 };
