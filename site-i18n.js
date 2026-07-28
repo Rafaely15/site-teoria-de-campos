@@ -1,4 +1,4 @@
-/* QCAMPO — dados globais e textos comuns a todas as páginas.
+/* CAMPOSGRAV — dados globais e textos comuns a todas as páginas.
    ═══════════════════════════════════════════════════════════════════════
    ESTE É O ARQUIVO PARA EDITAR PRIMEIRO.
    Tudo aqui é PLACEHOLDER: troque pelos dados reais do grupo.
@@ -7,8 +7,8 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 /* ── Fatos do grupo (iguais nos dois idiomas) ────────────────────────── */
-window.QCAMPO_INFO = {
-  email: 'contato@qcampo.ufpb.br',          // ← TROCAR pelo e-mail institucional
+window.CAMPOSGRAV_INFO = {
+  email: 'contato@camposgrav.ufpb.br',          // ← TROCAR pelo e-mail institucional
   addressLine1: 'Departamento de Física, CCEN — UFPB',
   addressLine2: 'Cidade Universitária, João Pessoa — PB, 58051-900',
   foundedYear: '2022',                       // ← TROCAR pelo ano de fundação
@@ -32,7 +32,7 @@ window.QCAMPO_INFO = {
 };
 
 /* ── Textos comuns: cabeçalho, navegação e rodapé ────────────────────── */
-window.QCAMPO_COMMON = {
+window.CAMPOSGRAV_COMMON = {
   pt: {
     navHome: 'Início',
     navAbout: 'Sobre',
@@ -54,7 +54,7 @@ window.QCAMPO_COMMON = {
     ftContact: 'Contato',
     ftRights: 'Todos os direitos reservados',
 
-    ctaEyebrow: 'COLABORE COM O QCAMPO',
+    ctaEyebrow: 'COLABORE COM O CamposGrav',
     ctaTitle: 'Interessado em pesquisar com o grupo?',
     ctaLede: 'Estamos abertos a novos colaboradores, estudantes de iniciação científica e candidatos à pós-graduação.',
     ctaBtn: 'Fale conosco →'
@@ -81,7 +81,7 @@ window.QCAMPO_COMMON = {
     ftContact: 'Contact',
     ftRights: 'All rights reserved',
 
-    ctaEyebrow: 'COLLABORATE WITH QCAMPO',
+    ctaEyebrow: 'COLLABORATE WITH CamposGrav',
     ctaTitle: 'Interested in doing research with us?',
     ctaLede: 'We welcome new collaborators, undergraduate research students and graduate applicants.',
     ctaBtn: 'Get in touch →'
@@ -90,9 +90,10 @@ window.QCAMPO_COMMON = {
 
 /* Junta os textos comuns, os fatos globais e o dicionário da página num só
    objeto — é o `t` usado nos templates ({{ t.navHome }}). */
-window.QCAMPO_T = function (lang, pageDict) {
+window.CAMPOSGRAV_T = function (lang, pageDict) {
   var l = lang === 'en' ? 'en' : 'pt';
-  var common = (window.QCAMPO_COMMON || {})[l] || {};
+  var common = (window.CAMPOSGRAV_COMMON || {})[l] || {};
   var page = (pageDict || {})[l] || {};
-  return Object.assign({}, window.QCAMPO_INFO || {}, common, page);
+  return Object.assign({}, window.CAMPOSGRAV_INFO || {}, common, page);
 };
+

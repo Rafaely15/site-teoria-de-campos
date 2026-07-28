@@ -8,13 +8,13 @@
 <body>
 <x-dc>
 <helmet>
-  <title>QCAMPO — Teoria de Campos e Gravitação · UFPB</title>
-  <meta name="description" content="QCAMPO — Núcleo de Teoria Quântica de Campos e Gravitação, Departamento de Física, Universidade Federal da Paraíba.">
+  <title>CamposGrav — Teoria de Campos e Gravitação · UFPB</title>
+  <meta name="description" content="CamposGrav — Núcleo de Teoria Quântica de Campos e Gravitação, Departamento de Física, Universidade Federal da Paraíba.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
   <link rel="stylesheet" href="site.css">
   <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
-  <script src="site-i18n.js"></script>
+  <script src="site-i18n.js?v=20260727b"></script>
   <script src="publicacoes-inspire.js"></script>
   <script src="site.js"></script>
 </helmet>
@@ -27,8 +27,8 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="./Home.dc.html">
-        <img src="assets/qcampo-mark.png" alt="" />
-        <span class="brand-name gold">QCAMPO</span>
+        <img src="assets/camposgrav-mark.png" alt="" />
+        <span class="brand-name gold">CamposGrav</span>
       </a>
       <nav class="site-nav">
         <a href="./Home.dc.html" aria-current="page">{{ t.navHome }}</a>
@@ -53,35 +53,45 @@
 
     <!-- ══════════ HERO ══════════ -->
     <section class="hero hero-home">
-      <div class="wrap-narrow">
+      <div class="wrap">
+        <div class="hero-home-grid">
+          <div class="hero-copy">
         <p class="eyebrow reveal">{{ t.heroEyebrow }}</p>
 
-        <div class="hero-logo reveal" data-reveal-delay="60">
+          </div>
+
+          <div class="hero-visual reveal" data-reveal-delay="120">
+        <div class="hero-logo">
           <iframe
             class="hero-black-hole"
-            src="animacao-black-hole/black-hole.html?v=20260727"
+            src="animacao-black-hole/black-hole.html?v=20260727b"
             title="Animação de buraco negro"
             loading="eager"
             scrolling="no"
-            aria-label="Animação de buraco negro do QCAMPO"></iframe>
+            aria-label="Animação de buraco negro do CamposGrav"></iframe>
         </div>
 
-        <h1 class="hero-title gold reveal" data-reveal-delay="120">{{ t.tagline }}</h1>
+          </div>
 
-        <p class="hero-lede reveal" data-reveal-delay="180">{{ t.heroLede }}</p>
+          <div class="hero-copy">
+        <h1 class="hero-title gold reveal" data-reveal-delay="80">{{ t.tagline }}</h1>
 
-        <div class="pill-row reveal" data-reveal-delay="240">
+        <p class="hero-lede reveal" data-reveal-delay="140">{{ t.heroLede }}</p>
+
+        <div class="pill-row hero-topic-rail">
           <sc-for list="{{ t.heroTopics }}" as="topic" hint-placeholder-count="4">
             <span class="tag tag-outline">{{ topic }}</span>
           </sc-for>
         </div>
 
-        <div class="btn-row reveal" data-reveal-delay="300">
+        <div class="btn-row reveal" data-reveal-delay="220">
           <a href="./Sobre.dc.html" class="btn btn-primary">{{ t.heroCta1 }}</a>
           <a href="./Publicacoes.dc.html" class="btn btn-secondary">{{ t.navPubs }}</a>
         </div>
 
-        <p class="hero-note reveal" data-reveal-delay="360">{{ t.heroNote }}</p>
+        <p class="hero-note reveal" data-reveal-delay="280">{{ t.heroNote }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -116,7 +126,7 @@
           <h6>{{ t.doEyebrow }}</h6>
           <h2>{{ t.doTitle }}<span class="psi">|Ψ⟩</span></h2>
         </div>
-        <div class="grid grid-3">
+        <div class="grid grid-3 home-card-grid">
           <sc-for list="{{ t.doCards }}" as="c" hint-placeholder-count="3">
             <article class="card reveal">
               <span class="num">{{ c.n }}</span>
@@ -135,7 +145,7 @@
           <h6>{{ t.linesEyebrow }}</h6>
           <h2>{{ t.linesTitle }}</h2>
         </div>
-        <div class="numbered reveal">
+        <div class="numbered numbered-home reveal">
           <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
             <div class="numbered-item">
               <span class="n">{{ line.n }}</span>
@@ -156,7 +166,7 @@
           </div>
           <a class="sec-link" href="./Publicacoes.dc.html">{{ t.pubsAll }} ({{ countPublications }}) ↗</a>
         </div>
-        <div class="grid grid-3">
+        <div class="grid grid-3 home-pub-grid">
           <sc-for list="{{ recentPubs }}" as="pub" hint-placeholder-count="3">
             <article class="card reveal">
               <span class="tag tag-neutral" style="align-self:flex-start;">{{ pub.venue }}</span>
@@ -179,15 +189,15 @@
           </div>
           <a class="sec-link" href="./Colaboradores.dc.html">{{ t.teamAll }} ↗</a>
         </div>
-        <div class="reveal" style="display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap;">
+        <div class="team-preview reveal">
           <div class="avatar-stack">
             <sc-for list="{{ t.avatarInitials }}" as="p" hint-placeholder-count="6">
               <div class="av">{{ p }}</div>
             </sc-for>
           </div>
-          <div>
-            <p style="margin:0;font-family:var(--font-display);font-size:24px;">{{ countResearchers }} {{ t.teamCountWord }}</p>
-            <p class="text-muted" style="margin:var(--space-1) 0 0;font-size:14px;">{{ t.teamBreakdown }}</p>
+          <div class="team-preview-text">
+            <p>{{ countResearchers }} {{ t.teamCountWord }}</p>
+            <span>{{ t.teamBreakdown }}</span>
           </div>
         </div>
       </div>
@@ -218,8 +228,8 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <img src="assets/qcampo-mark.png" alt="" />
-            <span class="gold">QCAMPO</span>
+            <img src="assets/camposgrav-mark.png" alt="" />
+            <span class="gold">CamposGrav</span>
           </div>
           <p class="footer-desc">{{ t.descriptor }}</p>
           <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
@@ -244,7 +254,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }}</div>
     </div>
   </footer>
 
@@ -259,7 +269,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 class Component extends DCLogic {
   state = {
-    lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt',
+    lang: (window.CAMPOSGRAV && window.CAMPOSGRAV.getLang) ? window.CAMPOSGRAV.getLang() : 'pt',
     pubTotal: null,     // total de publicações vindo do INSPIRE
     pubRecent: null     // as 3 mais recentes, também do INSPIRE
   };
@@ -267,14 +277,14 @@ class Component extends DCLogic {
   /* Pede ao INSPIRE só o total e os 3 artigos mais recentes. Se falhar, a
      página segue com o número e os cards escritos à mão — nada quebra. */
   componentDidMount() {
-    const cfg = window.QCAMPO_INSPIRE;
+    const cfg = window.CAMPOSGRAV_INSPIRE;
     if (!cfg || !cfg.enabled) return;
     cfg.buscarResumo(3)
       .then(r => {
         if (!r.recentes.length) return;
         this.setState({ pubTotal: r.total, pubRecent: r.recentes });
       })
-      .catch(err => console.warn('[QCAMPO] resumo do INSPIRE indisponível:', err.message));
+      .catch(err => console.warn('[CAMPOSGRAV] resumo do INSPIRE indisponível:', err.message));
   }
 
   dict = {
@@ -285,7 +295,7 @@ class Component extends DCLogic {
       heroCta1: 'Conheça a pesquisa →',
       heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2015',
 
-      statsLabel: 'QCAMPO em números',
+      statsLabel: 'CamposGrav em números',
       statPubs: 'Publicações',
       statPeople: 'Pesquisadores',
       statProjects: 'Projetos em Andamento',
@@ -321,7 +331,7 @@ class Component extends DCLogic {
       ],
 
       teamEyebrow: 'EQUIPE',
-      teamTitle: 'Quem faz o QCAMPO',
+      teamTitle: 'Quem faz o CamposGrav',
       teamAll: 'VER COLABORADORES',
       teamCountWord: 'pesquisadores',
       teamBreakdown: '4 professores · 1 pós-doc · 3 doutorandos · 3 mestrandos',
@@ -335,7 +345,7 @@ class Component extends DCLogic {
       heroCta1: 'Explore the research →',
       heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2015',
 
-      statsLabel: 'QCAMPO in numbers',
+      statsLabel: 'CamposGrav in numbers',
       statPubs: 'Publications',
       statPeople: 'Researchers',
       statProjects: 'Ongoing Projects',
@@ -371,7 +381,7 @@ class Component extends DCLogic {
       ],
 
       teamEyebrow: 'TEAM',
-      teamTitle: 'The people behind QCAMPO',
+      teamTitle: 'The people behind CamposGrav',
       teamAll: 'VIEW ALL PEOPLE',
       teamCountWord: 'researchers',
       teamBreakdown: '4 faculty · 1 postdoc · 3 PhD students · 3 MSc students',
@@ -380,13 +390,13 @@ class Component extends DCLogic {
   };
 
   setLang(lang) {
-    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    if (window.CAMPOSGRAV && window.CAMPOSGRAV.setLang) window.CAMPOSGRAV.setLang(lang);
     this.setState({ lang: lang });
   }
 
   renderVals() {
     const lang = this.state.lang;
-    const t = window.QCAMPO_T(lang, this.dict);
+    const t = window.CAMPOSGRAV_T(lang, this.dict);
     return Object.assign({}, t, {
       t: t,
       isPt: lang === 'pt',
@@ -405,3 +415,4 @@ class Component extends DCLogic {
 </script>
 </body>
 </html>
+

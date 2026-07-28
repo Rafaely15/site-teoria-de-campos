@@ -1,4 +1,4 @@
-/* QCAMPO — busca automática de publicações no INSPIRE-HEP.
+/* CAMPOSGRAV — busca automática de publicações no INSPIRE-HEP.
    ═══════════════════════════════════════════════════════════════════════
    O INSPIRE-HEP (inspirehep.net) é a base de referência de física de altas
    energias e gravitação — cobre gr-qc e hep-th, incluindo preprints do arXiv.
@@ -27,7 +27,7 @@
    página também cai nessa lista e avisa discretamente — nunca fica vazia.
    ═══════════════════════════════════════════════════════════════════════ */
 
-window.QCAMPO_INSPIRE = {
+window.CAMPOSGRAV_INSPIRE = {
 
   /* ← MUDE PARA true DEPOIS DE PREENCHER A QUERY ABAIXO */
   enabled: true,

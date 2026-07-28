@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -8,12 +8,12 @@
 <body>
 <x-dc>
 <helmet>
-  <title>Colaboradores — QCAMPO · UFPB</title>
+  <title>Colaboradores — CamposGrav · UFPB</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
   <link rel="stylesheet" href="site.css">
   <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
-  <script src="site-i18n.js"></script>
+  <script src="site-i18n.js?v=20260727b"></script>
   <script src="site.js"></script>
 </helmet>
 
@@ -24,8 +24,8 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="./Home.dc.html">
-        <img src="assets/qcampo-mark.png" alt="" />
-        <span class="brand-name gold">QCAMPO</span>
+        <img src="assets/camposgrav-mark.png" alt="" />
+        <span class="brand-name gold">CamposGrav</span>
       </a>
       <nav class="site-nav">
         <a href="./Home.dc.html">{{ t.navHome }}</a>
@@ -97,7 +97,7 @@
             <div class="grid grid-2">
               <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="2">
                 <div class="card person">
-                  <div class="av av-lg">{{ p.initials }}</div>
+                  <img class="person-photo" src="{{ p.photo }}" alt="{{ p.name }}" />
                   <div class="person-body">
                     <p class="person-name">{{ p.name }}</p>
                     <p class="person-role">{{ p.role }}</p>
@@ -140,8 +140,8 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <img src="assets/qcampo-mark.png" alt="" />
-            <span class="gold">QCAMPO</span>
+            <img src="assets/camposgrav-mark.png" alt="" />
+            <span class="gold">CamposGrav</span>
           </div>
           <p class="footer-desc">{{ t.descriptor }}</p>
           <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
@@ -166,7 +166,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }}</div>
     </div>
   </footer>
 
@@ -175,17 +175,19 @@
 
 <script type="text/x-dc" data-dc-script>
 /* Conteúdo da página COLABORADORES — tudo é PLACEHOLDER.
-   Para cada pessoa: `initials` são as iniciais mostradas no avatar circular,
-   e `lattes` recebe a URL do currículo Lattes. Os contadores por nível ficam
+   Para cada pessoa: `photo` recebe o caminho da foto, por exemplo
+   assets/colaboradores/nome-da-pessoa.jpg. Enquanto a foto não existir, deixe
+   assets/colaboradores/_placeholder.svg. O campo `lattes` recebe a URL do currículo Lattes.
+   Os contadores por nível ficam
    em site-i18n.js — mantenha-os em acordo com as listas abaixo. */
 class Component extends DCLogic {
-  state = { lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt' };
+  state = { lang: (window.CAMPOSGRAV && window.CAMPOSGRAV.getLang) ? window.CAMPOSGRAV.getLang() : 'pt' };
 
   dict = {
     pt: {
       pageEyebrow: 'EQUIPE',
       pageTitle: 'Colaboradores',
-      pageLede: 'Pesquisadores, pós-graduandos e estudantes de graduação que integram o QCAMPO.',
+      pageLede: 'Pesquisadores, pós-graduandos e estudantes de graduação que integram o CamposGrav.',
 
       lvlAll: 'Pesquisadores',
       lvlProfessors: 'Professores',
@@ -199,27 +201,27 @@ class Component extends DCLogic {
           label: 'Professores', count: '4 membros',
           people: [
             {
-              initials: 'PP', name: 'Paulo José Ferreira Porfirio da Silva',
+              initials: 'PP', photo: 'assets/colaboradores/paulo.png', name: 'Paulo José Ferreira Porfirio da Silva',
               role: 'Professor · Departamento de Física',
-              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/1812042'
+              bio: 'Graduado, mestre e doutor em Física pela UFPB. Postdoc realizado em Física de Altas Energias pela University of Pennsylvania (USA) e foi visitante na Universidade de Valência (Espanha). Tenho experiência em física de altas energias e atuo principalmente nos seguintes tópicos: teorias modificadas da gravitação, quebra da simetria de Lorentz, teoria quântica de campos em espaços curvos e teoria quântica de campos não locais. Tenho diversos artigos científicos publicados em revistas internacionais, um livro publicado, intitulado: Introdução à gravitação modificada e orientações de alunos de iniciação científica, mestrado, doutorado e pós-doutorado.',
+              lattes: 'http://lattes.cnpq.br/4966637393567862', inspire: 'https://inspirehep.net/authors/1812042'
             },
             {
-              initials: 'AP', name: 'Albert Petrov',
+              initials: 'AP', photo: 'assets/colaboradores/albert.jpeg', name: 'Albert Petrov',
               role: 'Professor · Departamento de Física',
-              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
+              bio: 'Formado pela Universidade de Tomsk (Rússia), perfis principais — teoria quântica de campos, supersimetria, gravitação, quebra da simetria de Lorentz. Publiquei três livros e elaborei vários cursos originais, tais como introdução à quebra da simetria de Lorentz, introdução à gravitação modificada, supersimetria.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/993565'
             },
             {
-              initials: 'JN', name: 'José Roberto Soares do Nascimento',
+              initials: 'JN', photo: 'assets/colaboradores/_placeholder.svg', name: 'José Roberto Soares do Nascimento',
               role: 'Professor Titular · Departamento de Física',
               bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/996040'
             },
             {
-              initials: 'MP', name: 'Matheus Paganelly',
+              initials: 'MP', photo: 'assets/colaboradores/paganely.png', name: 'Matheus Paganelly',
               role: 'Prof. Dr. · IFRN',
-              bio: 'Perfil INSPIRE: Matheus Paganelly; ORCID 0000-0002-0342-2079; BAI M.M.A.Paganelly.1. Atua em teoria de campos, com publicações recentes sobre termos gauge-gravidade, soluções escalares e cenários com violação de Lorentz.',
+              bio: '[SUBSTITUIR: uma ou duas frases sobre a formação e os interesses de pesquisa.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/1809020'
             }
           ]
@@ -228,10 +230,10 @@ class Component extends DCLogic {
           label: 'Pós-doutorandos', count: '1 membro',
           people: [
             {
-              initials: 'FB', name: 'Fernando de Menezes Belchior',
-              role: 'Pós-doutorando · QCAMPO',
-              bio: 'Perfil INSPIRE: Belchior, F.M.; BAI F.M.Belchior.1. A base registra produção recente em teoria de campos com violação de Lorentz, incluindo QED escalar com acoplamento não minimal e aspectos de teorias de campos com violação da simetria de Lorentz.',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/2625411'
+              initials: 'FB', photo: 'assets/colaboradores/fernando.png', name: 'Fernando de Menezes Belchior',
+              role: 'Pós-doutorando · CamposGrav',
+              bio: 'Graduado em Física pelo Instituto Federal do Ceará, mestre e doutor em Física pela Universidade Federal do Ceará. Atualmente, estou realizando o meu primeiro pós-doutorado na Universidade Federal da Paraíba. Trabalho nos seguintes tópicos: teoria quântica de campos, modelos de gravidade modificada, violação de simetria de Lorentz, soluções de buracos negros e cenários de branas.',
+              lattes: 'http://lattes.cnpq.br/2412647714045535', inspire: 'https://inspirehep.net/authors/2625411'
             }
           ]
         },
@@ -239,21 +241,27 @@ class Component extends DCLogic {
           label: 'Doutorandos', count: '3 membros',
           people: [
             {
-              initials: 'AO', name: 'Ana Rafaely Medeiros de Oliveira',
+              initials: 'AO', photo: 'assets/colaboradores/ana.png', name: 'Ana Rafaely Medeiros de Oliveira',
               role: 'Doutoranda · PPGF-UFPB',
-              bio: '[SUBSTITUIR: tema da tese e orientação.]',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/2530839'
+              bio: 'Física formada pela Universidade Federal de Campina Grande (UFCG), com atuação em gravitação modificada, cosmologia observacional e participação no projeto do radiotelescópio BINGO. Mestre e doutoranda em Física, desenvolvendo pesquisa em aprendizado de máquina para detecção de FRBs e, atualmente, investigando sombras de buracos negros e testes de teorias gravitacionais.',
+              lattes: 'http://lattes.cnpq.br/1112730768122348', inspire: 'https://inspirehep.net/authors/2530839'
             },
             {
-              initials: 'AM', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
+              initials: 'CV', photo: 'assets/colaboradores/caio.jpeg', name: 'Caio Vasconcelos',
               role: 'Doutorando · PPGF-UFPB',
-              bio: 'Doutorando vinculado ao QCAMPO. Informações de linha de pesquisa, orientação e produção bibliográfica a completar.',
+              bio: 'Caio Vasconcelos é professor do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte (IFRN), mestre em Ciências Climáticas pela Universidade Federal do Rio Grande do Norte (UFRN, 2014) e doutorando em Física pela Universidade Federal da Paraíba (UFPB). Desenvolve pesquisas nas áreas de Relatividade Geral e Gravitação Modificada.',
+              lattes: '#', inspire: ''
+            },
+                        {
+              initials: 'AM', photo: 'assets/colaboradores/antonio.png', name: 'Antonio Lucas Araujo Moreira',
+              role: 'Doutorando · PPGF-UFPB',
+              bio: 'Doutorando vinculado ao CamposGrav. Informações de linha de pesquisa, orientação e produção bibliográfica a completar.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'GS', name: 'GABRIEL MACEDO DE SANTANA',
+              initials: 'GS', photo: 'assets/colaboradores/gabriel.png', name: 'Gabriel Macedo de Santana',
               role: 'Doutorando · PPGF-UFPB',
-              bio: 'Doutorando vinculado ao QCAMPO. O link INSPIRE informado retorna um perfil stub com BAI P.G.Macedo.2; recomenda-se conferir a titularidade do registro.',
+              bio: 'Doutorando vinculado ao CamposGrav. O link INSPIRE informado retorna um perfil stub com BAI P.G.Macedo.2; recomenda-se conferir a titularidade do registro.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/2481483'
             }
           ]
@@ -262,21 +270,21 @@ class Component extends DCLogic {
           label: 'Mestrandos', count: '3 membros',
           people: [
             {
-              initials: 'AN', name: 'Allisson Marques da Costa Nogueira',
+              initials: 'AN', photo: 'assets/colaboradores/alisson.png', name: 'Allisson Marques da Costa Nogueira',
               role: 'Mestrando · PPGF-UFPB',
-              bio: 'Mestrando vinculado ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
+              bio: 'Mestrando vinculado ao CamposGrav. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'JS', name: 'José Emanuel Silva',
+              initials: 'GS', photo: 'assets/colaboradores/jose.jpg', name: 'José Emanuel Silva',
               role: 'Mestrando · PPGF-UFPB',
-              bio: 'Mestrando vinculado ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
-              lattes: '#', inspire: ''
+              bio: 'Mestrando em Física pela Universidade Federal da Paraíba (UFPB). Graduado em Licenciatura Plena em Física pela Universidade Estadual da Paraíba (UEPB). Desenvolveu pesquisa na Iniciação Científica na área de Defeitos Topológicos em Materias Bidimensionais. Atualmente, estuda temas na área de Teoria Quântica de Campos e Gravitação.',
+              lattes: 'https://lattes.cnpq.br/4549876338473012', inspire: 'https://inspirehep.net/authors/2481483'
             },
             {
-              initials: 'TN', name: 'Tarcila Ferreira Domingues do Nascimento',
+              initials: 'TN', photo: 'assets/colaboradores/tarcila.jpeg', name: 'Tarcila Ferreira Domingues do Nascimento',
               role: 'Mestranda · PPGF-UFPB',
-              bio: 'Mestranda vinculada ao QCAMPO. Informações de tema da dissertação, orientação e produção bibliográfica a completar.',
+              bio: 'Mestranda em Física pela Universidade Federal da Paraíba (UFPB) e bacharela em Física pela mesma instituição. Desenvolve pesquisas na área de gravitação, com ênfase na física de buracos negros e, atualmente, não-localidade.',
               lattes: '#', inspire: ''
             }
           ]
@@ -287,7 +295,7 @@ class Component extends DCLogic {
         {
           label: 'Mestrandos', count: '2 membros',
           people: [
-            { initials: 'NC', name: '[Nome Completo]', role: 'Mestrando(a) · PPGF-UFPB',
+            { initials: 'NC', photo: 'assets/colaboradores/_placeholder.svg', name: '[Nome Completo]', role: 'Mestrando(a) · PPGF-UFPB',
               bio: '[SUBSTITUIR: tema da dissertação e orientação.]',
               lattes: 'http://lattes.cnpq.br/...', inspire: '' }
           ]
@@ -299,7 +307,7 @@ class Component extends DCLogic {
     en: {
       pageEyebrow: 'TEAM',
       pageTitle: 'People',
-      pageLede: 'Researchers, graduate and undergraduate students who make up QCAMPO.',
+      pageLede: 'Researchers, graduate and undergraduate students who make up CamposGrav.',
 
       lvlAll: 'Researchers',
       lvlProfessors: 'Faculty',
@@ -313,25 +321,25 @@ class Component extends DCLogic {
           label: 'Faculty', count: '4 members',
           people: [
             {
-              initials: 'PP', name: 'Paulo José Ferreira Porfirio da Silva',
+              initials: 'PP', photo: 'assets/colaboradores/_placeholder.svg', name: 'Paulo José Ferreira Porfirio da Silva',
               role: 'Professor · Department of Physics',
               bio: '[REPLACE: one or two sentences on background and research interests.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/1812042'
             },
             {
-              initials: 'AP', name: 'Albert Petrov',
+              initials: 'AP', photo: 'assets/colaboradores/_placeholder.svg', name: 'Albert Petrov',
               role: 'Professor · Department of Physics',
               bio: '[REPLACE: one or two sentences on background and research interests.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/993565'
             },
             {
-              initials: 'JN', name: 'José Roberto Soares do Nascimento',
+              initials: 'JN', photo: 'assets/colaboradores/_placeholder.svg', name: 'José Roberto Soares do Nascimento',
               role: 'Full Professor · Department of Physics',
               bio: '[REPLACE: one or two sentences on background and research interests.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/996040'
             },
             {
-              initials: 'MP', name: 'Matheus Paganelly',
+              initials: 'MP', photo: 'assets/colaboradores/_placeholder.svg', name: 'Matheus Paganelly',
               role: 'Prof. Dr. · IFRN',
               bio: 'INSPIRE profile: Matheus Paganelly; ORCID 0000-0002-0342-2079; BAI M.M.A.Paganelly.1. His recent indexed work includes gauge-gravity terms, scalar-field solutions and Lorentz-violating scenarios in field theory.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/1809020'
@@ -342,8 +350,8 @@ class Component extends DCLogic {
           label: 'Postdocs', count: '1 member',
           people: [
             {
-              initials: 'FB', name: 'Fernando de Menezes Belchior',
-              role: 'Postdoctoral Researcher · QCAMPO',
+              initials: 'FB', photo: 'assets/colaboradores/_placeholder.svg', name: 'Fernando de Menezes Belchior',
+              role: 'Postdoctoral Researcher · CamposGrav',
               bio: 'INSPIRE profile: Belchior, F.M.; BAI F.M.Belchior.1. INSPIRE indexes recent work on Lorentz-violating field theory, including scalar QED with nonminimal coupling and broader aspects of Lorentz-symmetry violation.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/2625411'
             }
@@ -353,21 +361,21 @@ class Component extends DCLogic {
           label: 'PhD Students', count: '3 members',
           people: [
             {
-              initials: 'AO', name: 'Ana Rafaely Medeiros de Oliveira',
+              initials: 'AO', photo: 'assets/colaboradores/_placeholder.svg', name: 'Ana Rafaely Medeiros de Oliveira',
               role: 'PhD Student · PPGF-UFPB',
               bio: '[REPLACE: thesis topic and supervisor.]',
               lattes: '#', inspire: 'https://inspirehep.net/authors/2530839'
             },
             {
-              initials: 'AM', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
+              initials: 'AM', photo: 'assets/colaboradores/_placeholder.svg', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
               role: 'PhD Student · PPGF-UFPB',
-              bio: 'PhD student affiliated with QCAMPO. Research topic, supervisor and bibliographic information to be completed.',
+              bio: 'PhD student affiliated with CamposGrav. Research topic, supervisor and bibliographic information to be completed.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'GS', name: 'GABRIEL MACEDO DE SANTANA',
+              initials: 'GS', photo: 'assets/colaboradores/_placeholder.svg', name: 'GABRIEL MACEDO DE SANTANA',
               role: 'PhD Student · PPGF-UFPB',
-              bio: 'PhD student affiliated with QCAMPO. The provided INSPIRE link returns a stub profile with BAI P.G.Macedo.2; the record ownership should be checked.',
+              bio: 'PhD student affiliated with CamposGrav. The provided INSPIRE link returns a stub profile with BAI P.G.Macedo.2; the record ownership should be checked.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/2481483'
             }
           ]
@@ -376,21 +384,21 @@ class Component extends DCLogic {
           label: 'MSc Students', count: '3 members',
           people: [
             {
-              initials: 'AN', name: 'Allisson Marques da Costa Nogueira',
+              initials: 'AN', photo: 'assets/colaboradores/_placeholder.svg', name: 'Allisson Marques da Costa Nogueira',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              bio: 'MSc student affiliated with CamposGrav. Dissertation topic, supervisor and bibliographic information to be completed.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'JS', name: 'José Emanuel Silva',
+              initials: 'JS', photo: 'assets/colaboradores/_placeholder.svg', name: 'José Emanuel Silva',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              bio: 'MSc student affiliated with CamposGrav. Dissertation topic, supervisor and bibliographic information to be completed.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'TN', name: 'Tarcila Ferreira Domingues do Nascimento',
+              initials: 'TN', photo: 'assets/colaboradores/_placeholder.svg', name: 'Tarcila Ferreira Domingues do Nascimento',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with QCAMPO. Dissertation topic, supervisor and bibliographic information to be completed.',
+              bio: 'MSc student affiliated with CamposGrav. Dissertation topic, supervisor and bibliographic information to be completed.',
               lattes: '#', inspire: ''
             }
           ]
@@ -401,13 +409,13 @@ class Component extends DCLogic {
   };
 
   setLang(lang) {
-    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    if (window.CAMPOSGRAV && window.CAMPOSGRAV.setLang) window.CAMPOSGRAV.setLang(lang);
     this.setState({ lang: lang });
   }
 
   renderVals() {
     const lang = this.state.lang;
-    const t = window.QCAMPO_T(lang, this.dict);
+    const t = window.CAMPOSGRAV_T(lang, this.dict);
     return Object.assign({}, t, {
       t: t,
       isPt: lang === 'pt',
@@ -420,3 +428,5 @@ class Component extends DCLogic {
 </script>
 </body>
 </html>
+
+

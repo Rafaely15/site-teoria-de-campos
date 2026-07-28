@@ -136,7 +136,7 @@ void main(){
   vec3 fwd = normalize(camTarget - camPos);
   vec3 right = normalize(cross(fwd, vec3(0.0, 1.0, 0.0)));
   vec3 up = cross(right, fwd);
-  float fov = 0.95;
+  float fov = 1.18;
   vec3 rayDir = normalize(fwd + uv.x * fov * right + uv.y * fov * up);
 
   vec3 pos = camPos;

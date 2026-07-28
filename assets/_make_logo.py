@@ -14,9 +14,9 @@ BASE = r"C:\Users\Carla Batista\Documents\projeto-site-grupo\Site-para-grupo-de-
 # arte de origem -> arquivo gerado
 SOURCES = {
     # lockup completo (buraco negro + wordmark) — usado grande no hero
-    r"C:\Users\Carla Batista\Downloads\QCAMPO (1).png": "qcampo-logo-amber.png",
+    r"C:\Users\Carla Batista\Downloads\CamposGrav.png": "camposgrav-logo-amber.png",
     # so o disco — usado pequeno no cabecalho e no rodape
-    r"C:\Users\Carla Batista\Downloads\Design sem nome (1).png": "qcampo-mark.png",
+    r"C:\Users\Carla Batista\Downloads\Design sem nome (1).png": "camposgrav-mark.png",
 }
 
 
@@ -38,7 +38,7 @@ for src, name in SOURCES.items():
     print("salvo", name, out.size)
 
 # favicon a partir do disco, em quadrado
-mark = Image.open(f"{BASE}\\qcampo-mark.png")
+mark = Image.open(f"{BASE}\\camposgrav-mark.png")
 side = max(mark.size)
 square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
 square.paste(mark, ((side - mark.width) // 2, (side - mark.height) // 2))

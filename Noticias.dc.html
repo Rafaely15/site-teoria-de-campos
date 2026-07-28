@@ -8,12 +8,12 @@
 <body>
 <x-dc>
 <helmet>
-  <title>Notícias e Eventos — QCAMPO · UFPB</title>
+  <title>Notícias e Eventos — CamposGrav · UFPB</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
   <link rel="stylesheet" href="site.css">
   <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
-  <script src="site-i18n.js"></script>
+  <script src="site-i18n.js?v=20260727b"></script>
   <script src="site.js"></script>
 </helmet>
 
@@ -24,8 +24,8 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="./Home.dc.html">
-        <img src="assets/qcampo-mark.png" alt="" />
-        <span class="brand-name gold">QCAMPO</span>
+        <img src="assets/camposgrav-mark.png" alt="" />
+        <span class="brand-name gold">CamposGrav</span>
       </a>
       <nav class="site-nav">
         <a href="./Home.dc.html">{{ t.navHome }}</a>
@@ -105,8 +105,8 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <img src="assets/qcampo-mark.png" alt="" />
-            <span class="gold">QCAMPO</span>
+            <img src="assets/camposgrav-mark.png" alt="" />
+            <span class="gold">CamposGrav</span>
           </div>
           <p class="footer-desc">{{ t.descriptor }}</p>
           <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
@@ -131,7 +131,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} QCAMPO · {{ t.ftRights }} · {{ t.university }}</div>
+      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }}</div>
     </div>
   </footer>
 
@@ -143,7 +143,7 @@
    A linha do tempo segue a ordem da lista `events`: coloque o item mais
    recente primeiro. `kind` é o selo (Seminário, Defesa, Publicação...). */
 class Component extends DCLogic {
-  state = { lang: (window.QCAMPO && window.QCAMPO.getLang) ? window.QCAMPO.getLang() : 'pt' };
+  state = { lang: (window.CAMPOSGRAV && window.CAMPOSGRAV.getLang) ? window.CAMPOSGRAV.getLang() : 'pt' };
 
   dict = {
     pt: {
@@ -244,13 +244,13 @@ class Component extends DCLogic {
   };
 
   setLang(lang) {
-    if (window.QCAMPO && window.QCAMPO.setLang) window.QCAMPO.setLang(lang);
+    if (window.CAMPOSGRAV && window.CAMPOSGRAV.setLang) window.CAMPOSGRAV.setLang(lang);
     this.setState({ lang: lang });
   }
 
   renderVals() {
     const lang = this.state.lang;
-    const t = window.QCAMPO_T(lang, this.dict);
+    const t = window.CAMPOSGRAV_T(lang, this.dict);
     return Object.assign({}, t, {
       t: t,
       isPt: lang === 'pt',
@@ -263,3 +263,4 @@ class Component extends DCLogic {
 </script>
 </body>
 </html>
+

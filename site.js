@@ -1,4 +1,4 @@
-/* QCAMPO — comportamento compartilhado do site.
+/* CAMPOSGRAV — comportamento compartilhado do site.
    Roda fora do ciclo de render do runtime .dc.html: todo estado visual mora em
    classes no <body>/<html> e os eventos são delegados no document, então nada
    se perde quando um componente re-renderiza (ex.: ao trocar o idioma). */
@@ -12,19 +12,19 @@
      pode ser avaliado duas vezes no mesmo documento. Sem esta trava, cada
      listener era registrado em dobro — e o clique no hambúrguer alternava a
      classe duas vezes, voltando ao estado inicial (o menu nunca abria). */
-  if (window.__QCAMPO_SITE_JS__) return;
-  window.__QCAMPO_SITE_JS__ = true;
+  if (window.__CAMPOSGRAV_SITE_JS__) return;
+  window.__CAMPOSGRAV_SITE_JS__ = true;
 
   /* Marca que o JS está ativo — o CSS só esconde os elementos de .reveal
      sob html.qc-js, para que sem JS a página apareça inteira. */
   root.classList.add('qc-js');
 
   /* ── idioma persistido ────────────────────────────────────────────── */
-  var LANG_KEY = 'qcampo-lang';
+  var LANG_KEY = 'camposgrav-lang';
 
-  window.QCAMPO = window.QCAMPO || {};
+  window.CAMPOSGRAV = window.CAMPOSGRAV || {};
 
-  window.QCAMPO.getLang = function () {
+  window.CAMPOSGRAV.getLang = function () {
     try {
       var v = window.localStorage.getItem(LANG_KEY);
       if (v === 'pt' || v === 'en') return v;
@@ -32,12 +32,12 @@
     return 'pt';
   };
 
-  window.QCAMPO.setLang = function (lang) {
+  window.CAMPOSGRAV.setLang = function (lang) {
     try { window.localStorage.setItem(LANG_KEY, lang); } catch (e) { /* idem */ }
     root.setAttribute('lang', lang === 'en' ? 'en' : 'pt-BR');
   };
 
-  root.setAttribute('lang', window.QCAMPO.getLang() === 'en' ? 'en' : 'pt-BR');
+  root.setAttribute('lang', window.CAMPOSGRAV.getLang() === 'en' ? 'en' : 'pt-BR');
 
   /* ── cabeçalho: fundo sólido ao rolar ─────────────────────────────── */
   var scrolled = false;
