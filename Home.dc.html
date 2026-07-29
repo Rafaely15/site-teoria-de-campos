@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
   <link rel="stylesheet" href="site.css">
   <script src="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/_ds_bundle.js"></script>
-  <script src="site-i18n.js?v=20260728a"></script>
+  <script src="site-i18n.js?v=20260729a"></script>
   <script src="publicacoes-inspire.js"></script>
   <script src="site.js"></script>
 </helmet>
@@ -195,8 +195,8 @@
         </div>
         <div class="team-preview reveal">
           <div class="avatar-stack">
-            <sc-for list="{{ t.avatarInitials }}" as="p" hint-placeholder-count="6">
-              <div class="av">{{ p }}</div>
+            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="6">
+              <img class="team-avatar-photo" src="{{ p.photo }}" alt="{{ p.name }}" title="{{ p.name }}" />
             </sc-for>
           </div>
           <div class="team-preview-text">
@@ -261,7 +261,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }}</div>
+      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
     </div>
   </footer>
 
@@ -300,7 +300,7 @@ class Component extends DCLogic {
       heroLede: 'Somos um grupo de pesquisa em física teórica dedicado ao estudo de buracos negros, gravidade modificada e teoria quântica de campos em espaços curvos, com atuação em métodos analíticos e computacionais.',
       heroTopics: ['Buracos Negros', 'Gravidade Modificada', 'QFT em Espaços Curvos', 'Efeito Casimir'],
       heroCta1: 'Conheça a pesquisa →',
-      heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2015',
+      heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2022',
 
       statsLabel: 'CamposGrav em números',
       statPubs: 'Publicações',
@@ -347,7 +347,14 @@ class Component extends DCLogic {
         { n: '4', label: 'doutorandos' },
         { n: '3', label: 'mestrandos' }
       ],
-      avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
+      teamPhotos: [
+        { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
+        { name: 'Albert Petrov', photo: 'assets/colaboradores/albert.jpeg' },
+        { name: 'José Roberto Soares do Nascimento', photo: 'assets/colaboradores/jose.png' },
+        { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
+        { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
+        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' }
+      ]
     },
 
     en: {
@@ -355,7 +362,7 @@ class Component extends DCLogic {
       heroLede: 'We are a theoretical physics research group devoted to black holes, modified gravity and quantum field theory in curved spacetimes, working with both analytical and computational methods.',
       heroTopics: ['Black Holes', 'Modified Gravity', 'QFT in Curved Spaces', 'Casimir Effect'],
       heroCta1: 'Explore the research →',
-      heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2015',
+      heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2022',
 
       statsLabel: 'CamposGrav in numbers',
       statPubs: 'Publications',
@@ -402,7 +409,14 @@ class Component extends DCLogic {
         { n: '4', label: 'PhD students' },
         { n: '3', label: 'MSc students' }
       ],
-      avatarInitials: ['PP', 'AP', 'JN', 'MP', 'FB', 'AO']
+      teamPhotos: [
+        { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
+        { name: 'Albert Petrov', photo: 'assets/colaboradores/albert.jpeg' },
+        { name: 'José Roberto Soares do Nascimento', photo: 'assets/colaboradores/jose.png' },
+        { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
+        { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
+        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' }
+      ]
     }
   };
 

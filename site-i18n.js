@@ -8,7 +8,7 @@
 
 /* ── Fatos do grupo (iguais nos dois idiomas) ────────────────────────── */
 window.CAMPOSGRAV_INFO = {
-  email: 'contato@camposgrav.ufpb.br',          // ← TROCAR pelo e-mail institucional
+  email: 'ana.rafaely@academico.ufpb.br',
   addressLine1: 'Departamento de Física, CCEN — UFPB',
   addressLine2: 'Cidade Universitária, João Pessoa — PB, 58051-900',
   foundedYear: '2022',                       // ← TROCAR pelo ano de fundação
