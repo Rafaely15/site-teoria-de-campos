@@ -8,8 +8,8 @@
 <body>
 <x-dc>
 <helmet>
-  <title>CamposGrav — Teoria de Campos e Gravitação · UFPB</title>
-  <meta name="description" content="CamposGrav — Núcleo de Teoria Quântica de Campos e Gravitação, Departamento de Física, Universidade Federal da Paraíba.">
+  <title>TQCG-UFPB — Teoria de Campos e Gravitação · UFPB</title>
+  <meta name="description" content="TQCG-UFPB — Núcleo de Teoria Quântica de Campos e Gravitação, Departamento de Física, Universidade Federal da Paraíba.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="_ds/nocturne-0f26bb61-18b1-4835-b44c-19184c653f61/styles.css">
   <link rel="stylesheet" href="site.css">
@@ -27,8 +27,8 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="./Home.dc.html">
-        <img src="assets/camposgrav-mark.png" alt="" />
-        <span class="brand-name gold">CamposGrav</span>
+        <img src="assets/qcampo-mark.png" alt="" />
+        <span class="brand-name gold">TQCG-UFPB</span>
       </a>
       <nav class="site-nav">
         <a href="./Home.dc.html" aria-current="page">{{ t.navHome }}</a>
@@ -67,7 +67,7 @@
             title="Animação de buraco negro"
             loading="eager"
             scrolling="no"
-            aria-label="Animação de buraco negro do CamposGrav"></iframe>
+            aria-label="Animação de buraco negro do TQCG-UFPB"></iframe>
         </div>
 
           </div>
@@ -195,14 +195,14 @@
         </div>
         <div class="team-preview reveal">
           <div class="avatar-stack">
-            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="6">
+            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="7">
               <img class="team-avatar-photo" src="{{ p.photo }}" alt="{{ p.name }}" title="{{ p.name }}" />
             </sc-for>
           </div>
           <div class="team-preview-text">
             <p>{{ countResearchers }} {{ t.teamCountWord }}</p>
             <p class="team-breakdown">
-              <sc-for list="{{ t.teamStats }}" as="s" hint-placeholder-count="5">
+              <sc-for list="{{ t.teamStats }}" as="s" hint-placeholder-count="6">
                 <span class="team-breakdown-item"><b>{{ s.n }}</b> {{ s.label }}</span>
               </sc-for>
             </p>
@@ -236,8 +236,8 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <img src="assets/camposgrav-mark.png" alt="" />
-            <span class="gold">CamposGrav</span>
+            <img src="assets/qcampo-mark.png" alt="" />
+            <span class="gold">TQCG-UFPB</span>
           </div>
           <p class="footer-desc">{{ t.descriptor }}</p>
           <p class="footer-desc" style="font-style:italic;opacity:0.75;">{{ t.tagline }} <span class="psi" style="font-size:0.85em;vertical-align:baseline;">|Ψ⟩</span></p>
@@ -261,7 +261,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} CamposGrav · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
+      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
     </div>
   </footer>
 
@@ -302,7 +302,7 @@ class Component extends DCLogic {
       heroCta1: 'Conheça a pesquisa →',
       heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2022',
 
-      statsLabel: 'CamposGrav em números',
+      statsLabel: 'TQCG-UFPB em números',
       statPubs: 'Publicações',
       statPeople: 'Pesquisadores',
       statFounded: 'Ano de Fundação',
@@ -337,7 +337,7 @@ class Component extends DCLogic {
       ],
 
       teamEyebrow: 'EQUIPE',
-      teamTitle: 'Quem faz o CamposGrav',
+      teamTitle: 'Quem faz o TQCG-UFPB',
       teamAll: 'VER COLABORADORES',
       teamCountWord: 'pesquisadores',
       teamStats: [
@@ -345,7 +345,8 @@ class Component extends DCLogic {
         { n: '3', label: 'colaboradores externos' },
         { n: '2', label: 'pós-docs' },
         { n: '4', label: 'doutorandos' },
-        { n: '3', label: 'mestrandos' }
+        { n: '3', label: 'mestrandos' },
+        { n: '1', label: 'graduando' }
       ],
       teamPhotos: [
         { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
@@ -353,7 +354,8 @@ class Component extends DCLogic {
         { name: 'José Roberto Soares do Nascimento', photo: 'assets/colaboradores/jose.png' },
         { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
-        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' }
+        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
+        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' }
       ]
     },
 
@@ -364,7 +366,7 @@ class Component extends DCLogic {
       heroCta1: 'Explore the research →',
       heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2022',
 
-      statsLabel: 'CamposGrav in numbers',
+      statsLabel: 'TQCG-UFPB in numbers',
       statPubs: 'Publications',
       statPeople: 'Researchers',
       statFounded: 'Founded',
@@ -399,7 +401,7 @@ class Component extends DCLogic {
       ],
 
       teamEyebrow: 'TEAM',
-      teamTitle: 'The people behind CamposGrav',
+      teamTitle: 'The people behind TQCG-UFPB',
       teamAll: 'VIEW ALL PEOPLE',
       teamCountWord: 'researchers',
       teamStats: [
@@ -407,7 +409,8 @@ class Component extends DCLogic {
         { n: '3', label: 'external collaborators' },
         { n: '2', label: 'postdocs' },
         { n: '4', label: 'PhD students' },
-        { n: '3', label: 'MSc students' }
+        { n: '3', label: 'MSc students' },
+        { n: '1', label: 'undergraduate' }
       ],
       teamPhotos: [
         { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
@@ -415,7 +418,8 @@ class Component extends DCLogic {
         { name: 'José Roberto Soares do Nascimento', photo: 'assets/colaboradores/jose.png' },
         { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
-        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' }
+        { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
+        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' }
       ]
     }
   };

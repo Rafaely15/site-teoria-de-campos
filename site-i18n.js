@@ -18,7 +18,7 @@ window.CAMPOSGRAV_INFO = {
   // countPublications é só RESERVA: a home e a página de Publicações usam o
   // total real vindo do INSPIRE-HEP quando a busca funciona.
   countPublications: '293',
-  countResearchers: '15',     // ← total de pessoas listadas em Colaboradores
+  countResearchers: '16',     // ← total de pessoas listadas em Colaboradores
   countProjects: '3',         // ← número de projetos listados em Projetos.dc.html
   countLines: '7',
 
@@ -29,7 +29,7 @@ window.CAMPOSGRAV_INFO = {
   countExternal: '3',
   countPhd: '4',
   countMasters: '3',
-  countUndergrad: '0'
+  countUndergrad: '1'
 };
 
 /* ── Textos comuns: cabeçalho, navegação e rodapé ────────────────────── */
@@ -54,7 +54,7 @@ window.CAMPOSGRAV_COMMON = {
     ftContact: 'Contato',
     ftRights: 'Todos os direitos reservados',
 
-    ctaEyebrow: 'COLABORE COM O CamposGrav',
+    ctaEyebrow: 'COLABORE COM O TQCG-UFPB',
     ctaTitle: 'Interessado em pesquisar com o grupo?',
     ctaLede: 'Estamos abertos a novos colaboradores, estudantes de iniciação científica e candidatos à pós-graduação.',
     ctaBtn: 'Fale conosco →'
@@ -80,7 +80,7 @@ window.CAMPOSGRAV_COMMON = {
     ftContact: 'Contact',
     ftRights: 'All rights reserved',
 
-    ctaEyebrow: 'COLLABORATE WITH CamposGrav',
+    ctaEyebrow: 'COLLABORATE WITH TQCG-UFPB',
     ctaTitle: 'Interested in doing research with us?',
     ctaLede: 'We welcome new collaborators, undergraduate research students and graduate applicants.',
     ctaBtn: 'Get in touch →'
