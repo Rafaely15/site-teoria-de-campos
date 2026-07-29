@@ -808,6 +808,10 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   border: 0;
   filter: drop-shadow(0 0 12px rgba(255, 170, 0, 0.08));
 }
+.support-logos img.support-logo-ufpb {
+  width: clamp(126px, 10.5vw, 176px);
+  height: clamp(76px, 7vw, 112px);
+}
 .footer-col h6 { margin-bottom: var(--space-4); }
 .footer-links { display: flex; flex-direction: column; gap: var(--space-3); }
 .footer-links a {

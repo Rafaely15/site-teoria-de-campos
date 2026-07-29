@@ -173,18 +173,18 @@
     <div class="footer-support-section">
       <div class="wrap">
         <div class="support-section-head">
-          <h6>Apoio</h6>
+          <h6>{{ t.supportTitle }}</h6>
         </div>
         <div class="support-logos">
           <img src="assets/apoio/cnpq.png" alt="CNPq" />
           <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
           <img src="assets/apoio/capes.png" alt="CAPES" />
-          <img src="assets/apoio/ufpb.png" alt="UFPB" />
+          <img class="support-logo-ufpb" src="assets/apoio/ufpb.png" alt="UFPB" />
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
+      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | {{ t.devCredit }}</div>
     </div>
   </footer>
 
@@ -367,7 +367,7 @@ class Component extends DCLogic {
     en: {
       pageEyebrow: 'TEAM',
       pageTitle: 'People',
-      pageLede: 'Researchers, graduate and undergraduate students who make up TQCG-UFPB.',
+      pageLede: 'Researchers, graduate students and undergraduate students who make up CamposGrav.',
 
       lvlAll: 'Researchers',
       lvlProfessors: 'Faculty',
@@ -382,22 +382,22 @@ class Component extends DCLogic {
           label: 'Faculty', count: '3 members',
           people: [
             {
-              initials: 'PP', photo: 'assets/colaboradores/_placeholder.svg', name: 'Paulo José Ferreira Porfirio da Silva',
+              initials: 'PP', photo: 'assets/colaboradores/paulo.png', name: 'Paulo José Ferreira Porfirio da Silva',
               role: 'Professor · Department of Physics',
-              bio: '[REPLACE: one or two sentences on background and research interests.]',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/1812042'
+              bio: 'He holds undergraduate, MSc and PhD degrees in Physics from UFPB, completed postdoctoral work in high-energy physics at the University of Pennsylvania and was a visiting researcher at the University of Valencia. His work focuses on modified theories of gravity, Lorentz-symmetry breaking, quantum field theory in curved spacetimes and nonlocal quantum field theory.',
+              lattes: 'http://lattes.cnpq.br/4966637393567862', inspire: 'https://inspirehep.net/authors/1812042'
             },
             {
-              initials: 'AP', photo: 'assets/colaboradores/_placeholder.svg', name: 'Albert Petrov',
+              initials: 'AP', photo: 'assets/colaboradores/albert.jpeg', name: 'Albert Petrov',
               role: 'Professor · Department of Physics',
-              bio: '[REPLACE: one or two sentences on background and research interests.]',
+              bio: 'Graduate of Tomsk State University, working mainly on quantum field theory, supersymmetry, gravitation and Lorentz-symmetry breaking. He has published three books and developed original courses on Lorentz-symmetry breaking, modified gravity and supersymmetry.',
               lattes: '#', inspire: 'https://inspirehep.net/authors/993565'
             },
             {
               initials: 'JN', photo: 'assets/colaboradores/jose.png', name: 'José Roberto Soares do Nascimento',
               role: 'Full Professor · Department of Physics',
-              bio: '[REPLACE: one or two sentences on background and research interests.]',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/996040'
+              bio: 'Full professor at UFPB, with a degree and MSc in Physics from UFPB and a PhD in Physics from the University of São Paulo. He has experience in general theory of particles and fields, especially self-dual models, Chern-Simons theory, superfields, supersymmetry and dual equivalence.',
+              lattes: 'http://lattes.cnpq.br/6671362440919293', inspire: 'https://inspirehep.net/authors/996040'
             }
           ]
         },
@@ -407,8 +407,8 @@ class Component extends DCLogic {
             {
               initials: 'MP', photo: 'assets/colaboradores/paganely.png', name: 'Matheus Paganelly',
               role: 'Prof. Dr. · IFRN',
-              bio: 'INSPIRE profile: Matheus Paganelly; ORCID 0000-0002-0342-2079; BAI M.M.A.Paganelly.1. His recent indexed work includes gauge-gravity terms, scalar-field solutions and Lorentz-violating scenarios in field theory.',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/1809020'
+              bio: 'He holds a bachelor degree in Physics from UFBA, an MSc in Physics from UERJ and a PhD from the Graduate Program in Physics at UFPB. He is currently an EBTT professor at IFRN and works on field theory and gravitation, including multivalued fields, disorder operators, Dirac branes, topological defects and modified gravity.',
+              lattes: 'http://lattes.cnpq.br/3503159962691788', inspire: 'https://inspirehep.net/authors/1809020'
             },
             {
               initials: 'GG', photo: 'assets/colaboradores/garcia.jpeg', name: 'Gabriel Queiroz Garcia',
@@ -434,15 +434,15 @@ class Component extends DCLogic {
           label: 'Postdocs', count: '2 members',
           people: [
             {
-              initials: 'FB', photo: 'assets/colaboradores/_placeholder.svg', name: 'Fernando de Menezes Belchior',
-              role: 'Postdoctoral Researcher · TQCG-UFPB',
-              bio: 'INSPIRE profile: Belchior, F.M.; BAI F.M.Belchior.1. INSPIRE indexes recent work on Lorentz-violating field theory, including scalar QED with nonminimal coupling and broader aspects of Lorentz-symmetry violation.',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/2625411'
+              initials: 'FB', photo: 'assets/colaboradores/fernando.png', name: 'Fernando de Menezes Belchior',
+              role: 'Postdoctoral Researcher · UFPB',
+              bio: 'He holds a degree in Physics from the Federal Institute of Ceará and MSc and PhD degrees in Physics from the Federal University of Ceará. He is currently a postdoctoral researcher at UFPB, working on quantum field theory, modified gravity models, Lorentz-symmetry violation, black hole solutions and brane scenarios.',
+              lattes: 'http://lattes.cnpq.br/2412647714045535', inspire: 'https://inspirehep.net/authors/2625411'
             },
             {
-              initials: 'RM', photo: 'assets/colaboradores/ramires.png', name: 'Ramirez',
+              initials: 'RM', photo: 'assets/colaboradores/ramires.png', name: 'Ramires Nascimento da Silva',
               role: 'Postdoctoral Researcher · PPGF-UFPB',
-              bio: 'Postdoctoral researcher at UFPB working on high-energy physics, modified theories of gravitation, Lorentz-symmetry violation, quantum field theory in curved spacetimes and nonlocal quantum field theories.',
+              bio: 'He holds a bachelor degree in Physics from the State University of Campinas and MSc and PhD degrees in Physics from UFPB. He is currently a postdoctoral researcher at UFPB, working on high-energy physics, modified gravity, Lorentz-symmetry breaking, quantum field theory in curved spacetimes and nonlocal quantum field theories.',
               lattes: '#', inspire: '#'
             }
           ]
@@ -451,10 +451,10 @@ class Component extends DCLogic {
           label: 'PhD Students', count: '4 members',
           people: [
             {
-              initials: 'AO', photo: 'assets/colaboradores/_placeholder.svg', name: 'Ana Rafaely Medeiros de Oliveira',
+              initials: 'AO', photo: 'assets/colaboradores/ana.png', name: 'Ana Rafaely Medeiros de Oliveira',
               role: 'PhD Student · PPGF-UFPB',
-              bio: '[REPLACE: thesis topic and supervisor.]',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/2530839'
+              bio: 'Physicist trained at the Federal University of Campina Grande, with work in modified gravity, observational cosmology and participation in the BINGO radio telescope project. She is an MSc holder and PhD student in Physics, currently investigating black hole shadows and tests of gravitational theories.',
+              lattes: 'http://lattes.cnpq.br/1112730768122348', inspire: 'https://inspirehep.net/authors/2530839'
             },
             {
               initials: 'CV', photo: 'assets/colaboradores/caio.jpeg', name: 'Caio Vasconcelos',
@@ -463,16 +463,16 @@ class Component extends DCLogic {
               lattes: '#', inspire: ''
             },
             {
-              initials: 'AM', photo: 'assets/colaboradores/_placeholder.svg', name: 'ANTONIO LUCAS ARAUJO MOREIRA',
+              initials: 'AM', photo: 'assets/colaboradores/antonio.jpg', name: 'Antonio Lucas Araujo Moreira',
               role: 'PhD Student · PPGF-UFPB',
-              bio: 'PhD student affiliated with TQCG-UFPB. Research topic, supervisor and bibliographic information to be completed.',
-              lattes: '#', inspire: ''
+              bio: 'He holds a degree in Physics Education from UEPB and an MSc in Physics from UFPB. His interests include General Relativity, gravitational lensing, regular compact objects of the Simpson-Visser type and strong-field light deflection.',
+              lattes: 'http://lattes.cnpq.br/2914727640061595', inspire: ''
             },
             {
-              initials: 'GS', photo: 'assets/colaboradores/_placeholder.svg', name: 'GABRIEL MACEDO DE SANTANA',
+              initials: 'GS', photo: 'assets/colaboradores/gabriel.png', name: 'Gabriel Macedo de Santana',
               role: 'PhD Student · PPGF-UFPB',
-              bio: 'PhD student affiliated with TQCG-UFPB. The provided INSPIRE link returns a stub profile with BAI P.G.Macedo.2; the record ownership should be checked.',
-              lattes: '#', inspire: 'https://inspirehep.net/authors/2481483'
+              bio: 'He holds a degree in Physics from UFPB and an MSc in Physics from UFPB. His experience is in relativity and gravitation, with work on modified gravity, regular black holes and high-energy physics.',
+              lattes: 'http://lattes.cnpq.br/1645817224692034', inspire: 'https://inspirehep.net/authors/2481483'
             }
           ]
         },
@@ -480,21 +480,21 @@ class Component extends DCLogic {
           label: 'MSc Students', count: '3 members',
           people: [
             {
-              initials: 'AN', photo: 'assets/colaboradores/_placeholder.svg', name: 'Allisson Marques da Costa Nogueira',
+              initials: 'AN', photo: 'assets/colaboradores/alisson.png', name: 'Allisson Marques da Costa Nogueira',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with TQCG-UFPB. Dissertation topic, supervisor and bibliographic information to be completed.',
+              bio: 'MSc student affiliated with CamposGrav. Information on dissertation topic, supervision and bibliographic output will be completed.',
               lattes: '#', inspire: ''
             },
             {
-              initials: 'JS', photo: 'assets/colaboradores/_placeholder.svg', name: 'José Emanuel Silva',
+              initials: 'JS', photo: 'assets/colaboradores/jose.jpg', name: 'José Emanuel Silva',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with TQCG-UFPB. Dissertation topic, supervisor and bibliographic information to be completed.',
-              lattes: '#', inspire: ''
+              bio: 'MSc student in Physics at UFPB and graduate in Physics Education from UEPB. He conducted undergraduate research on topological defects in two-dimensional materials and currently studies topics in quantum field theory and gravitation.',
+              lattes: 'https://lattes.cnpq.br/4549876338473012', inspire: ''
             },
             {
-              initials: 'TN', photo: 'assets/colaboradores/_placeholder.svg', name: 'Tarcila Ferreira Domingues do Nascimento',
+              initials: 'TN', photo: 'assets/colaboradores/tarcila.jpeg', name: 'Tarcila Ferreira Domingues do Nascimento',
               role: 'MSc Student · PPGF-UFPB',
-              bio: 'MSc student affiliated with TQCG-UFPB. Dissertation topic, supervisor and bibliographic information to be completed.',
+              bio: 'MSc student in Physics at UFPB and bachelor in Physics from the same institution. She works on gravitation, with emphasis on black hole physics and, currently, nonlocality.',
               lattes: '#', inspire: ''
             }
           ]

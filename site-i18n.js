@@ -53,6 +53,8 @@ window.CAMPOSGRAV_COMMON = {
     ftNav: 'Navegação',
     ftContact: 'Contato',
     ftRights: 'Todos os direitos reservados',
+    supportTitle: 'Apoio',
+    devCredit: 'Site desenvolvido por Ana Rafaely',
 
     ctaEyebrow: 'COLABORE COM O TQCG-UFPB',
     ctaTitle: 'Interessado em pesquisar com o grupo?',
@@ -71,7 +73,7 @@ window.CAMPOSGRAV_COMMON = {
     menuLabel: 'Open menu',
     langLabel: 'Language',
 
-    descriptor: 'Centre for Quantum Field Theory and Gravitation',
+    descriptor: 'Research Group on Field Theory and Gravitation',
     affiliation: 'Department of Physics · UFPB',
     university: 'Federal University of Paraíba',
     tagline: 'Field Theory and Gravitation',
@@ -79,8 +81,10 @@ window.CAMPOSGRAV_COMMON = {
     ftNav: 'Navigation',
     ftContact: 'Contact',
     ftRights: 'All rights reserved',
+    supportTitle: 'Support',
+    devCredit: 'Website developed by Ana Rafaely',
 
-    ctaEyebrow: 'COLLABORATE WITH TQCG-UFPB',
+    ctaEyebrow: 'COLLABORATE WITH CAMPOSGRAV',
     ctaTitle: 'Interested in doing research with us?',
     ctaLede: 'We welcome new collaborators, undergraduate research students and graduate applicants.',
     ctaBtn: 'Get in touch →'

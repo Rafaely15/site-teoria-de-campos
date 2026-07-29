@@ -263,18 +263,18 @@
     <div class="footer-support-section">
       <div class="wrap">
         <div class="support-section-head">
-          <h6>Apoio</h6>
+          <h6>{{ t.supportTitle }}</h6>
         </div>
         <div class="support-logos">
           <img src="assets/apoio/cnpq.png" alt="CNPq" />
           <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
           <img src="assets/apoio/capes.png" alt="CAPES" />
-          <img src="assets/apoio/ufpb.png" alt="UFPB" />
+          <img class="support-logo-ufpb" src="assets/apoio/ufpb.png" alt="UFPB" />
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
+      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | {{ t.devCredit }}</div>
     </div>
   </footer>
 
@@ -380,7 +380,7 @@ class Component extends DCLogic {
       heroCta1: 'Explore the research →',
       heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2022',
 
-      statsLabel: 'TQCG-UFPB in numbers',
+      statsLabel: 'CamposGrav in numbers',
       statPubs: 'Publications',
       statPeople: 'Researchers',
       statFounded: 'Founded',
@@ -415,7 +415,7 @@ class Component extends DCLogic {
       ],
 
       teamEyebrow: 'TEAM',
-      teamTitle: 'The people behind TQCG-UFPB',
+      teamTitle: 'The people behind CamposGrav',
       teamAll: 'VIEW ALL PEOPLE',
       teamCountWord: 'researchers',
       teamStats: [

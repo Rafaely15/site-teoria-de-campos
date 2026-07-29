@@ -130,18 +130,18 @@
     <div class="footer-support-section">
       <div class="wrap">
         <div class="support-section-head">
-          <h6>Apoio</h6>
+          <h6>{{ t.supportTitle }}</h6>
         </div>
         <div class="support-logos">
-          <img src="assets/apoio/cnpq.svg" alt="CNPq" />
-          <img src="assets/apoio/fapesq.svg" alt="FAPESQ-PB" />
-          <img src="assets/apoio/capes.svg" alt="CAPES" />
-          <img src="assets/apoio/ufpb.svg" alt="UFPB" />
+          <img src="assets/apoio/cnpq.png" alt="CNPq" />
+          <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
+          <img src="assets/apoio/capes.png" alt="CAPES" />
+          <img class="support-logo-ufpb" src="assets/apoio/ufpb.png" alt="UFPB" />
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
+      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | {{ t.devCredit }}</div>
     </div>
   </footer>
 
@@ -187,27 +187,27 @@ class Component extends DCLogic {
     en: {
       pageEyebrow: 'RESEARCH',
       pageTitle: 'Projects',
-      pageLede: 'Ongoing research projects at the centre, with their funding periods and sources.',
+      pageLede: 'Ongoing research projects at CamposGrav, with their active periods and funding sources.',
       labelPeriod: 'Period',
       labelFunding: 'Funding',
       projects: [
         {
           n: '01', status: 'Ongoing',
           title: 'Black hole shadows in modified gravity',
-          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results. Two or three sentences is usually enough.]',
-          period: '2024 — 2027', funding: '[AGENCY / GRANT]'
+          body: 'This project investigates black hole shadows and observational signatures in modified theories of gravity. It combines analytical modelling with numerical ray tracing to test deviations from General Relativity in strong gravitational fields.',
+          period: '2024 — 2027', funding: 'Research support'
         },
         {
           n: '02', status: 'Ongoing',
           title: 'Casimir effect in spacetimes with topological defects',
-          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results.]',
-          period: '2025 — 2028', funding: '[AGENCY / GRANT]'
+          body: 'This project studies vacuum fluctuations and Casimir-type effects in curved spacetimes and geometries containing topological defects. The goal is to understand how boundary conditions and spacetime structure affect quantum fields.',
+          period: '2025 — 2028', funding: 'Research support'
         },
         {
           n: '03', status: 'Ongoing',
           title: 'Computational methods and relativistic ray tracing',
-          body: '[REPLACE: describe the aim of the project, the methodological approach and the expected results.]',
-          period: '2023 — 2026', funding: '[AGENCY / GRANT]'
+          body: 'This project develops computational tools for relativistic ray tracing and simulations in curved spacetimes. The methods support studies of compact objects, black hole images and tests of gravitational theories.',
+          period: '2023 — 2026', funding: 'Research support'
         }
       ]
     }

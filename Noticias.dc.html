@@ -131,18 +131,18 @@
     <div class="footer-support-section">
       <div class="wrap">
         <div class="support-section-head">
-          <h6>Apoio</h6>
+          <h6>{{ t.supportTitle }}</h6>
         </div>
         <div class="support-logos">
-          <img src="assets/apoio/cnpq.svg" alt="CNPq" />
-          <img src="assets/apoio/fapesq.svg" alt="FAPESQ-PB" />
-          <img src="assets/apoio/capes.svg" alt="CAPES" />
-          <img src="assets/apoio/ufpb.svg" alt="UFPB" />
+          <img src="assets/apoio/cnpq.png" alt="CNPq" />
+          <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
+          <img src="assets/apoio/capes.png" alt="CAPES" />
+          <img class="support-logo-ufpb" src="assets/apoio/ufpb.png" alt="UFPB" />
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
+      <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | {{ t.devCredit }}</div>
     </div>
   </footer>
 
@@ -208,27 +208,27 @@ class Component extends DCLogic {
     en: {
       pageEyebrow: 'AGENDA',
       pageTitle: 'News and Events',
-      pageLede: 'Seminars, thesis defences, visits and other activities of the centre.',
+      pageLede: 'Seminars, short courses, visits, publications and other CamposGrav activities.',
       events: [
         {
-          date: 'MONTH 00, 2026', kind: 'Seminar',
-          title: '[REPLACE: seminar title]',
-          body: '[REPLACE: a short description of the activity, with the speaker’s name and institution.]',
+          date: 'JULY 01, 2026', kind: 'Seminar',
+          title: 'Gravitational Born-Infeld Theory',
+          body: 'MSc student Allisson Marques (UFPB) presents a seminar on gravitational Born-Infeld theory, an extension of General Relativity inspired by Born-Infeld nonlinear electrodynamics.',
           where: 'Department of Physics · UFPB',
-          url: 'https://www.instagram.com/tqcg.ufpb/',
+          url: 'https://www.instagram.com/p/DaOmkyhB6Fc/',
           linkLabel: 'View on Instagram ↗',
-          image: '',
+          image: 'assets/noticias/semi-aliisson.png',
           imageAlt: 'Seminar announcement card'
         },
         {
-          date: 'MONTH 00, 2026', kind: 'Defence',
-          title: '[REPLACE: thesis or dissertation title]',
-          body: '[REPLACE: candidate’s name, supervisor and examining committee.]',
-          where: 'CCEN Auditorium · UFPB',
-          url: '',
+          date: 'JUNE 17, 2026', kind: 'Seminar',
+          title: 'Nonlocality in Lorentz-violating QED',
+          body: 'Postdoctoral researcher Ramires Nascimento presents a seminar on nonlocality in Lorentz-violating quantum electrodynamics.',
+          where: 'Room 201, Department of Physics · UFPB',
+          url: 'https://www.instagram.com/p/DZqBgDgh6Ec/',
           linkLabel: 'View details ↗',
-          image: '',
-          imageAlt: 'Defence announcement image'
+          image: 'assets/noticias/semi-ramires.png',
+          imageAlt: 'Seminar announcement image'
         },
         {
           date: '2026', kind: 'Publication',
@@ -241,13 +241,13 @@ class Component extends DCLogic {
           imageAlt: 'Publication-related image'
         },
         {
-          date: 'MONTH 00, 2025', kind: 'Visit',
-          title: '[REPLACE: visit by a collaborating researcher]',
-          body: '[REPLACE: name, home institution and purpose of the visit.]',
-          where: 'Department of Physics · UFPB',
-          url: '',
+          date: 'MAY 04 AND 06, 2026 · 11:00 AM TO 12:30 PM', kind: 'Short course',
+          title: 'Prof. Gonzalo J. Olmo - "50 Shades of Black Holes and How to Find Them"',
+          body: 'Short course given by Prof. Gonzalo J. Olmo, international collaborator from the Universitat de València, Spain.',
+          where: 'Department of Physics · Universitat de València, Spain',
+          url: 'https://www.instagram.com/p/DXxZllagQfH/',
           linkLabel: 'View external event ↗',
-          image: '',
+          image: 'assets/noticias/visitante-gonzala.png',
           imageAlt: 'Event announcement image'
         }
       ]
