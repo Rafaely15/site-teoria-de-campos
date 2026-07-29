@@ -195,7 +195,7 @@
         </div>
         <div class="team-preview reveal">
           <div class="avatar-stack">
-            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="7">
+            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="8">
               <img class="team-avatar-photo" src="{{ p.photo }}" alt="{{ p.name }}" title="{{ p.name }}" />
             </sc-for>
           </div>
@@ -257,6 +257,19 @@
           <h6>{{ t.ftContact }}</h6>
           <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
           <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-support-section">
+      <div class="wrap">
+        <div class="support-section-head">
+          <h6>Apoio</h6>
+        </div>
+        <div class="support-logos">
+          <img src="assets/apoio/cnpq.png" alt="CNPq" />
+          <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
+          <img src="assets/apoio/capes.png" alt="CAPES" />
+          <img src="assets/apoio/ufpb.png" alt="UFPB" />
         </div>
       </div>
     </div>
@@ -342,7 +355,7 @@ class Component extends DCLogic {
       teamCountWord: 'pesquisadores',
       teamStats: [
         { n: '3', label: 'professores' },
-        { n: '3', label: 'colaboradores externos' },
+        { n: '4', label: 'colaboradores externos' },
         { n: '2', label: 'pós-docs' },
         { n: '4', label: 'doutorandos' },
         { n: '3', label: 'mestrandos' },
@@ -355,7 +368,8 @@ class Component extends DCLogic {
         { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
         { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
-        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' }
+        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' },
+        { name: 'Elias Brito Alves Junior', photo: 'assets/colaboradores/elias.png' }
       ]
     },
 
@@ -406,7 +420,7 @@ class Component extends DCLogic {
       teamCountWord: 'researchers',
       teamStats: [
         { n: '3', label: 'faculty' },
-        { n: '3', label: 'external collaborators' },
+        { n: '4', label: 'external collaborators' },
         { n: '2', label: 'postdocs' },
         { n: '4', label: 'PhD students' },
         { n: '3', label: 'MSc students' },
@@ -419,7 +433,8 @@ class Component extends DCLogic {
         { name: 'Matheus Paganelly', photo: 'assets/colaboradores/paganely.png' },
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
         { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
-        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' }
+        { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' },
+        { name: 'Elias Brito Alves Junior', photo: 'assets/colaboradores/elias.png' }
       ]
     }
   };

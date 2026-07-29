@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 140" role="img" aria-label="CAPES">
+  <g fill="none" stroke="#0099d8" stroke-width="12" stroke-linecap="round">
+    <ellipse cx="145" cy="54" rx="118" ry="35" transform="rotate(-7 145 54)"/>
+    <path d="M30 75C77 18 167 4 275 18"/>
+    <path d="M64 95C130 59 210 58 270 84"/>
+  </g>
+  <circle cx="148" cy="66" r="22" fill="#00a859"/>
+  <text x="16" y="130" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" fill="#0099d8">CAPES</text>
+</svg>

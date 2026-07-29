@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 150" role="img" aria-label="CNPq">
+  <g fill="#0071bc" font-family="Arial, Helvetica, sans-serif" font-weight="800">
+    <path d="M129 12c34 0 61 27 61 61 0 21-10 39-26 50l-10-16c11-8 18-20 18-34 0-24-19-43-43-43S86 49 86 73c0 13 6 25 15 33l-11 15c-14-11-23-28-23-48 0-34 28-61 62-61z"/>
+    <circle cx="129" cy="73" r="22"/>
+    <text x="18" y="138" font-size="68" letter-spacing="-4">CNPq</text>
+  </g>
+</svg>

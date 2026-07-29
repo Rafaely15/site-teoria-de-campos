@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -170,6 +170,19 @@
         </div>
       </div>
     </div>
+    <div class="footer-support-section">
+      <div class="wrap">
+        <div class="support-section-head">
+          <h6>Apoio</h6>
+        </div>
+        <div class="support-logos">
+          <img src="assets/apoio/cnpq.png" alt="CNPq" />
+          <img src="assets/apoio/fapesq.png" alt="FAPESQ-PB" />
+          <img src="assets/apoio/capes.png" alt="CAPES" />
+          <img src="assets/apoio/ufpb.png" alt="UFPB" />
+        </div>
+      </div>
+    </div>
     <div class="footer-bottom">
       <div class="wrap">© {{ copyrightYear }} TQCG-UFPB · {{ t.ftRights }} · {{ t.university }} | Site desenvolvido por Ana Rafaely</div>
     </div>
@@ -227,10 +240,10 @@ class Component extends DCLogic {
           ]
         },
         {
-          label: 'Colaboradores externos', count: '3 membros',
+          label: 'Colaboradores externos', count: '4 membros',
           people: [
             {
-              initials: 'MP', photo: 'assets/colaboradores/paganely.png', name: 'Matheus Paganelly',
+              initials: 'MP', photo: 'assets/colaboradores/paganely.jpg', name: 'Matheus Paganelly',
               role: 'Professor Doutor · IFRN',
               bio: 'Possui Bacharelado em Física pela Universidade Federal da Bahia (2015), mestrado em Física pela Universidade do Estado do Rio de Janeiro (2018) e doutorado pelo programa de pós-graduação em física da Universidade Federal da Paraíba (2023). Foi professor substituto na Universidade Federal de Campina Grande (2024), realizou um pós-doutorado na Universitat de València (2026), atualmente é pós-doutorando na UFPB e professor do EBTT no IFRN. Tem experiência na área de Teoria Geral de Partículas e Campos e Gravitação atuando principalmente nos seguintes temas: Campos Multivalorados, Operadores de Desordem, Branas de Dirac, Defeitos Topológicos, Estruturas Localizadas Neutras e Carregadas e teorias de gravitação modificada.',
               lattes: 'http://lattes.cnpq.br/3503159962691788', inspire: 'https://inspirehep.net/authors/1809020'
@@ -246,6 +259,12 @@ class Component extends DCLogic {
               role: 'Profesor Doutor Titular · Universitat de València',
               bio: 'Trabalho como bolsista Ramón y Cajal no Instituto de Física Corpuscular, um centro de pesquisa conjunto da Universidade de Valência e do Conselho Superior de Investigações Científicas (CSIC) em Valência, Espanha. Desenvolvo pesquisas sobre aspectos teóricos da física gravitacional. Meus interesses, até o momento, concentram-se em três áreas principais: buracos negros, cosmologia e gravidade quântica. Em particular, estudei as propriedades de campos quânticos em espaços curvos, com ênfase no processo de evaporação de buracos negros via radiação Hawking e na geração de perturbações primordiais durante a inflação. Também trabalho na possibilidade de explicar a aceleração cósmica por meio de equações dinâmicas diferentes das da Relatividade Geral. Atualmente, também exploro diferentes abordagens para a Gravidade Quântica sob diversas perspectivas, incluindo lições da física do estado sólido. Meu trabalho é realizado em colaboração com outros pesquisadores da Alemanha, Bélgica, Brasil, China, Espanha, Estados Unidos, Inglaterra, Israel, Itália, México, Portugal, Rússia e Suécia. Você está convidado a navegar pelas minhas publicações para mais informações abaixo.',
               lattes: 'http://lattes.cnpq.br/9148740143287778', inspire: 'https://inspirehep.net/authors/1032639'
+            },
+            {
+              initials: 'EA', photo: 'assets/colaboradores/elias.png', name: 'Elias Brito Alves Junior',
+              role: 'Professor Doutor \u00b7 UFOB',
+              bio: 'Gradua\u00e7\u00e3o em F\u00edsica pela Universidade Estadual de Feira de Santana (UEFS). Especialista em Teoria da Relatividade pela Universidade Federal de S\u00e3o Paulo (UNIFESP). Mestrado e doutorado em F\u00edsica pela Universidade Federal da Para\u00edba (UFPB). Desde 2019 \u00e9 Professor Adjunto da Universidade Federal do Oeste da Bahia e membro do Programa de P\u00f3s-Gradua\u00e7\u00e3o em Ci\u00eancias dos Materiais. Tem experi\u00eancia em simula\u00e7\u00e3o computacional para c\u00e1lculos de primeiros princ\u00edpios de nanocompostos e nanoestruturas. Trabalha atualmente com Cosmologia e gravita\u00e7\u00e3o, com \u00eanfase em teorias de gravidade modificada, objetos compactos, invariantes topol\u00f3gicos, quebra de simetria de Lorentz e teoria de Chern-Simons.',
+              lattes: '#', inspire: 'https://inspirehep.net/authors/2656010'
             }
           ]
         },
@@ -383,7 +402,7 @@ class Component extends DCLogic {
           ]
         },
         {
-          label: 'External collaborators', count: '3 members',
+          label: 'External collaborators', count: '4 members',
           people: [
             {
               initials: 'MP', photo: 'assets/colaboradores/paganely.png', name: 'Matheus Paganelly',
@@ -402,6 +421,12 @@ class Component extends DCLogic {
               role: 'Professor · Universitat de València',
               bio: 'International collaborator at the Universitat de València, working on theoretical aspects of gravitational physics, including black holes, cosmology, quantum gravity and modified gravitational dynamics.',
               lattes: 'http://lattes.cnpq.br/9148740143287778', inspire: 'https://inspirehep.net/authors/1032639'
+            },
+            {
+              initials: 'EA', photo: 'assets/colaboradores/elias.png', name: 'Elias Brito Alves Junior',
+              role: 'Professor · UFOB',
+              bio: 'He holds a degree in Physics from UEFS, a specialization in Theory of Relativity from UNIFESP, and MSc and PhD degrees in Physics from UFPB. Since 2019, he has been an Adjunct Professor at the Federal University of Western Bahia and a member of the Graduate Program in Materials Science. He works on computational simulation, cosmology and gravitation, with emphasis on modified gravity, compact objects, topological invariants, Lorentz-symmetry breaking and Chern-Simons theory.',
+              lattes: '#', inspire: ''
             }
           ]
         },
