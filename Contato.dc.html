@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -57,7 +57,7 @@
 
     <section class="sec">
       <div class="wrap">
-        <div class="grid grid-2" style="gap:var(--space-8);align-items:start;">
+        <div class="grid grid-2 contact-grid">
 
           <!-- Coordenadas -->
           <div class="reveal">
@@ -68,7 +68,7 @@
               </div>
               <div class="block-body">
                 <p style="font-size:18px;margin:0;">
-                  <a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a>
+                  <a href="mailto:ana.rafaely@academico.ufpb.br" style="text-decoration:none;">{{ email }}</a>
                 </p>
               </div>
             </div>
@@ -90,28 +90,9 @@
 
           <!-- Formulário -->
           <div class="card reveal" data-reveal-delay="120" style="padding:var(--space-8);">
-            <h3 class="card-title" style="margin-bottom:var(--space-2);">{{ t.formTitle }}</h3>
-            <p class="card-body" style="flex:none;margin-bottom:var(--space-6);">{{ t.formNote }}</p>
-
-            <form name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="./Home.dc.html">
-              <input type="hidden" name="form-name" value="contato" />
-              <p style="display:none;">
-                <label>Não preencha este campo: <input name="bot-field" /></label>
-              </p>
-              <div class="field">
-                <label htmlFor="qc-name">{{ t.fieldName }}</label>
-                <input class="input" id="qc-name" name="name" type="text" required placeholder="{{ t.fieldNamePh }}" />
-              </div>
-              <div class="field">
-                <label htmlFor="qc-email">{{ t.fieldEmail }}</label>
-                <input class="input" id="qc-email" name="email" type="email" required placeholder="{{ t.fieldEmailPh }}" />
-              </div>
-              <div class="field">
-                <label htmlFor="qc-msg">{{ t.fieldMessage }}</label>
-                <textarea class="input" id="qc-msg" name="message" required placeholder="{{ t.fieldMessagePh }}"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">{{ t.formSubmit }}</button>
-            </form>
+            <h3 class="card-title" style="margin-bottom:var(--space-2);">{{ t.contactTitle }}</h3>
+            <p class="card-body" style="flex:none;margin-bottom:var(--space-6);">{{ t.contactNote }}</p>
+            <a class="btn btn-primary btn-block" href="mailto:ana.rafaely@academico.ufpb.br?subject=Contato%20pelo%20site%20do%20CamposGrav">{{ t.contactButton }}</a>
           </div>
 
         </div>
@@ -144,7 +125,7 @@
         </div>
         <div class="footer-col">
           <h6>{{ t.ftContact }}</h6>
-          <p style="margin:0 0 var(--space-3);"><a href="mailto:{{ email }}" style="text-decoration:none;">{{ email }}</a></p>
+          <p style="margin:0 0 var(--space-3);"><a href="mailto:ana.rafaely@academico.ufpb.br" style="text-decoration:none;">{{ email }}</a></p>
           <p style="margin:0;">{{ addressLine1 }}<br/>{{ addressLine2 }}</p>
         </div>
       </div>
@@ -174,15 +155,9 @@ class Component extends DCLogic {
       blockEmail: 'E-mail institucional',
       blockAddress: 'Endereço',
 
-      formTitle: 'Envie uma mensagem',
-      formNote: 'Ao enviar, sua mensagem será registrada pelo site e encaminhada ao contato do grupo.',
-      fieldName: 'Nome',
-      fieldNamePh: 'Seu nome completo',
-      fieldEmail: 'E-mail',
-      fieldEmailPh: 'seu.email@exemplo.com',
-      fieldMessage: 'Mensagem',
-      fieldMessagePh: 'Como podemos ajudar?',
-      formSubmit: 'Enviar mensagem →',
+      contactTitle: 'Contato direto',
+      contactNote: 'Para falar com o CamposGrav, envie uma mensagem diretamente para o e-mail institucional do grupo.',
+      contactButton: 'Enviar e-mail →',
       mailSubject: 'Contato pelo site do CamposGrav'
     },
 
@@ -194,15 +169,9 @@ class Component extends DCLogic {
       blockEmail: 'Institutional e-mail',
       blockAddress: 'Address',
 
-      formTitle: 'Send a message',
-      formNote: 'On submit, your message will be registered by the site and forwarded to the group contact.',
-      fieldName: 'Name',
-      fieldNamePh: 'Your full name',
-      fieldEmail: 'E-mail',
-      fieldEmailPh: 'your.email@example.com',
-      fieldMessage: 'Message',
-      fieldMessagePh: 'How can we help?',
-      formSubmit: 'Send message →',
+      contactTitle: 'Direct contact',
+      contactNote: 'To contact CamposGrav, send a message directly to the group institutional e-mail.',
+      contactButton: 'Send e-mail →',
       mailSubject: 'Enquiry from the CamposGrav website'
     }
   };

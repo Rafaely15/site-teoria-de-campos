@@ -306,6 +306,11 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .grid { display: grid; gap: clamp(16px, 1.6vw, 32px); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 360px), 1fr)); }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(clamp(320px, 26vw, 440px), 1fr)); }
+.contact-grid {
+  align-items: start;
+  column-gap: clamp(56px, 7vw, 132px);
+  row-gap: clamp(32px, 5vw, 72px);
+}
 
 /* "Três frentes": os itens ficam ao longo de uma trajetória curva (como luz
    defletida por uma massa), com o número como marca d'água atrás do título —
