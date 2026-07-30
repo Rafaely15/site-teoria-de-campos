@@ -84,7 +84,7 @@ window.CAMPOSGRAV_COMMON = {
     supportTitle: 'Support',
     devCredit: 'Website developed by Ana Rafaely',
 
-    ctaEyebrow: 'COLLABORATE WITH CAMPOSGRAV',
+    ctaEyebrow: 'COLLABORATE WITH TQCG-UFPB',
     ctaTitle: 'Interested in doing research with us?',
     ctaLede: 'We welcome new collaborators, undergraduate research students and graduate applicants.',
     ctaBtn: 'Get in touch →'
