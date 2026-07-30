@@ -195,7 +195,7 @@
         </div>
         <div class="team-preview reveal">
           <div class="avatar-stack">
-            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="8">
+            <sc-for list="{{ t.teamPhotos }}" as="p" hint-placeholder-count="10">
               <img class="team-avatar-photo" src="{{ p.photo }}" alt="{{ p.name }}" title="{{ p.name }}" />
             </sc-for>
           </div>
@@ -359,7 +359,7 @@ class Component extends DCLogic {
         { n: '2', label: 'pós-docs' },
         { n: '4', label: 'doutorandos' },
         { n: '3', label: 'mestrandos' },
-        { n: '1', label: 'graduando' }
+        { n: '3', label: 'graduandos' }
       ],
       teamPhotos: [
         { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
@@ -369,6 +369,8 @@ class Component extends DCLogic {
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
         { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
         { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' },
+        { name: 'João Lucas do Nascimento Melchiades', photo: 'assets/colaboradores/joao.jpeg' },
+        { name: 'Alysson Ryan Dantas da Silva', photo: 'assets/colaboradores/alysson.jpeg' },
         { name: 'Elias Brito Alves Junior', photo: 'assets/colaboradores/elias.png' }
       ]
     },
@@ -424,7 +426,7 @@ class Component extends DCLogic {
         { n: '2', label: 'postdocs' },
         { n: '4', label: 'PhD students' },
         { n: '3', label: 'MSc students' },
-        { n: '1', label: 'undergraduate' }
+        { n: '3', label: 'undergraduates' }
       ],
       teamPhotos: [
         { name: 'Paulo José Ferreira Porfirio da Silva', photo: 'assets/colaboradores/paulo.png' },
@@ -434,6 +436,8 @@ class Component extends DCLogic {
         { name: 'Fernando de Menezes Belchior', photo: 'assets/colaboradores/fernando.png' },
         { name: 'Ana Rafaely Medeiros de Oliveira', photo: 'assets/colaboradores/ana.png' },
         { name: 'Itamar Junior Santos Castro', photo: 'assets/colaboradores/itamar.jpeg' },
+        { name: 'João Lucas do Nascimento Melchiades', photo: 'assets/colaboradores/joao.jpeg' },
+        { name: 'Alysson Ryan Dantas da Silva', photo: 'assets/colaboradores/alysson.jpeg' },
         { name: 'Elias Brito Alves Junior', photo: 'assets/colaboradores/elias.png' }
       ]
     }
