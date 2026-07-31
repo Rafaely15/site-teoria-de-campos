@@ -446,11 +446,35 @@ class Component extends DCLogic {
     this.setState({ lang: lang });
   }
 
+  computedTeamStats(t, lang) {
+    if (lang === 'en') {
+      return [
+        { n: t.countProfessors, label: 'faculty' },
+        { n: t.countExternal, label: 'external collaborators' },
+        { n: t.countPostdocs, label: 'postdocs' },
+        { n: t.countPhd, label: 'PhD students' },
+        { n: t.countMasters, label: 'MSc students' },
+        { n: t.countUndergrad, label: 'undergraduates' }
+      ];
+    }
+
+    return [
+      { n: t.countProfessors, label: 'professores' },
+      { n: t.countExternal, label: 'colaboradores externos' },
+      { n: t.countPostdocs, label: 'pós-docs' },
+      { n: t.countPhd, label: 'doutorandos' },
+      { n: t.countMasters, label: 'mestrandos' },
+      { n: t.countUndergrad, label: 'graduandos' }
+    ];
+  }
+
   renderVals() {
     const lang = this.state.lang;
     const t = window.CAMPOSGRAV_T(lang, this.dict);
+    const teamStats = this.computedTeamStats(t, lang);
+    const viewT = Object.assign({}, t, { teamStats: teamStats });
     return Object.assign({}, t, {
-      t: t,
+      t: viewT,
       isPt: lang === 'pt',
       isEn: lang === 'en',
       setPt: () => this.setLang('pt'),
@@ -460,7 +484,8 @@ class Component extends DCLogic {
       // o "+" só faz sentido no número aproximado escrito à mão; vindo do
       // INSPIRE o total é exato
       pubCountLabel: this.state.pubTotal != null ? String(this.state.pubTotal) : t.countPublications + '+',
-      recentPubs: this.state.pubRecent || t.recentPubs
+      recentPubs: this.state.pubRecent || t.recentPubs,
+      teamStats: teamStats
     });
   }
 }

@@ -1,3 +1,5 @@
+import './sync-member-counts.mjs';
+
 import { cp, mkdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';

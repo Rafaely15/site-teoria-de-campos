@@ -14,16 +14,16 @@ window.CAMPOSGRAV_INFO = {
   foundedYear: '2022',                       // ← TROCAR pelo ano de fundação
   copyrightYear: '2026',
 
-  // Contadores exibidos nas estatísticas. Mantenha em acordo com as listas.
+  // Contadores exibidos nas estatísticas. Os membros são sincronizados pelo
+  // build a partir das listas de Colaboradores.dc.html.
   // countPublications é só RESERVA: a home e a página de Publicações usam o
   // total real vindo do INSPIRE-HEP quando a busca funciona.
   countPublications: '293',
-  countResearchers: '19',     // ← total de pessoas listadas em Colaboradores
+  countResearchers: '19',
   countProjects: '3',         // ← número de projetos listados em Projetos.dc.html
   countLines: '6',
 
-  // Distribuição da equipe por nível — atualize junto com Colaboradores.dc.html.
-  // Atualize junto com as listas de Colaboradores.dc.html.
+  // Distribuição da equipe por nível.
   countProfessors: '3',
   countPostdocs: '2',
   countExternal: '4',

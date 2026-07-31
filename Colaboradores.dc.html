@@ -57,8 +57,8 @@
 
     <section class="sec-tight">
       <div class="wrap">
-        <!-- Mostra os grupos cadastrados. Ao acrescentar categorias, atualize
-             os contadores em site-i18n.js e os rótulos abaixo. -->
+        <!-- Mostra os grupos cadastrados. Os contadores são calculados a
+             partir das listas de pessoas. -->
         <div class="stat-strip reveal">
           <div>
             <p class="stat-num gold">{{ countResearchers }}</p>
@@ -196,8 +196,7 @@
    Para cada pessoa: `photo` recebe o caminho da foto, por exemplo
    assets/colaboradores/nome-da-pessoa.jpg. Enquanto a foto não existir, deixe
    assets/colaboradores/_placeholder.svg. O campo `lattes` recebe a URL do currículo Lattes.
-   Os contadores por nível ficam
-   em site-i18n.js — mantenha-os em acordo com as listas abaixo. */
+   Os contadores por nível são calculados a partir das listas abaixo. */
 class Component extends DCLogic {
   state = { lang: (window.CAMPOSGRAV && window.CAMPOSGRAV.getLang) ? window.CAMPOSGRAV.getLang() : 'pt' };
 
@@ -362,8 +361,8 @@ class Component extends DCLogic {
           ]
         }
         /* Para acrescentar uma categoria (Pós-doutorados, Mestrandos,
-           Graduandos...), copie um bloco acima nos DOIS idiomas e atualize os
-           contadores em site-i18n.js. Modelo de pessoa:
+           Graduandos...), copie um bloco acima nos DOIS idiomas, mantendo a
+           mesma ordem. Modelo de pessoa:
         {
           label: 'Mestrandos', count: '2 membros',
           people: [
@@ -545,9 +544,30 @@ class Component extends DCLogic {
     this.setState({ lang: lang });
   }
 
+  withComputedCounts(t, lang) {
+    const singular = lang === 'en' ? 'member' : 'membro';
+    const plural = lang === 'en' ? 'members' : 'membros';
+    const groups = (t.groups || []).map(g => {
+      const n = (g.people || []).length;
+      return Object.assign({}, g, { count: n + ' ' + (n === 1 ? singular : plural) });
+    });
+    const n = i => String(groups[i] && groups[i].people ? groups[i].people.length : 0);
+
+    return Object.assign({}, t, {
+      groups: groups,
+      countResearchers: String(groups.reduce((total, g) => total + ((g.people || []).length), 0)),
+      countProfessors: n(0),
+      countExternal: n(1),
+      countPostdocs: n(2),
+      countPhd: n(3),
+      countMasters: n(4),
+      countUndergrad: n(5)
+    });
+  }
+
   renderVals() {
     const lang = this.state.lang;
-    const t = window.CAMPOSGRAV_T(lang, this.dict);
+    const t = this.withComputedCounts(window.CAMPOSGRAV_T(lang, this.dict), lang);
     return Object.assign({}, t, {
       t: t,
       isPt: lang === 'pt',
