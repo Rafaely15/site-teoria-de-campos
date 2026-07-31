@@ -109,7 +109,7 @@
             <h3>{{ t.b2Title }}</h3>
             <p style="margin-bottom:var(--space-4);">{{ t.b2Lede }}</p>
             <div class="numbered" style="grid-template-columns:1fr;">
-              <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
+              <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="6">
                 <details class="numbered-item">
                   <summary class="numbered-summary">
                     <span class="n">{{ line.n }}</span>
@@ -264,7 +264,7 @@ class Component extends DCLogic {
         'O TQCG-UFPB \u00e9 um grupo de pesquisa em F\u00edsica Te\u00f3rica com n\u00facleo central no Departamento de F\u00edsica da Universidade Federal da Para\u00edba (UFPB). O grupo re\u00fane professores, pesquisadores, estudantes de gradua\u00e7\u00e3o e p\u00f3s-gradua\u00e7\u00e3o, al\u00e9m de colaboradores de institui\u00e7\u00f5es nacionais e internacionais.',
         'Entre os principais professores que comp\u00f5em o grupo est\u00e3o Paulo Jos\u00e9 Porf\u00edrio da Silva, Albert Petrov e Jos\u00e9 Roberto Soares do Nascimento, pesquisadores com ampla experi\u00eancia em gravita\u00e7\u00e3o, teoria qu\u00e2ntica de campos, f\u00edsica de altas energias, supersimetria, viola\u00e7\u00e3o da simetria de Lorentz e teorias modificadas da gravidade.',
         'A atua\u00e7\u00e3o do TQCG-UFPB ultrapassa os limites institucionais da UFPB, estabelecendo interc\u00e2mbios com pesquisadores do Cear\u00e1, de Natal, de Campina Grande e de institui\u00e7\u00f5es internacionais, como a Universitat de Val\u00e8ncia, na Espanha. Essa rede de colabora\u00e7\u00e3o fortalece a produ\u00e7\u00e3o cient\u00edfica, a forma\u00e7\u00e3o de novos pesquisadores e a circula\u00e7\u00e3o de conhecimentos entre diferentes universidades e centros de pesquisa.',
-        'Al\u00e9m do desenvolvimento de pesquisas e orienta\u00e7\u00f5es acad\u00eamicas, o grupo promove semin\u00e1rios, minicursos, aulas, encontros cient\u00edficos e projetos colaborativos, nos quais s\u00e3o discutidos temas contempor\u00e2neos da F\u00edsica Te\u00f3rica, como buracos negros, gravita\u00e7\u00e3o, teoria qu\u00e2ntica de campos em espa\u00e7os curvos, gravidade modificada, efeito Casimir, defeitos topol\u00f3gicos e m\u00e9todos computacionais.',
+        'Al\u00e9m do desenvolvimento de pesquisas e orienta\u00e7\u00f5es acad\u00eamicas, o grupo promove semin\u00e1rios, minicursos, aulas, encontros cient\u00edficos e projetos colaborativos, nos quais s\u00e3o discutidos temas contempor\u00e2neos da F\u00edsica Te\u00f3rica, como buracos negros, gravita\u00e7\u00e3o, teoria qu\u00e2ntica de campos em espa\u00e7os curvos, gravidade modificada, defeitos topol\u00f3gicos e m\u00e9todos computacionais.',
         'O TQCG-UFPB busca, assim, consolidar um ambiente de coopera\u00e7\u00e3o cient\u00edfica, forma\u00e7\u00e3o acad\u00eamica e investiga\u00e7\u00e3o te\u00f3rica, conectando pesquisadores em diferentes etapas da carreira e contribuindo para o avan\u00e7o da F\u00edsica Fundamental.'
       ],
 
@@ -276,9 +276,8 @@ class Component extends DCLogic {
         { n: '02', title: 'Solu\u00e7\u00f5es de buracos negros rotativos', desc: 'Modelos matem\u00e1ticos para buracos negros em rota\u00e7\u00e3o, mais realistas que os est\u00e1ticos e usados para prever seus efeitos observ\u00e1veis.' },
         { n: '03', title: 'Gravidade modificada e viola\u00e7\u00e3o de simetria de Lorentz', desc: 'Extens\u00f5es da Relatividade Geral que testam pequenos desvios das leis da f\u00edsica em escalas extremas, incluindo a chamada "gravidade bumblebee".' },
         { n: '04', title: 'Teoria qu\u00e2ntica de campos em espa\u00e7os curvos', desc: 'Como part\u00edculas e campos qu\u00e2nticos se comportam sob gravidade intensa, unindo mec\u00e2nica qu\u00e2ntica e relatividade geral.' },
-        { n: '05', title: 'Efeito Casimir', desc: 'Uma for\u00e7a mensur\u00e1vel entre duas placas no v\u00e1cuo, causada por flutua\u00e7\u00f5es qu\u00e2nticas do pr\u00f3prio espa\u00e7o vazio.' },
-        { n: '06', title: 'Monopolo global e defeitos topol\u00f3gicos', desc: 'Estruturas hipot\u00e9ticas formadas no universo primordial, como "cicatrizes" deixadas por transi\u00e7\u00f5es de fase logo ap\u00f3s o Big Bang.' },
-        { n: '07', title: 'M\u00e9todos computacionais e ray tracing', desc: 'Simula\u00e7\u00f5es num\u00e9ricas que tra\u00e7am trajet\u00f3rias de luz em espa\u00e7os-tempos curvos para gerar imagens realistas de buracos negros.' }
+        { n: '05', title: 'Monopolo global e defeitos topol\u00f3gicos', desc: 'Estruturas hipot\u00e9ticas formadas no universo primordial, como "cicatrizes" deixadas por transi\u00e7\u00f5es de fase logo ap\u00f3s o Big Bang.' },
+        { n: '06', title: 'M\u00e9todos computacionais e ray tracing', desc: 'Simula\u00e7\u00f5es num\u00e9ricas que tra\u00e7am trajet\u00f3rias de luz em espa\u00e7os-tempos curvos para gerar imagens realistas de buracos negros.' }
       ],
 
       b3Eyebrow: 'MISS\u00c3O',
@@ -301,7 +300,7 @@ class Component extends DCLogic {
         },
         {
           n: '02', status: 'Em andamento',
-          title: 'Efeito Casimir em espa\u00e7os-tempos com defeitos topol\u00f3gicos',
+          title: 'Defeitos topol\u00f3gicos em espa\u00e7os-tempos curvos',
           period: '2025 \u2014 2028', funding: 'CNPQ'
         },
         {
@@ -331,7 +330,7 @@ class Component extends DCLogic {
         'TQCG-UFPB is a theoretical physics research group based at the Department of Physics of the Federal University of Para\u00edba (UFPB). The group brings together faculty members, researchers, undergraduate and graduate students, as well as collaborators from national and international institutions.',
         'Among the main faculty members of the group are Paulo Jos\u00e9 Porf\u00edrio da Silva, Albert Petrov and Jos\u00e9 Roberto Soares do Nascimento, researchers with broad experience in gravitation, quantum field theory, high-energy physics, supersymmetry, Lorentz-symmetry violation and modified theories of gravity.',
         'The activity of TQCG-UFPB extends beyond UFPB through exchanges with researchers from Cear\u00e1, Natal, Campina Grande, Bahia and international institutions such as the Universitat de Val\u00e8ncia in Spain. This collaboration network strengthens scientific output, researcher training and the circulation of knowledge among universities and research centers.',
-        'In addition to research projects and academic supervision, the group promotes seminars, short courses, classes, scientific meetings and collaborative projects on contemporary topics in theoretical physics, including black holes, gravitation, quantum field theory in curved spacetimes, modified gravity, the Casimir effect, topological defects and computational methods.',
+        'In addition to research projects and academic supervision, the group promotes seminars, short courses, classes, scientific meetings and collaborative projects on contemporary topics in theoretical physics, including black holes, gravitation, quantum field theory in curved spacetimes, modified gravity, topological defects and computational methods.',
         'TQCG-UFPB seeks to consolidate an environment of scientific cooperation, academic training and theoretical investigation, connecting researchers at different career stages and contributing to the advancement of fundamental physics.'
       ],
 
@@ -343,9 +342,8 @@ class Component extends DCLogic {
         { n: '02', title: 'Rotating black hole solutions', desc: 'Mathematical models for spinning black holes — more realistic than static ones, used to predict their observable effects.' },
         { n: '03', title: 'Modified gravity and Lorentz symmetry violation', desc: 'Extensions of General Relativity that test small deviations from known physical laws at extreme scales, including so-called "bumblebee gravity".' },
         { n: '04', title: 'Quantum field theory in curved spacetimes', desc: 'How quantum particles and fields behave under strong gravity, bridging quantum mechanics and general relativity.' },
-        { n: '05', title: 'Casimir effect', desc: 'A measurable force between two plates in vacuum, caused by quantum fluctuations of empty space itself.' },
-        { n: '06', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
-        { n: '07', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
+        { n: '05', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
+        { n: '06', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
       ],
 
       b3Eyebrow: 'MISSION',
@@ -368,7 +366,7 @@ class Component extends DCLogic {
         },
         {
           n: '02', status: 'Ongoing',
-          title: 'Casimir effect in spacetimes with topological defects',
+          title: 'Topological defects in curved spacetimes',
           period: '2025 — 2028', funding: 'CNPQ'
         },
         {

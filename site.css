@@ -438,7 +438,7 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .numbered { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(340px, 28vw, 480px), 1fr)); gap: 0 clamp(32px, 4vw, 72px); }
 
 /* Item vira <details>: clicar revela uma frase explicando o termo — glossário
-   embutido, útil porque vários títulos (gravidade bumblebee, efeito Casimir,
+   embutido, útil porque vários títulos (gravidade bumblebee, defeitos topológicos,
    monopolo global...) não são autoexplicativos para quem não é da área. */
 .numbered-item {
   padding: var(--space-4) 0;

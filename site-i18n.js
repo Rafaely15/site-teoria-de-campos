@@ -20,7 +20,7 @@ window.CAMPOSGRAV_INFO = {
   countPublications: '293',
   countResearchers: '19',     // ← total de pessoas listadas em Colaboradores
   countProjects: '3',         // ← número de projetos listados em Projetos.dc.html
-  countLines: '7',
+  countLines: '6',
 
   // Distribuição da equipe por nível — atualize junto com Colaboradores.dc.html.
   // Atualize junto com as listas de Colaboradores.dc.html.

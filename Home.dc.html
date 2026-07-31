@@ -145,7 +145,7 @@
           <h2>{{ t.linesTitle }}</h2>
         </div>
         <div class="numbered numbered-home reveal">
-          <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="7">
+          <sc-for list="{{ t.researchLines }}" as="line" hint-placeholder-count="6">
             <details class="numbered-item">
               <summary class="numbered-summary">
                 <span class="n">{{ line.n }}</span>
@@ -311,9 +311,9 @@ class Component extends DCLogic {
     pt: {
       heroEyebrow: 'NÚCLEO DE PESQUISA · DEPARTAMENTO DE FÍSICA · UFPB',
       heroLede: 'Somos um grupo de pesquisa em física teórica dedicado ao estudo de buracos negros, gravidade modificada e teoria quântica de campos em espaços curvos, com atuação em métodos analíticos e computacionais.',
-      heroTopics: ['Buracos Negros', 'Gravidade Modificada', 'QFT em Espaços Curvos', 'Efeito Casimir'],
+      heroTopics: ['Buracos Negros', 'Gravidade Modificada', 'QFT em Espaços Curvos', 'Defeitos Topológicos'],
       heroCta1: 'Conheça a pesquisa →',
-      heroNote: '7 FRENTES EM ANDAMENTO · DESDE 2022',
+      heroNote: '6 FRENTES EM ANDAMENTO · DESDE 2022',
 
       statsLabel: 'TQCG-UFPB em números',
       statPubs: 'Publicações',
@@ -335,9 +335,8 @@ class Component extends DCLogic {
         { n: '02', title: 'Soluções de buracos negros rotativos', desc: 'Modelos matemáticos para buracos negros em rotação, mais realistas que os estáticos e usados para prever seus efeitos observáveis.' },
         { n: '03', title: 'Gravidade modificada e violação de simetria de Lorentz (gravidade bumblebee)', desc: 'Extensões da Relatividade Geral que testam pequenos desvios das leis da física em escalas extremas.' },
         { n: '04', title: 'Teoria quântica de campos em espaços curvos', desc: 'Como partículas e campos quânticos se comportam sob gravidade intensa, unindo mecânica quântica e relatividade geral.' },
-        { n: '05', title: 'Efeito Casimir', desc: 'Uma força mensurável entre duas placas no vácuo, causada por flutuações quânticas do próprio espaço vazio.' },
-        { n: '06', title: 'Monopolo global e defeitos topológicos', desc: 'Estruturas hipotéticas formadas no universo primordial, como "cicatrizes" deixadas por transições de fase logo após o Big Bang.' },
-        { n: '07', title: 'Métodos computacionais e ray tracing', desc: 'Simulações numéricas que traçam trajetórias de luz em espaços-tempos curvos para gerar imagens realistas de buracos negros.' }
+        { n: '05', title: 'Monopolo global e defeitos topológicos', desc: 'Estruturas hipotéticas formadas no universo primordial, como "cicatrizes" deixadas por transições de fase logo após o Big Bang.' },
+        { n: '06', title: 'Métodos computacionais e ray tracing', desc: 'Simulações numéricas que traçam trajetórias de luz em espaços-tempos curvos para gerar imagens realistas de buracos negros.' }
       ],
 
       pubsEyebrow: 'PRODUÇÃO',
@@ -345,7 +344,7 @@ class Component extends DCLogic {
       pubsAll: 'VER TODAS',
       recentPubs: [
         { venue: 'ARXIV · GR-QC', title: 'Sombras de buracos negros em gravidade bumblebee', authors: 'Autor A, Autor B, Autor C', year: '2026', doi: 'arXiv:0000.00000', doiUrl: '#' },
-        { venue: 'PHYS. REV. D', title: 'Efeito Casimir em espaços-tempos com monopolo global', authors: 'Autor D, Autor E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { venue: 'PHYS. REV. D', title: 'Defeitos topológicos em espaços-tempos curvos', authors: 'Autor D, Autor E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
         { venue: 'ARXIV · HEP-TH', title: 'Ray tracing de buracos negros rotativos: métodos numéricos', authors: 'Autor F, Autor G, Autor H', year: '2025', doi: 'arXiv:0000.00001', doiUrl: '#' }
       ],
 
@@ -378,9 +377,9 @@ class Component extends DCLogic {
     en: {
       heroEyebrow: 'RESEARCH GROUP · DEPARTMENT OF PHYSICS · UFPB',
       heroLede: 'We are a theoretical physics research group devoted to black holes, modified gravity and quantum field theory in curved spacetimes, working with both analytical and computational methods.',
-      heroTopics: ['Black Holes', 'Modified Gravity', 'QFT in Curved Spaces', 'Casimir Effect'],
+      heroTopics: ['Black Holes', 'Modified Gravity', 'QFT in Curved Spaces', 'Topological Defects'],
       heroCta1: 'Explore the research →',
-      heroNote: '7 ONGOING RESEARCH FRONTS · SINCE 2022',
+      heroNote: '6 ONGOING RESEARCH FRONTS · SINCE 2022',
 
       statsLabel: 'TQCG-UFPB in numbers',
       statPubs: 'Publications',
@@ -402,9 +401,8 @@ class Component extends DCLogic {
         { n: '02', title: 'Rotating black hole solutions', desc: 'Mathematical models for spinning black holes — more realistic than static ones, used to predict their observable effects.' },
         { n: '03', title: 'Modified gravity and Lorentz symmetry violation (bumblebee gravity)', desc: 'Extensions of General Relativity that test small deviations from known physical laws at extreme scales.' },
         { n: '04', title: 'Quantum field theory in curved spacetimes', desc: 'How quantum particles and fields behave under strong gravity, bridging quantum mechanics and general relativity.' },
-        { n: '05', title: 'Casimir effect', desc: 'A measurable force between two plates in vacuum, caused by quantum fluctuations of empty space itself.' },
-        { n: '06', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
-        { n: '07', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
+        { n: '05', title: 'Global monopole and topological defects', desc: 'Hypothetical structures formed in the early universe — like "scars" left by phase transitions shortly after the Big Bang.' },
+        { n: '06', title: 'Computational methods and ray tracing', desc: 'Numerical simulations that trace light paths through curved spacetime to generate realistic images of black holes.' }
       ],
 
       pubsEyebrow: 'OUTPUT',
@@ -412,7 +410,7 @@ class Component extends DCLogic {
       pubsAll: 'VIEW ALL',
       recentPubs: [
         { venue: 'ARXIV · GR-QC', title: 'Black hole shadows in bumblebee gravity', authors: 'Author A, Author B, Author C', year: '2026', doi: 'arXiv:0000.00000', doiUrl: '#' },
-        { venue: 'PHYS. REV. D', title: 'Casimir effect in global monopole spacetimes', authors: 'Author D, Author E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
+        { venue: 'PHYS. REV. D', title: 'Topological defects in curved spacetimes', authors: 'Author D, Author E', year: '2025', doi: '10.0000/xxxxx', doiUrl: '#' },
         { venue: 'ARXIV · HEP-TH', title: 'Ray tracing of rotating black holes: numerical methods', authors: 'Author F, Author G, Author H', year: '2025', doi: 'arXiv:0000.00001', doiUrl: '#' }
       ],
 
