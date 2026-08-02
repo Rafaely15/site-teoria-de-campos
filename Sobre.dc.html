@@ -136,38 +136,6 @@
           </div>
         </div>
 
-        <!-- 04 PROJETOS -->
-        <div class="block reveal">
-          <div class="block-label">
-            <span class="num">04</span>
-            <h6>{{ t.b4Eyebrow }}</h6>
-          </div>
-          <div class="block-body">
-            <h3>{{ t.b4Title }}</h3>
-            <p style="margin-bottom:var(--space-4);">{{ t.b4Lede }}</p>
-            <div class="grid grid-2">
-              <sc-for list="{{ t.projects }}" as="p" hint-placeholder-count="3">
-                <article class="card reveal">
-                  <span class="num">{{ p.n }}</span>
-                  <span class="badge-live">{{ p.status }}</span>
-                  <h4 class="card-title" style="margin-top:var(--space-3);">{{ p.title }}</h4>
-                  <p class="card-body">{{ p.body }}</p>
-                  <dl class="proj-foot">
-                    <div>
-                      <dt>{{ t.labelPeriod }}</dt>
-                      <dd>{{ p.period }}</dd>
-                    </div>
-                    <div>
-                      <dt>{{ t.labelFunding }}</dt>
-                      <dd>{{ p.funding }}</dd>
-                    </div>
-                  </dl>
-                </article>
-              </sc-for>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -285,29 +253,6 @@ class Component extends DCLogic {
       b3Paras: [
         'Produzir conhecimento original em teoria de campos e gravita\u00e7\u00e3o, formar pesquisadores em n\u00edvel de gradua\u00e7\u00e3o e p\u00f3s-gradua\u00e7\u00e3o e ampliar colabora\u00e7\u00f5es com institui\u00e7\u00f5es nacionais e internacionais.',
         'Fortalecer a circula\u00e7\u00e3o de ideias por meio de semin\u00e1rios, minicursos, projetos colaborativos, encontros cient\u00edficos e atividades de forma\u00e7\u00e3o.'
-      ],
-
-      b4Eyebrow: 'PESQUISA',
-      b4Title: 'Projetos em Andamento',
-      b4Lede: 'Projetos de pesquisa em andamento no n\u00facleo, com seus per\u00edodos de vig\u00eancia e fontes de financiamento.',
-      labelPeriod: 'Per\u00edodo',
-      labelFunding: 'Financiamento',
-      projects: [
-        {
-          n: '01', status: 'Em andamento',
-          title: 'Sombras de buracos negros em gravidade modificada',
-          period: '2024 \u2014 2027', funding: 'CNPQ'
-        },
-        {
-          n: '02', status: 'Em andamento',
-          title: 'Defeitos topol\u00f3gicos em espa\u00e7os-tempos curvos',
-          period: '2025 \u2014 2028', funding: 'CNPQ'
-        },
-        {
-          n: '03', status: 'Em andamento',
-          title: 'M\u00e9todos computacionais e ray tracing relativ\u00edstico',
-          period: '2023 \u2014 2026', funding: 'CNPQ'
-        }
       ]
     },
 
@@ -351,29 +296,6 @@ class Component extends DCLogic {
       b3Paras: [
         'To produce original research in field theory and gravitation, train students and researchers, and expand collaborations with national and international institutions.',
         'To strengthen scientific exchange through seminars, short courses, collaborative projects, scientific meetings and training activities.'
-      ],
-
-      b4Eyebrow: 'RESEARCH',
-      b4Title: 'Ongoing Projects',
-      b4Lede: 'Ongoing research projects at the centre, with their funding periods and sources.',
-      labelPeriod: 'Period',
-      labelFunding: 'Funding',
-      projects: [
-        {
-          n: '01', status: 'Ongoing',
-          title: 'Black hole shadows in modified gravity',
-          period: '2024 — 2027', funding: 'CNPQ'
-        },
-        {
-          n: '02', status: 'Ongoing',
-          title: 'Topological defects in curved spacetimes',
-          period: '2025 — 2028', funding: 'CNPQ'
-        },
-        {
-          n: '03', status: 'Ongoing',
-          title: 'Computational methods and relativistic ray tracing',
-          period: '2023 — 2026', funding: 'CNPQ'
-        }
       ]
     }
   };
