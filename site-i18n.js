@@ -37,6 +37,7 @@ window.CAMPOSGRAV_COMMON = {
   pt: {
     navHome: 'Início',
     navAbout: 'Sobre',
+    navProjects: 'Projetos',
     navPubs: 'Publicações',
     navPeople: 'Colaboradores',
     navNews: 'Notícias',
@@ -65,6 +66,7 @@ window.CAMPOSGRAV_COMMON = {
   en: {
     navHome: 'Home',
     navAbout: 'About',
+    navProjects: 'Projects',
     navPubs: 'Publications',
     navPeople: 'People',
     navNews: 'News',
