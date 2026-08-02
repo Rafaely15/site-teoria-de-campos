@@ -58,23 +58,36 @@
 
     <section class="sec">
       <div class="wrap">
-        <div class="grid grid-2">
+        <div class="project-list">
           <sc-for list="{{ t.projects }}" as="p" hint-placeholder-count="3">
-            <article class="card reveal">
-              <span class="num">{{ p.n }}</span>
-              <span class="badge-live">{{ p.status }}</span>
-              <h3 class="card-title" style="margin-top:var(--space-3);">{{ p.title }}</h3>
-              <p class="card-body">{{ p.body }}</p>
-              <dl class="proj-foot">
-                <div>
-                  <dt>{{ t.labelPeriod }}</dt>
-                  <dd>{{ p.period }}</dd>
+            <article class="project-feature reveal">
+              <sc-if value="{{ p.image }}">
+                <figure class="project-media">
+                  <img src="{{ p.image }}" alt="{{ p.imageAlt }}" />
+                </figure>
+              </sc-if>
+              <div class="project-copy">
+                <div class="project-kicker-row">
+                  <span class="project-kicker">{{ p.category }}</span>
+                  <span class="badge-live">{{ p.status }}</span>
                 </div>
-                <div>
-                  <dt>{{ t.labelFunding }}</dt>
-                  <dd>{{ p.funding }}</dd>
+                <h2>{{ p.title }}</h2>
+                <div class="project-text">
+                  <sc-for list="{{ p.paras }}" as="para" hint-placeholder-count="4">
+                    <p>{{ para }}</p>
+                  </sc-for>
                 </div>
-              </dl>
+                <dl class="proj-foot">
+                  <div>
+                    <dt>{{ t.labelPeriod }}</dt>
+                    <dd>{{ p.period }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ t.labelFunding }}</dt>
+                    <dd>{{ p.funding }}</dd>
+                  </div>
+                </dl>
+              </div>
             </article>
           </sc-for>
         </div>
@@ -167,21 +180,39 @@ class Component extends DCLogic {
       projects: [
         {
           n: '01', status: 'Em andamento',
-          title: 'Sombras de buracos negros em gravidade modificada',
-          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodológica e os resultados esperados. Duas ou três frases costumam bastar.]',
-          period: '2024 — 2027', funding: '[AGÊNCIA / EDITAL]'
+          category: 'GRAVITAÇÃO',
+          title: 'Sombras de Buracos Negros em Gravidade Bumblebee',
+          image: 'assets/projetos/black-hole-bumblebee.png',
+          imageAlt: 'Ilustração de uma sombra de buraco negro com disco de acreção em tons âmbar',
+          paras: [
+            'A sombra de um buraco negro é a região escura observada quando parte da luz ao seu redor é capturada pelo horizonte de eventos. Seu contorno é determinado principalmente pelas trajetórias instáveis dos fótons que passam muito próximos ao buraco negro, formando o chamado anel de fótons.',
+            'Neste trabalho, investigamos sombras de buracos negros rotativos em uma teoria modificada da gravidade conhecida como gravidade bumblebee métrico-afim. Nesse modelo, um campo vetorial assume um valor de vácuo não nulo e estabelece uma direção preferencial no espaço-tempo, produzindo uma possível quebra espontânea da simetria de Lorentz. A intensidade desse efeito é representada pelo parâmetro X, enquanto a controla a rotação do buraco negro.',
+            'Quando o buraco negro não gira, o parâmetro X não altera o formato circular da sombra. Entretanto, quando rotação e quebra da simetria de Lorentz atuam simultaneamente, as trajetórias da luz passam a apresentar uma deformação direcional. Com o aumento de X, surgem o achatamento vertical da sombra, o deslocamento do anel luminoso e a redução assimétrica de sua região inferior, que pode evoluir para uma estrutura semelhante a uma gota.',
+            'Para visualizar esses efeitos, utilizamos simulações de trajetória de raios de luz com o código GYOTO, considerando também a emissão de um disco de acreção. As deformações são mais evidentes para observadores em inclinações intermediárias, próximas de 60°, e podem fornecer assinaturas para testar teorias gravitacionais além da geometria de Kerr em observações de objetos como M87* e Sgr A*.'
+          ],
+          period: '2024 — 2027', funding: 'CNPQ'
         },
         {
           n: '02', status: 'Em andamento',
+          category: 'GRAVITAÇÃO',
           title: 'Defeitos topológicos em espaços-tempos curvos',
-          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodológica e os resultados esperados.]',
-          period: '2025 — 2028', funding: '[AGÊNCIA / EDITAL]'
+          image: '',
+          imageAlt: '',
+          paras: [
+            'O projeto investiga efeitos de campos e gravitação em espaços-tempos curvos que contêm defeitos topológicos. O objetivo é compreender como a estrutura geométrica do espaço-tempo modifica propriedades físicas de campos e observáveis associados.'
+          ],
+          period: '2025 — 2028', funding: 'CNPQ'
         },
         {
           n: '03', status: 'Em andamento',
+          category: 'MÉTODOS COMPUTACIONAIS',
           title: 'Métodos computacionais e ray tracing relativístico',
-          body: '[SUBSTITUIR: descreva o objetivo do projeto, a abordagem metodológica e os resultados esperados.]',
-          period: '2023 — 2026', funding: '[AGÊNCIA / EDITAL]'
+          image: '',
+          imageAlt: '',
+          paras: [
+            'O projeto desenvolve ferramentas computacionais para traçar trajetórias de luz em espaços-tempos curvos. Esses métodos apoiam estudos de objetos compactos, imagens de buracos negros e testes observacionais de teorias gravitacionais.'
+          ],
+          period: '2023 — 2026', funding: 'CNPQ'
         }
       ]
     },
@@ -195,20 +226,38 @@ class Component extends DCLogic {
       projects: [
         {
           n: '01', status: 'Ongoing',
-          title: 'Black hole shadows in modified gravity',
-          body: 'This project investigates black hole shadows and observational signatures in modified theories of gravity. It combines analytical modelling with numerical ray tracing to test deviations from General Relativity in strong gravitational fields.',
+          category: 'GRAVITATION',
+          title: 'Black Hole Shadows in Bumblebee Gravity',
+          image: 'assets/projetos/black-hole-bumblebee.png',
+          imageAlt: 'Amber-toned illustration of a black hole shadow with an accretion disk',
+          paras: [
+            'A black hole shadow is the dark region observed when part of the surrounding light is captured by the event horizon. Its contour is mainly determined by unstable photon trajectories passing very close to the black hole, forming the photon ring.',
+            'In this project, we investigate shadows of rotating black holes in a modified theory of gravity known as metric-affine bumblebee gravity. In this model, a vector field acquires a nonzero vacuum value and establishes a preferred direction in spacetime, producing a possible spontaneous breaking of Lorentz symmetry.',
+            'When the black hole does not rotate, the Lorentz-violation parameter does not change the circular shape of the shadow. When rotation and Lorentz-symmetry breaking act together, however, light trajectories develop a directional deformation, including vertical flattening, displacement of the luminous ring and an asymmetric reduction of the lower shadow region.',
+            'We visualize these effects through ray-tracing simulations with GYOTO, including emission from an accretion disk. The deformations are more evident for intermediate observer inclinations and may provide signatures for testing gravitational theories beyond Kerr geometry in observations of objects such as M87* and Sgr A*.'
+          ],
           period: '2024 — 2027', funding: 'Research support'
         },
         {
           n: '02', status: 'Ongoing',
+          category: 'GRAVITATION',
           title: 'Topological defects in curved spacetimes',
-          body: 'This project studies field and gravitational effects in curved spacetimes and geometries containing topological defects. The goal is to understand how spacetime structure affects physical fields.',
+          image: '',
+          imageAlt: '',
+          paras: [
+            'This project studies field and gravitational effects in curved spacetimes and geometries containing topological defects. The goal is to understand how spacetime structure affects physical fields and related observables.'
+          ],
           period: '2025 — 2028', funding: 'Research support'
         },
         {
           n: '03', status: 'Ongoing',
+          category: 'COMPUTATIONAL METHODS',
           title: 'Computational methods and relativistic ray tracing',
-          body: 'This project develops computational tools for relativistic ray tracing and simulations in curved spacetimes. The methods support studies of compact objects, black hole images and tests of gravitational theories.',
+          image: '',
+          imageAlt: '',
+          paras: [
+            'This project develops computational tools for relativistic ray tracing and simulations in curved spacetimes. The methods support studies of compact objects, black hole images and observational tests of gravitational theories.'
+          ],
           period: '2023 — 2026', funding: 'Research support'
         }
       ]
