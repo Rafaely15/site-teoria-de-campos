@@ -23,6 +23,54 @@ body { overflow-x: hidden; }
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding-inline: clamp(16px, 3vw, 48px); }
 .wrap-narrow { width: 100%; max-width: var(--wrap-narrow); margin: 0 auto; padding-inline: clamp(16px, 3vw, 48px); }
 
+/* Texto corrido: leitura confortável em todas as páginas.
+   Títulos, botões, menus, estatísticas e rótulos mantêm alinhamento próprio. */
+.qc-page :where(
+  .hero-lede,
+  .frente-body,
+  .numbered-desc,
+  .block-body p,
+  .card-body,
+  .person-bio,
+  .tl-item p,
+  .footer-desc,
+  .footer-col p,
+  .text-muted
+) {
+  text-align: justify;
+  text-justify: inter-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.qc-page :where(
+  .hero-lede,
+  .block-body p,
+  .card-body,
+  .person-bio,
+  .tl-item p,
+  .text-muted
+) {
+  max-width: min(100%, 72ch);
+}
+
+.qc-page :where(
+  .card-title,
+  .pub-title,
+  .person-name,
+  .tl-title,
+  .frente-title,
+  .numbered-summary .t
+) {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.qc-page :where(.btn, .tag, .badge-live, .count-badge, .stat-label, .stat-num, .sec-link, .doi) {
+  text-align: initial;
+  hyphens: manual;
+}
+
 /* ══════════════════════════════════════════════════════════════════
    Fundo decorativo — circuito quântico + partículas
    Duas camadas fixas de baixíssima opacidade. Nunca competem com o
