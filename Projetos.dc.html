@@ -186,7 +186,7 @@ class Component extends DCLogic {
           imageAlt: 'Ilustração de uma sombra de buraco negro com disco de acreção em tons âmbar',
           paras: [
             'A sombra de um buraco negro é a região escura observada quando parte da luz ao seu redor é capturada pelo horizonte de eventos. Seu contorno é determinado principalmente pelas trajetórias instáveis dos fótons que passam muito próximos ao buraco negro, formando o chamado anel de fótons.',
-            'Neste trabalho, investigamos sombras de buracos negros rotativos em uma teoria modificada da gravidade conhecida como gravidade bumblebee métrico-afim. Nesse modelo, um campo vetorial assume um valor de vácuo não nulo e estabelece uma direção preferencial no espaço-tempo, produzindo uma possível quebra espontânea da simetria de Lorentz. A intensidade desse efeito é representada pelo parâmetro X, enquanto a controla a rotação do buraco negro.',
+            'Neste trabalho, investigamos sombras de buracos negros rotativos em uma teoria modificada da gravidade conhecida como gravidade bumblebee métrico-afim. Nesse modelo, um campo vetorial assume um valor de vácuo não nulo e estabelece uma direção preferencial no espaço-tempo, produzindo uma possível quebra espontânea da simetria de Lorentz. A intensidade desse efeito é representada pelo parâmetro X, enquanto o parâmetro a controla a rotação do buraco negro.',
             'Quando o buraco negro não gira, o parâmetro X não altera o formato circular da sombra. Entretanto, quando rotação e quebra da simetria de Lorentz atuam simultaneamente, as trajetórias da luz passam a apresentar uma deformação direcional. Com o aumento de X, surgem o achatamento vertical da sombra, o deslocamento do anel luminoso e a redução assimétrica de sua região inferior, que pode evoluir para uma estrutura semelhante a uma gota.',
             'Para visualizar esses efeitos, utilizamos simulações de trajetória de raios de luz com o código GYOTO, considerando também a emissão de um disco de acreção. As deformações são mais evidentes para observadores em inclinações intermediárias, próximas de 60°, e podem fornecer assinaturas para testar teorias gravitacionais além da geometria de Kerr em observações de objetos como M87* e Sgr A*.'
           ],
@@ -194,6 +194,49 @@ class Component extends DCLogic {
         },
         {
           n: '02', status: 'Em andamento',
+          category: 'GRAVITAÇÃO',
+          title: 'Lenteamento Gravitacional em Gravidade Bumblebee',
+          image: 'assets/projetos/gravitational-lensing-bumblebee.png',
+          imageAlt: 'Gráfico do ângulo de deflexão da luz em função do parâmetro X',
+          paras: [
+            'O lenteamento gravitacional ocorre quando a trajetória da luz é desviada pela curvatura do espaço-tempo produzida por um objeto massivo. Nas proximidades de um buraco negro, o campo gravitacional é tão intenso que os fótons podem contornar o objeto uma ou mais vezes antes de alcançar o observador, originando múltiplas imagens relativísticas.',
+            'Neste trabalho, investigamos o lenteamento produzido por um buraco negro em uma teoria conhecida como gravidade bumblebee métrico-afim. Nesse modelo, um campo vetorial estabelece uma direção preferencial no espaço-tempo, produzindo uma possível quebra espontânea da simetria de Lorentz. A intensidade desse efeito é representada pelo parâmetro adimensional X.',
+            'A análise foi realizada no regime de campo gravitacional forte, no qual os raios de luz passam muito próximos da esfera de fótons. Nesse limite, o ângulo de deflexão cresce rapidamente e pode fazer com que a luz complete várias voltas ao redor do buraco negro antes de chegar ao observador. Embora a posição do horizonte e o raio da esfera de fótons permaneçam iguais aos do caso de Schwarzschild, o parâmetro X modifica o parâmetro de impacto crítico e o ângulo de desvio da luz.',
+            'Os resultados mostram que o aumento de X intensifica a deflexão gravitacional, principalmente para trajetórias que passam mais próximas do buraco negro. A partir da equação de lente, também foram determinadas as posições e as ampliações das imagens relativísticas. Na aplicação ao buraco negro supermassivo Sagittarius A*, observou-se que o aumento de X amplia a separação entre a primeira imagem e as demais, enquanto reduz a razão entre seus fluxos luminosos. Essas grandezas podem contribuir para testar possíveis desvios da Relatividade Geral em observações de alta resolução.'
+          ],
+          period: '2024 — 2027', funding: 'CNPQ'
+        },
+        {
+          n: '03', status: 'Em andamento',
+          category: 'GRAVITAÇÃO',
+          title: 'Sombras de Buracos Negros em Geometria Não Comutativa',
+          image: 'assets/projetos/black-hole-noncommutative.png',
+          imageAlt: 'Simulação tridimensional com trajetórias coloridas ao redor de um buraco negro',
+          paras: [
+            'A geometria não comutativa investiga a possibilidade de que, em escalas extremamente pequenas, as coordenadas do espaço-tempo não possam ser determinadas de maneira independente. Nesse cenário, a matéria que forma o buraco negro deixa de ser representada por uma concentração pontual e passa a ser descrita por uma distribuição Lorentziana suavizada, cuja intensidade é controlada pelo parâmetro não comutativo Θ.',
+            'Neste trabalho, uma solução inicialmente esférica foi transformada em um buraco negro rotativo e axialmente simétrico por meio de uma versão modificada do método de Newman-Janis. A solução obtida permitiu analisar como a rotação a e a não comutatividade Θ modificam os horizontes, a ergosfera, a temperatura de Hawking, a entropia, as geodésicas e a propagação da luz nas proximidades do buraco negro.',
+            'A sombra corresponde à região escura formada pelas direções em que os fótons são capturados pelo horizonte de eventos. Seu contorno é determinado pelas órbitas instáveis de luz, conhecidas como esfera de fótons, e depende da massa, da rotação, do parâmetro não comutativo e da inclinação do observador.',
+            'Os resultados mostram que o aumento da rotação produz uma deformação lateral cada vez mais evidente, afastando a sombra do formato circular de Schwarzschild. Já a variação de Θ, mantendo uma rotação pequena, provoca mudanças mais sutis no tamanho e na forma do contorno, que passa a apresentar uma geometria levemente elíptica. Dessa maneira, a sombra funciona como uma representação visual das possíveis correções que a estrutura não comutativa do espaço-tempo introduz na geometria tradicional de Kerr.'
+          ],
+          period: '2024 — 2027', funding: 'CNPQ'
+        },
+        {
+          n: '04', status: 'Em andamento',
+          category: 'GRAVITAÇÃO',
+          title: 'Perturbações de Métricas de Gödel na Gravidade de Chern-Simons',
+          image: 'assets/projetos/godel-chern-simons-perturbations.png',
+          imageAlt: 'Gráfico do potencial efetivo para diferentes valores do parâmetro xi',
+          paras: [
+            'As métricas do tipo Gödel descrevem espaços-tempos em rotação, caracterizados por uma vorticidade global. Uma de suas propriedades mais intrigantes é a possibilidade de surgirem curvas temporais fechadas: trajetórias que, em determinadas regiões, poderiam conduzir um observador de volta ao próprio passado. Por isso, essas soluções são importantes para investigar os limites da causalidade na Relatividade Geral.',
+            'Neste trabalho, analisamos essas geometrias dentro da gravidade modificada de Chern-Simons não dinâmica. Essa teoria acrescenta à gravidade um campo pseudoescalar acoplado à curvatura do espaço-tempo, permitindo estudar possíveis violações das simetrias de Lorentz, de CPT e de difeomorfismo.',
+            'Foram introduzidas pequenas perturbações de primeira ordem, controladas pelo parâmetro ξ, sobre uma métrica de Gödel inicialmente homogênea no espaço e no tempo. As equações modificadas foram resolvidas analiticamente, mostrando que essas perturbações podem quebrar a homogeneidade espacial e a simetria de translação ao longo do eixo de rotação. O campo de Chern-Simons também pode apresentar dependência angular, permitindo a quebra da simetria axial.',
+            'Apesar dessas modificações locais, a presença ou ausência de curvas temporais fechadas continua determinada pela geometria de fundo. Assim, pequenas perturbações não alteram significativamente as propriedades causais globais do espaço-tempo.',
+            'Entretanto, o movimento de partículas é modificado. O parâmetro ξ altera o potencial efetivo que controla as geodésicas de partículas massivas e de fótons. Com o aumento da perturbação, o mínimo desse potencial geralmente se desloca para valores maiores da coordenada radial, indicando que o raio das órbitas circulares de equilíbrio também aumenta. Dessa maneira, mesmo uma pequena modificação da geometria pode produzir efeitos mensuráveis sobre as trajetórias locais da matéria e da luz.'
+          ],
+          period: '2024 — 2027', funding: 'CNPQ'
+        },
+        {
+          n: '05', status: 'Em andamento',
           category: 'GRAVITAÇÃO',
           title: 'Defeitos topológicos em espaços-tempos curvos',
           image: '',
@@ -204,7 +247,7 @@ class Component extends DCLogic {
           period: '2025 — 2028', funding: 'CNPQ'
         },
         {
-          n: '03', status: 'Em andamento',
+          n: '06', status: 'Em andamento',
           category: 'MÉTODOS COMPUTACIONAIS',
           title: 'Métodos computacionais e ray tracing relativístico',
           image: '',
@@ -241,6 +284,49 @@ class Component extends DCLogic {
         {
           n: '02', status: 'Ongoing',
           category: 'GRAVITATION',
+          title: 'Gravitational Lensing in Bumblebee Gravity',
+          image: 'assets/projetos/gravitational-lensing-bumblebee.png',
+          imageAlt: 'Plot of the light deflection angle as a function of the parameter X',
+          paras: [
+            'Gravitational lensing occurs when the trajectory of light is deflected by the curvature of spacetime produced by a massive object. Near a black hole, the gravitational field is so intense that photons may orbit the object one or more times before reaching the observer, producing multiple relativistic images.',
+            'In this work, we investigate lensing produced by a black hole in a theory known as metric-affine bumblebee gravity. In this model, a vector field establishes a preferred direction in spacetime, producing a possible spontaneous breaking of Lorentz symmetry. The strength of this effect is represented by the dimensionless parameter X.',
+            'The analysis was performed in the strong gravitational field regime, in which light rays pass very close to the photon sphere. In this limit, the deflection angle grows rapidly and can cause light to complete several loops around the black hole before reaching the observer. Although the horizon position and photon-sphere radius remain the same as in the Schwarzschild case, the parameter X modifies the critical impact parameter and the light deflection angle.',
+            'The results show that increasing X intensifies gravitational deflection, especially for trajectories passing closer to the black hole. From the lens equation, the positions and magnifications of the relativistic images were also determined. In the application to the supermassive black hole Sagittarius A*, increasing X enlarges the separation between the first image and the others, while reducing the ratio between their luminous fluxes. These quantities may help test possible deviations from General Relativity in high-resolution observations.'
+          ],
+          period: '2024 — 2027', funding: 'Research support'
+        },
+        {
+          n: '03', status: 'Ongoing',
+          category: 'GRAVITATION',
+          title: 'Black Hole Shadows in Noncommutative Geometry',
+          image: 'assets/projetos/black-hole-noncommutative.png',
+          imageAlt: 'Three-dimensional simulation with colored trajectories around a black hole',
+          paras: [
+            'Noncommutative geometry investigates the possibility that, at extremely small scales, spacetime coordinates cannot be determined independently. In this scenario, the matter forming the black hole is no longer represented by a pointlike concentration, but by a smoothed Lorentzian distribution controlled by the noncommutative parameter Θ.',
+            'In this work, an initially spherical solution was transformed into a rotating, axially symmetric black hole through a modified version of the Newman-Janis method. The resulting solution made it possible to analyze how the rotation a and the noncommutativity Θ modify the horizons, ergosphere, Hawking temperature, entropy, geodesics and light propagation near the black hole.',
+            'The shadow corresponds to the dark region formed by directions in which photons are captured by the event horizon. Its contour is determined by unstable light orbits, known as the photon sphere, and depends on the mass, rotation, noncommutative parameter and observer inclination.',
+            'The results show that increasing the rotation produces an increasingly evident lateral deformation, moving the shadow away from the circular Schwarzschild shape. Varying Θ while keeping the rotation small produces subtler changes in the size and shape of the contour, which becomes slightly elliptical. In this way, the shadow acts as a visual representation of possible corrections introduced by the noncommutative structure of spacetime into the traditional Kerr geometry.'
+          ],
+          period: '2024 — 2027', funding: 'Research support'
+        },
+        {
+          n: '04', status: 'Ongoing',
+          category: 'GRAVITATION',
+          title: 'Perturbations of Gödel Metrics in Chern-Simons Gravity',
+          image: 'assets/projetos/godel-chern-simons-perturbations.png',
+          imageAlt: 'Plot of the effective potential for different values of the xi parameter',
+          paras: [
+            'Gödel-type metrics describe rotating spacetimes characterized by a global vorticity. One of their most intriguing properties is the possible emergence of closed timelike curves: trajectories that, in certain regions, could lead an observer back to their own past. These solutions are therefore important for investigating the limits of causality in General Relativity.',
+            'In this work, we analyze these geometries within nondynamical Chern-Simons modified gravity. This theory adds to gravity a pseudoscalar field coupled to spacetime curvature, making it possible to study possible violations of Lorentz, CPT and diffeomorphism symmetries.',
+            'Small first-order perturbations, controlled by the parameter ξ, were introduced over an initially homogeneous Gödel metric in space and time. The modified equations were solved analytically, showing that these perturbations can break spatial homogeneity and translation symmetry along the rotation axis. The Chern-Simons field may also present angular dependence, allowing the breaking of axial symmetry.',
+            'Despite these local modifications, the presence or absence of closed timelike curves remains determined by the background geometry. Thus, small perturbations do not significantly alter the global causal properties of spacetime.',
+            'However, particle motion is modified. The parameter ξ changes the effective potential that controls the geodesics of massive particles and photons. As the perturbation increases, the minimum of this potential generally shifts to larger values of the radial coordinate, indicating that the radius of circular equilibrium orbits also increases. In this way, even a small modification of the geometry can produce measurable effects on local trajectories of matter and light.'
+          ],
+          period: '2024 — 2027', funding: 'Research support'
+        },
+        {
+          n: '05', status: 'Ongoing',
+          category: 'GRAVITATION',
           title: 'Topological defects in curved spacetimes',
           image: '',
           imageAlt: '',
@@ -250,7 +336,7 @@ class Component extends DCLogic {
           period: '2025 — 2028', funding: 'Research support'
         },
         {
-          n: '03', status: 'Ongoing',
+          n: '06', status: 'Ongoing',
           category: 'COMPUTATIONAL METHODS',
           title: 'Computational methods and relativistic ray tracing',
           image: '',

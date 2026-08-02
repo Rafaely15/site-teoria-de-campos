@@ -607,8 +607,9 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .project-media img {
   display: block;
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
 }
 
 .project-copy {
@@ -1026,13 +1027,35 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
    ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
   .frentes-orbit {
+    --orbit-mobile-offset: clamp(92px, 34vw, 360px);
     grid-template-columns: 1fr;
     row-gap: clamp(28px, 6vw, 44px);
+    padding-block: var(--space-2);
   }
   .frentes-orbit-path { display: none; }
+  .frentes-orbit::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    bottom: 18px;
+    width: min(56vw, 340px);
+    border-left: 1px dashed color-mix(in srgb, var(--color-accent) 36%, transparent);
+    border-top: 1px dashed color-mix(in srgb, var(--color-accent) 24%, transparent);
+    border-bottom: 1px dashed color-mix(in srgb, var(--color-accent) 24%, transparent);
+    border-radius: 0 999px 999px 0;
+    pointer-events: none;
+    z-index: 0;
+  }
   .frente-node:nth-of-type(2),
   .frente-node:nth-of-type(3) {
     margin-top: 0;
+  }
+  .frente-node {
+    width: min(100%, 34ch);
+  }
+  .frente-node:nth-of-type(2) {
+    margin-left: var(--orbit-mobile-offset);
   }
   .numbered-home {
     grid-template-columns: 1fr;
@@ -1092,6 +1115,15 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 
 @media (max-width: 560px) {
   .brand-name { display: none; }
+  .frentes-orbit {
+    --orbit-mobile-offset: clamp(64px, 28vw, 128px);
+  }
+  .frentes-orbit::before {
+    width: min(52vw, 190px);
+  }
+  .frente-node {
+    width: min(100%, 30ch);
+  }
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .btn-row .btn { flex: 1 1 100%; }
   .team-preview {
