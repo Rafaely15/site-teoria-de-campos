@@ -15,6 +15,7 @@
   --sec-pad: clamp(64px, 5.5vw, 128px);
   --read-width: clamp(68ch, 66vw, 118ch);
   --read-width-wide: clamp(76ch, 72vw, 132ch);
+  --news-media-width: 300px;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
@@ -784,7 +785,7 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   position: relative;
   padding: 0 0 clamp(28px, 3vw, 56px) 34px;
   min-width: 0;
-  max-width: 430px;
+  max-width: var(--news-media-width);
   width: 100%;
 }
 .tl-item::before {
@@ -799,28 +800,28 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   letter-spacing: 0.14em; text-transform: uppercase;
   color: color-mix(in srgb, var(--color-text) 52%, transparent);
 }
-.tl-head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); min-width: 0; }
+.tl-head { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); min-width: 0; max-width: var(--news-media-width); }
 .tl-title {
   font-family: var(--font-display); font-size: 1.375rem; margin: 0 0 var(--space-2);
-  max-width: 100%;
+  max-width: var(--news-media-width);
   overflow-wrap: anywhere;
   word-break: normal;
 }
 .tl-item .card-body {
   width: 100%;
-  max-width: 100%;
+  max-width: var(--news-media-width);
   overflow-wrap: anywhere;
 }
 .tl-where {
   font-family: var(--font-mono); font-size: 0.656rem; letter-spacing: 0.12em;
   text-transform: uppercase; margin: var(--space-2) 0 0;
   color: color-mix(in srgb, var(--color-text) 46%, transparent);
-  max-width: 100%;
+  max-width: var(--news-media-width);
   overflow-wrap: anywhere;
 }
 .tl-media {
   display: block;
-  width: min(100%, 300px);
+  width: min(100%, var(--news-media-width));
   aspect-ratio: 4 / 5;
   margin: var(--space-3) 0 var(--space-4);
   border: 1px solid var(--color-divider);
@@ -837,7 +838,7 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .tl-link {
   display: inline-block;
   margin-top: var(--space-3);
-  max-width: 100%;
+  max-width: var(--news-media-width);
   white-space: normal;
   overflow-wrap: anywhere;
 }
