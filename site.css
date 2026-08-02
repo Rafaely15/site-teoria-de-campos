@@ -13,6 +13,8 @@
   --wrap-narrow: clamp(860px, 54vw, 1100px);
   --header-h: clamp(64px, 44px + 3.4vw, 92px);
   --sec-pad: clamp(64px, 5.5vw, 128px);
+  --read-width: clamp(68ch, 66vw, 118ch);
+  --read-width-wide: clamp(76ch, 72vw, 132ch);
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
@@ -51,7 +53,7 @@ body { overflow-x: hidden; }
   .tl-item p,
   .text-muted
 ) {
-  max-width: min(100%, 72ch);
+  max-width: min(100%, var(--read-width));
 }
 
 .qc-page :where(
@@ -297,11 +299,16 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
   display: none;
 }
 .hero-lede {
-  font-size: 1.0625rem; line-height: 1.7; max-width: 62ch;
+  font-size: clamp(1rem, 0.92rem + 0.22vw, 1.125rem);
+  line-height: 1.75;
+  max-width: min(100%, var(--read-width));
   color: color-mix(in srgb, var(--color-text) 76%, transparent);
   margin: 0 auto var(--space-6);
 }
-.hero-page .hero-lede { margin-inline: 0; }
+.hero-page .hero-lede {
+  max-width: min(100%, var(--read-width-wide));
+  margin-inline: 0;
+}
 
 .pill-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6); }
 .hero-home .pill-row { justify-content: center; }
@@ -543,7 +550,10 @@ body.qc-menu-open .menu-btn span::after { transform: translateY(-5.5px) rotate(-
 .block-label .num { margin-bottom: var(--space-2); }
 .block-label h6 { color: color-mix(in srgb, var(--color-text) 50%, transparent); }
 .block-body h3 { margin-bottom: var(--space-4); }
-.block-body p { color: color-mix(in srgb, var(--color-text) 76%, transparent); max-width: 68ch; }
+.block-body p {
+  color: color-mix(in srgb, var(--color-text) 76%, transparent);
+  max-width: min(100%, var(--read-width-wide));
+}
 
 /* ══════════════════════════════════════════════════════════════════
    Projetos
